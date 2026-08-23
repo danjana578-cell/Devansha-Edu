@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devansha Edu</title>
+<style>
+:root {
+    --ink: #162035;
+    --muted: #65728a;
+    --paper: #f7f9fd;
+    --panel: rgba(255, 255, 255, 0.88);
+    --line: rgba(22, 32, 53, 0.12);
+    --blue: #2457ff;
+    --teal: #00a7a7;
+    --gold: #f3b33f;
+    --red: #e64545;
+    --green: #1f9d63;
+    --shadow: 0 24px 65px rgba(30, 45, 80, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, Segoe UI, Arial, sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 20% 15%, rgba(36, 87, 255, 0.22), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(0, 167, 167, 0.18), transparent 28%),
+        linear-gradient(135deg, #edf3ff, #ffffff 45%, #f8fbff);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.38) 42% 44%, transparent 44%),
+        linear-gradient(64deg, transparent 0 58%, rgba(36, 87, 255, 0.08) 58% 60%, transparent 60%);
+    transform: translateZ(0);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.login-screen {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(300px, 420px);
+    align-items: center;
+    gap: 42px;
+    padding: 42px clamp(18px, 6vw, 86px);
+    overflow: hidden;
+}
+
+.stage {
+    position: absolute;
+    inset: 0;
+    perspective: 1000px;
+    pointer-events: none;
+}
+
+.cube {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    transform-style: preserve-3d;
+    animation: spin 14s linear infinite;
+}
+
+.cube.one {
+    left: 10%;
+    top: 14%;
+}
+
+.cube.two {
+    right: 12%;
+    bottom: 12%;
+    width: 72px;
+    height: 72px;
+    animation-duration: 18s;
+}
+
+.cube.three {
+    left: 46%;
+    bottom: 18%;
+    width: 58px;
+    height: 58px;
+    animation-duration: 11s;
+    animation-direction: reverse;
+}
+
+.cube span {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(36, 87, 255, 0.2);
+    background: rgba(255, 255, 255, 0.38);
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 0 28px rgba(36, 87, 255, 0.1);
+    font-weight: 900;
+    color: var(--blue);
+}
+
+.cube span:nth-child(1) { transform: translateZ(48px); }
+.cube span:nth-child(2) { transform: rotateY(90deg) translateZ(48px); }
+.cube span:nth-child(3) { transform: rotateY(180deg) translateZ(48px); }
+.cube span:nth-child(4) { transform: rotateY(-90deg) translateZ(48px); }
+.cube span:nth-child(5) { transform: rotateX(90deg) translateZ(48px); }
+.cube span:nth-child(6) { transform: rotateX(-90deg) translateZ(48px); }
+.cube.two span:nth-child(1) { transform: translateZ(36px); }
+.cube.two span:nth-child(2) { transform: rotateY(90deg) translateZ(36px); }
+.cube.two span:nth-child(3) { transform: rotateY(180deg) translateZ(36px); }
+.cube.two span:nth-child(4) { transform: rotateY(-90deg) translateZ(36px); }
+.cube.two span:nth-child(5) { transform: rotateX(90deg) translateZ(36px); }
+.cube.two span:nth-child(6) { transform: rotateX(-90deg) translateZ(36px); }
+.cube.three span:nth-child(1) { transform: translateZ(29px); }
+.cube.three span:nth-child(2) { transform: rotateY(90deg) translateZ(29px); }
+.cube.three span:nth-child(3) { transform: rotateY(180deg) translateZ(29px); }
+.cube.three span:nth-child(4) { transform: rotateY(-90deg) translateZ(29px); }
+.cube.three span:nth-child(5) { transform: rotateX(90deg) translateZ(29px); }
+.cube.three span:nth-child(6) { transform: rotateX(-90deg) translateZ(29px); }
+
+@keyframes spin {
+    from { transform: rotateX(-18deg) rotateY(0deg) rotateZ(8deg); }
+    to { transform: rotateX(342deg) rotateY(360deg) rotateZ(8deg); }
+}
+
+.brand {
+    position: relative;
+    z-index: 1;
+}
+
+.brand h1 {
+    position: relative;
+    width: max-content;
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(42px, 8vw, 86px);
+    line-height: 0.95;
+    letter-spacing: 0;
+    color: #080b10;
+    transform: rotateX(4deg) rotateY(-4deg);
+    transform-style: preserve-3d;
+    animation: brandFloat 4.8s ease-in-out infinite;
+    text-shadow:
+        1px 1px 0 #ffffff,
+        2px 2px 0 #ffd95a,
+        4px 4px 0 rgba(8, 11, 16, 0.2),
+        13px 20px 28px rgba(0, 0, 0, 0.26);
+}
+
+.brand h1::after {
+    content: attr(data-title);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    color: rgba(8, 11, 16, 0.24);
+    transform: translateZ(-26px) translate(12px, 12px);
+    filter: blur(0.6px);
+}
+
+.brand h1 span,
+.logo-text {
+    display: inline-block;
+    background: none;
+    color: #000080;
+    -webkit-text-fill-color: #000080;
+    -webkit-text-stroke: 10px #000000;
+    paint-order: stroke fill;
+    animation: none;
+}
+
+@keyframes brandFloat {
+    0%, 100% { transform: rotateX(4deg) rotateY(-4deg) translateY(0); }
+    50% { transform: rotateX(6deg) rotateY(2deg) translateY(-7px); }
+}
+
+@keyframes textShine {
+    from { background-position: 0% 50%; }
+    to { background-position: 260% 50%; }
+}
+
+.brand p {
+    max-width: 600px;
+    margin: 22px 0 0;
+    color: var(--muted);
+    font-size: clamp(17px, 2.2vw, 22px);
+}
+
+.login-card,
+.panel,
+.material-card,
+.subject-card {
+    background: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+.login-card {
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+    padding: 24px;
+    transform: rotateY(-7deg) rotateX(4deg);
+    transform-style: preserve-3d;
+}
+
+.login-card::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    z-index: -1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(36, 87, 255, 0.18), rgba(0, 167, 167, 0.12));
+    transform: translateZ(-28px) translate(20px, 20px);
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.64);
+    margin-bottom: 18px;
+}
+
+.tab {
+    min-height: 42px;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    font-weight: 800;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.tab:hover,
+.primary-btn:hover,
+.ghost-btn:hover,
+.danger-btn:hover,
+.small-btn:hover,
+.subject-card:hover,
+.material-card:hover {
+    transform: translateY(-2px);
+}
+
+.tab.active {
+    color: white;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+}
+
+.field {
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+}
+
+.field label {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 11px 12px;
+    background: white;
+    color: var(--ink);
+    outline: none;
+}
+
+.field textarea {
+    min-height: 86px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: rgba(36, 87, 255, 0.56);
+    box-shadow: 0 0 0 4px rgba(36, 87, 255, 0.11);
+}
+
+.primary-btn,
+.ghost-btn,
+.danger-btn,
+.small-btn {
+    min-height: 44px;
+    border-radius: 7px;
+    font-weight: 900;
+}
+
+.primary-btn {
+    width: 100%;
+    margin-top: 18px;
+    color: white;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    box-shadow: 0 12px 26px rgba(36, 87, 255, 0.2);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ghost-btn {
+    color: var(--ink);
+    background: white;
+    border: 1px solid var(--line);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.danger-btn {
+    color: white;
+    background: var(--red);
+    transition: transform 0.18s ease;
+}
+
+.small-btn {
+    min-height: 36px;
+    padding: 0 12px;
+}
+
+.message {
+    min-height: 22px;
+    margin: 12px 0 0;
+    color: var(--red);
+    font-weight: 800;
+}
+
+.app {
+    min-height: 100vh;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px clamp(14px, 4vw, 40px);
+    border-bottom: 1px solid var(--line);
+    background: rgba(247, 249, 253, 0.82);
+    backdrop-filter: blur(16px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 950;
+    perspective: 700px;
+}
+
+.logo-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    color: #05070b;
+    background: linear-gradient(135deg, #ffffff, #ffd95a);
+    border: 1px solid rgba(8, 11, 16, 0.14);
+    box-shadow: 0 10px 24px rgba(8, 11, 16, 0.2), 0 4px 0 rgba(8, 11, 16, 0.18);
+    transform: rotateY(-18deg);
+    animation: markPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes markPulse {
+    0%, 100% { transform: rotateY(-18deg) translateY(0); }
+    50% { transform: rotateY(18deg) translateY(-3px); }
+}
+
+.user-pill {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sound-control {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 12px 34px rgba(30, 45, 80, 0.18), 0 7px 0 rgba(36, 87, 255, 0.08);
+    backdrop-filter: blur(14px);
+}
+
+.sound-btn {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    color: white;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    font-weight: 950;
+}
+
+.sound-control input {
+    width: 92px;
+    accent-color: var(--blue);
+}
+
+.dashboard {
+    padding: 24px clamp(14px, 4vw, 40px) 42px;
+}
+
+.hero-band {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(220px, 360px);
+    gap: 22px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.hero-copy h2 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 50px);
+    letter-spacing: 0;
+}
+
+.hero-copy p {
+    max-width: 760px;
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.book-scene {
+    min-height: 190px;
+    perspective: 1000px;
+    display: grid;
+    place-items: center;
+}
+
+.book {
+    position: relative;
+    width: min(78vw, 250px);
+    height: 150px;
+    transform-style: preserve-3d;
+    transform: rotateX(58deg) rotateZ(-22deg);
+    animation: floatBook 4.2s ease-in-out infinite;
+}
+
+.book::before,
+.book::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffffff, #dfe8ff);
+    border: 1px solid rgba(36, 87, 255, 0.2);
+    box-shadow: 0 28px 46px rgba(30, 45, 80, 0.24);
+}
+
+.book::after {
+    left: 51%;
+    width: 49%;
+    transform: rotateY(-18deg);
+    transform-origin: left center;
+    background: linear-gradient(135deg, #fff7e4, #e9f8f8);
+}
+
+.book-line {
+    position: absolute;
+    z-index: 2;
+    height: 6px;
+    border-radius: 20px;
+    background: rgba(36, 87, 255, 0.24);
+}
+
+.book-line.a { width: 84px; left: 24px; top: 42px; }
+.book-line.b { width: 114px; left: 24px; top: 66px; background: rgba(0, 167, 167, 0.24); }
+.book-line.c { width: 74px; right: 28px; top: 52px; background: rgba(243, 179, 63, 0.36); }
+.book-line.d { width: 96px; right: 28px; top: 78px; }
+
+@keyframes floatBook {
+    0%, 100% { transform: rotateX(58deg) rotateZ(-22deg) translateY(0); }
+    50% { transform: rotateX(58deg) rotateZ(-22deg) translateY(-12px); }
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 18px;
+}
+
+.panel {
+    border-radius: 8px;
+    padding: 18px;
+    transform-style: preserve-3d;
+}
+
+.panel h3 {
+    margin: 0 0 12px;
+}
+
+.subject-list {
+    display: grid;
+    gap: 10px;
+}
+
+.subject-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 58px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
+    color: var(--ink);
+    box-shadow: 0 10px 0 rgba(36, 87, 255, 0.08), 0 18px 38px rgba(30, 45, 80, 0.11);
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease, outline-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.subject-card.active {
+    outline: 3px solid rgba(36, 87, 255, 0.18);
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.subject-name {
+    font-weight: 950;
+}
+
+.subject-count {
+    min-width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: white;
+    background: var(--blue);
+    font-size: 13px;
+    font-weight: 950;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+}
+
+.material-card {
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 12px 0 rgba(0, 167, 167, 0.08), var(--shadow);
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
+    box-shadow: 0 30px 70px rgba(30, 45, 80, 0.24);
+}
+
+.material-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    z-index: -1;
+    border-radius: 8px;
+    background: rgba(36, 87, 255, 0.09);
+    transform: translateZ(-18px) translate(10px, 10px);
+}
+
+.material-top {
+    display: grid;
+    gap: 8px;
+}
+
+.badge {
+    width: max-content;
+    max-width: 100%;
+    padding: 5px 9px;
+    border-radius: 999px;
+    color: #0c4f4f;
+    background: rgba(0, 167, 167, 0.14);
+    font-size: 12px;
+    font-weight: 950;
+}
+
+.material-card h4 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.material-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.card-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.download-link,
+.view-link {
+    min-height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
+    font-weight: 950;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    border: 0;
+}
+
+.view-link {
+    background: linear-gradient(135deg, var(--gold), var(--teal));
+}
+
+.reader-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    padding: 0;
+    background: rgba(10, 18, 34, 0.82);
+    backdrop-filter: blur(10px);
+}
+
+.reader-box {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    background: white;
+}
+
+.reader-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.reader-head h3 {
+    margin: 0;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.reader-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+}
+
+.reader-body {
+    min-height: 0;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #f6f8fc;
+}
+
+.reader-body iframe,
+.reader-body img,
+.reader-body pre {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.reader-body iframe {
+    display: block;
+    min-height: calc(100vh - 62px);
+    overflow: auto;
+}
+
+.reader-body img {
+    object-fit: contain;
+    padding: 16px;
+}
+
+.reader-body pre {
+    margin: 0;
+    padding: 18px;
+    overflow: auto;
+    white-space: pre-wrap;
+    color: var(--ink);
+    background: white;
+}
+
+.reader-message {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 26px;
+    text-align: center;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.empty {
+    padding: 28px;
+    border: 1px dashed rgba(22, 32, 53, 0.22);
+    border-radius: 8px;
+    color: var(--muted);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.58);
+}
+
+.admin-tools {
+    display: grid;
+    gap: 10px;
+}
+
+.file-note {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+@media (max-width: 850px) {
+    .login-screen,
+    .hero-band,
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .login-screen {
+        align-items: start;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .top-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 520px) {
+    .brand h1 {
+        font-size: 42px;
+    }
+
+    .login-card,
+    .panel {
+        padding: 14px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .reader-head {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .reader-actions {
+        width: 100%;
+    }
+
+    .reader-actions .small-btn {
+        flex: 1;
+    }
+}
+</style>
+</head>
+<body>
+<div class="sound-control" aria-label="Sound control">
+    <button class="sound-btn" id="soundToggle" type="button" title="Sound on/off">On</button>
+    <input id="volumeControl" type="range" min="0" max="100" value="22" title="Volume">
+</div>
+<audio id="backgroundMusic" src="prettyjohn1-background-music-537170.mp3" loop preload="auto"></audio>
+
+<main id="loginScreen" class="login-screen">
+    <div class="stage" aria-hidden="true">
+        <div class="cube one">
+            <span>D</span><span>E</span><span>3D</span><span>PDF</span><span>SCI</span><span>MATH</span>
+        </div>
+        <div class="cube two">
+            <span>Q</span><span>A</span><span>BOOK</span><span>IMG</span><span>HIN</span><span>SST</span>
+        </div>
+        <div class="cube three">
+            <span>PDF</span><span>DOC</span><span>HTML</span><span>3D</span><span>EDU</span><span>GO</span>
+        </div>
+    </div>
+
+    <section class="brand">
+        <h1 data-title="Devansha Edu"><span>Devansha Edu</span></h1>
+        <p>Private study material app for Hindi, Math, Science, SST, English and Sanskrit.</p>
+    </section>
+
+    <section class="login-card">
+        <div class="tabs" role="tablist" aria-label="Login type">
+            <button class="tab" id="adminTab" type="button" onclick="setMode('admin')">Admin</button>
+            <button class="tab active" id="userTab" type="button" onclick="setMode('user')">User</button>
+        </div>
+
+        <form id="loginForm">
+            <div class="field">
+                <label for="username">Username</label>
+                <input id="username" autocomplete="username" placeholder="Enter username" required>
+            </div>
+            <div class="field">
+                <label for="password">Private password</label>
+                <input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+            </div>
+            <button class="primary-btn" type="submit">Login</button>
+            <p class="message" id="loginMessage"></p>
+        </form>
+    </section>
+</main>
+
+<main id="appScreen" class="app hidden">
+    <header class="topbar">
+        <div class="logo"><span class="logo-mark">DE</span> <span class="logo-text">Devansha Edu</span></div>
+        <div class="top-actions">
+            <span class="user-pill" id="welcomeText"></span>
+            <button class="ghost-btn small-btn" type="button" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="hero-band">
+            <div class="hero-copy">
+                <h2 id="pageTitle">Welcome</h2>
+                <p id="pageSubtitle"></p>
+            </div>
+            <div class="book-scene" aria-hidden="true">
+                <div class="book">
+                    <span class="book-line a"></span>
+                    <span class="book-line b"></span>
+                    <span class="book-line c"></span>
+                    <span class="book-line d"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout">
+            <aside class="panel">
+                <h3>Subjects</h3>
+                <div class="subject-list" id="subjectList"></div>
+            </aside>
+
+            <section class="panel">
+                <div id="adminTools" class="admin-tools hidden">
+                    <h3>Add study material</h3>
+                    <div class="field">
+                        <label for="materialSubject">Subject</label>
+                        <select id="materialSubject"></select>
+                    </div>
+                    <div class="field">
+                        <label for="materialTopic">Topic or folder name</label>
+                        <input id="materialTopic" placeholder="Example: Fractions chapter notes">
+                    </div>
+                    <div class="field">
+                        <label for="materialDescription">Short description</label>
+                        <textarea id="materialDescription" placeholder="What will students learn from this?"></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="materialFile">PDF, Word, HTML or image</label>
+                        <input id="materialFile" type="file" accept=".pdf,.doc,.docx,.html,.htm,.txt,image/*">
+                        <p class="file-note">PDF, image, HTML and text files can be read in the app. Word files can be downloaded.</p>
+                    </div>
+                    <button class="primary-btn" type="button" onclick="addMaterial()">Add Material</button>
+                    <p class="message" id="adminMessage"></p>
+                </div>
+
+                <h3 id="materialHeading">Study Material</h3>
+                <div class="grid" id="materialGrid"></div>
+            </section>
+        </div>
+    </section>
+</main>
+
+<section id="readerModal" class="reader-modal hidden" aria-modal="true" role="dialog">
+    <div class="reader-box">
+        <div class="reader-head">
+            <h3 id="readerTitle">Study Material</h3>
+            <div class="reader-actions">
+                <a class="download-link small-btn" id="readerDownload" href="#" download>Download</a>
+                <button class="ghost-btn small-btn" type="button" onclick="closeReader()">Close</button>
+            </div>
+        </div>
+        <div class="reader-body" id="readerBody"></div>
+    </div>
+</section>
+
+<script>
+const ADMIN_USER = "devansha.edu";
+const ADMIN_PASS = "201328";
+const SUBJECTS = ["Hindi", "Math", "Science", "SST", "English", "Sanskrit"];
+const STORAGE_KEY = "devanshaEduMaterials";
+const USERS_KEY = "devanshaEduUsers";
+
+let mode = "user";
+let currentRole = "";
+let currentUser = "";
+let selectedSubject = SUBJECTS[0];
+let materials = loadMaterials();
+let audioContext = null;
+let masterGain = null;
+const backgroundMusic = document.getElementById("backgroundMusic");
+let soundEnabled = localStorage.getItem("devanshaEduSound") !== "off";
+let soundVolume = Number(localStorage.getItem("devanshaEduVolume") || "22");
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (mode === "admin") {
+        if (username === ADMIN_USER && password === ADMIN_PASS) {
+            enterApp("admin", username);
+            return;
+        }
+        showLoginError("Admin username or password is wrong.");
+        return;
+    }
+
+    if (!username || !password) {
+        showLoginError("Please enter username and private password.");
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem(USERS_KEY) || "{}");
+    if (users[username] && users[username] !== password) {
+        showLoginError("This username already has a different password.");
+        return;
+    }
+    users[username] = password;
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    enterApp("user", username);
+});
+
+document.getElementById("volumeControl").value = soundVolume;
+document.getElementById("soundToggle").textContent = soundEnabled ? "On" : "Off";
+document.getElementById("soundToggle").addEventListener("click", function(event) {
+    event.stopPropagation();
+    toggleSound();
+});
+document.getElementById("volumeControl").addEventListener("input", function(event) {
+    soundVolume = Number(event.target.value);
+    localStorage.setItem("devanshaEduVolume", String(soundVolume));
+    applySoundVolume();
+});
+
+document.addEventListener("pointerdown", function() {
+    startSoundEngine();
+}, { once: true });
+
+document.addEventListener("click", function(event) {
+    if (event.target.closest("button, a, input, select")) {
+        playClickSound();
+    }
+});
+
+function setMode(nextMode) {
+    mode = nextMode;
+    document.getElementById("adminTab").classList.toggle("active", mode === "admin");
+    document.getElementById("userTab").classList.toggle("active", mode === "user");
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("loginMessage").textContent = "";
+}
+
+function showLoginError(text) {
+    document.getElementById("loginMessage").textContent = text;
+}
+
+function enterApp(role, username) {
+    currentRole = role;
+    currentUser = username;
+    document.getElementById("loginScreen").classList.add("hidden");
+    document.getElementById("appScreen").classList.remove("hidden");
+    document.getElementById("welcomeText").textContent = role === "admin" ? "Welcome Admin" : "Welcome " + username;
+    document.getElementById("pageTitle").textContent = role === "admin" ? "Admin Dashboard" : "Student Library";
+    document.getElementById("pageSubtitle").textContent = role === "admin"
+        ? "Create subject folders, upload PDFs, Word files, HTML pages, images, and remove old material."
+        : "Open any subject, read study material inside the app, and download files.";
+    document.getElementById("adminTools").classList.toggle("hidden", role !== "admin");
+    renderSubjectSelect();
+    renderSubjects();
+    renderMaterials();
+}
+
+function logout() {
+    currentRole = "";
+    currentUser = "";
+    document.getElementById("appScreen").classList.add("hidden");
+    document.getElementById("loginScreen").classList.remove("hidden");
+    document.getElementById("password").value = "";
+}
+
+function loadMaterials() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        return JSON.parse(saved);
+    }
+    return [
+        {
+            id: createId(),
+            subject: "Math",
+            topic: "Number System Notes",
+            description: "Basic practice notes for quick revision. Open it inside the app.",
+            fileName: "sample-math-notes.html",
+            fileType: "text/html",
+            fileData: "data:text/html;charset=utf-8,%3Ch1%3ENumber%20System%20Notes%3C%2Fh1%3E%3Cp%3EDevansha%20Edu%20sample%20Math%20material.%3C%2Fp%3E"
+        },
+        {
+            id: createId(),
+            subject: "Science",
+            topic: "Chapter Summary",
+            description: "Short science summary material for students.",
+            fileName: "sample-science-summary.html",
+            fileType: "text/html",
+            fileData: "data:text/html;charset=utf-8,%3Ch1%3EScience%20Chapter%20Summary%3C%2Fh1%3E%3Cp%3EDevansha%20Edu%20sample%20Science%20summary.%3C%2Fp%3E"
+        }
+    ];
+}
+
+function saveMaterials() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(materials));
+}
+
+function renderSubjectSelect() {
+    const select = document.getElementById("materialSubject");
+    select.innerHTML = SUBJECTS.map(subject => `<option value="${subject}">${subject}</option>`).join("");
+    select.value = selectedSubject;
+}
+
+function renderSubjects() {
+    const list = document.getElementById("subjectList");
+    list.innerHTML = SUBJECTS.map(subject => {
+        const count = materials.filter(item => item.subject === subject).length;
+        return `
+            <button class="subject-card ${subject === selectedSubject ? "active" : ""}" type="button" onclick="selectSubject('${subject}')">
+                <span class="subject-name">${subject}</span>
+                <span class="subject-count">${count}</span>
+            </button>
+        `;
+    }).join("");
+}
+
+function selectSubject(subject) {
+    selectedSubject = subject;
+    renderSubjectSelect();
+    renderSubjects();
+    renderMaterials();
+}
+
+function renderMaterials() {
+    const heading = document.getElementById("materialHeading");
+    const grid = document.getElementById("materialGrid");
+    const current = materials.filter(item => item.subject === selectedSubject);
+    heading.textContent = selectedSubject + " Study Material";
+
+    if (!current.length) {
+        grid.innerHTML = `<div class="empty">No material added in ${selectedSubject} yet.</div>`;
+        return;
+    }
+
+    grid.innerHTML = current.map(item => `
+        <article class="material-card">
+            <div class="material-top">
+                <span class="badge">${escapeHtml(item.subject)}</span>
+                <h4>${escapeHtml(item.topic)}</h4>
+                <p>${escapeHtml(item.description || "Study material for students.")}</p>
+                <p><strong>File:</strong> ${escapeHtml(item.fileName)}</p>
+            </div>
+            <div class="card-actions">
+                ${renderReadLink(item)}
+                <button class="download-link" type="button" onclick="downloadDocument('${item.id}')">Download</button>
+                ${currentRole === "admin" ? `<button class="danger-btn small-btn" type="button" onclick="deleteMaterial('${item.id}')">Delete</button>` : ""}
+            </div>
+        </article>
+    `).join("");
+}
+
+function addMaterial() {
+    const subject = document.getElementById("materialSubject").value;
+    const topic = document.getElementById("materialTopic").value.trim();
+    const description = document.getElementById("materialDescription").value.trim();
+    const file = document.getElementById("materialFile").files[0];
+    const message = document.getElementById("adminMessage");
+
+    if (!topic || !file) {
+        message.textContent = "Please enter topic and choose a PDF, Word, HTML, text or image file.";
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function() {
+        materials.unshift({
+            id: createId(),
+            subject,
+            topic,
+            description,
+            fileName: file.name,
+            fileType: file.type,
+            fileData: reader.result
+        });
+        selectedSubject = subject;
+        saveMaterials();
+        document.getElementById("materialTopic").value = "";
+        document.getElementById("materialDescription").value = "";
+        document.getElementById("materialFile").value = "";
+        message.textContent = "Material added successfully.";
+        renderSubjectSelect();
+        renderSubjects();
+        renderMaterials();
+    };
+    reader.readAsDataURL(file);
+}
+
+function deleteMaterial(id) {
+    materials = materials.filter(item => item.id !== id);
+    saveMaterials();
+    renderSubjects();
+    renderMaterials();
+}
+
+function openReader(id) {
+    const item = materials.find(material => material.id === id);
+    const modal = document.getElementById("readerModal");
+    const title = document.getElementById("readerTitle");
+    const body = document.getElementById("readerBody");
+    const download = document.getElementById("readerDownload");
+
+    if (!item) {
+        return;
+    }
+
+    title.textContent = item.topic + " - " + item.fileName;
+    download.href = item.fileData;
+    download.download = item.fileName;
+    body.innerHTML = "";
+
+    if (isImage(item)) {
+        body.innerHTML = `<img src="${item.fileData}" alt="${escapeHtml(item.topic)}">`;
+    } else if (isHtml(item)) {
+        fetch(item.fileData)
+            .then(response => response.text())
+            .then(html => {
+                body.innerHTML = `<iframe title="${escapeHtml(item.topic)}" sandbox="allow-same-origin allow-forms allow-popups" srcdoc="${escapeAttribute(html)}"></iframe>`;
+            });
+    } else if (isReadableFrame(item)) {
+        body.innerHTML = `<iframe title="${escapeHtml(item.topic)}" sandbox="allow-same-origin allow-forms allow-popups" src="${item.fileData}"></iframe>`;
+    } else if (isText(item)) {
+        fetch(item.fileData)
+            .then(response => response.text())
+            .then(text => {
+                body.innerHTML = `<pre>${escapeHtml(text)}</pre>`;
+            });
+    } else {
+        body.innerHTML = `
+            <div class="reader-message">
+                <div>
+                    <p>Word files are saved here and can be downloaded.</p>
+                    <p>For full Word preview, this app will need an online document viewer or backend later.</p>
+                </div>
+            </div>
+        `;
+    }
+
+    modal.classList.remove("hidden");
+}
+
+function closeReader() {
+    document.getElementById("readerModal").classList.add("hidden");
+    document.getElementById("readerBody").innerHTML = "";
+}
+
+function getExtension(item) {
+    return item.fileName.split(".").pop().toLowerCase();
+}
+
+function isImage(item) {
+    return item.fileType.startsWith("image/");
+}
+
+function isReadableFrame(item) {
+    const extension = getExtension(item);
+    return item.fileType === "application/pdf" || extension === "pdf";
+}
+
+function isHtml(item) {
+    const extension = getExtension(item);
+    return item.fileType === "text/html" || extension === "html" || extension === "htm";
+}
+
+function isText(item) {
+    const extension = getExtension(item);
+    return item.fileType.startsWith("text/") || extension === "txt";
+}
+
+function canPreviewInBrowser(item) {
+    return isImage(item) || isHtml(item) || isReadableFrame(item) || isText(item);
+}
+
+function renderReadLink(item) {
+    if (canPreviewInBrowser(item)) {
+        return `<button class="view-link" type="button" onclick="openDocumentInNewTab('${item.id}')">Read</button>`;
+    }
+    return `<button class="view-link" type="button" onclick="openDocumentInNewTab('${item.id}')">Open</button>`;
+}
+
+function openDocumentInNewTab(id) {
+    const item = materials.find(material => material.id === id);
+    if (!item) {
+        return;
+    }
+
+    const newTab = window.open("", "_blank");
+    if (!newTab) {
+        alert("Popup blocked. Please allow popups for this page and click Read again.");
+        return;
+    }
+
+    newTab.document.write("<!DOCTYPE html><title>Opening...</title><body style='font-family:Arial;padding:24px'>Opening document...</body>");
+    const blob = dataUrlToBlob(item.fileData, getPreferredMime(item));
+    const url = URL.createObjectURL(blob);
+    newTab.location.href = url;
+    setTimeout(() => URL.revokeObjectURL(url), 120000);
+}
+
+function downloadDocument(id) {
+    const item = materials.find(material => material.id === id);
+    if (!item) {
+        return;
+    }
+
+    const blob = dataUrlToBlob(item.fileData, getPreferredMime(item));
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = item.fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+}
+
+function dataUrlToBlob(dataUrl, fallbackType) {
+    const commaIndex = dataUrl.indexOf(",");
+    const meta = dataUrl.slice(0, commaIndex);
+    const data = dataUrl.slice(commaIndex + 1);
+    const typeMatch = meta.match(/data:([^;]+)/);
+    const mimeType = typeMatch ? typeMatch[1] : fallbackType || "application/octet-stream";
+
+    if (meta.includes(";base64")) {
+        const binary = atob(data);
+        const bytes = new Uint8Array(binary.length);
+        for (let index = 0; index < binary.length; index++) {
+            bytes[index] = binary.charCodeAt(index);
+        }
+        return new Blob([bytes], { type: mimeType });
+    }
+
+    return new Blob([decodeURIComponent(data)], { type: mimeType });
+}
+
+function getPreferredMime(item) {
+    const extension = getExtension(item);
+    if (item.fileType) {
+        return item.fileType;
+    }
+    if (extension === "html" || extension === "htm") {
+        return "text/html";
+    }
+    if (extension === "pdf") {
+        return "application/pdf";
+    }
+    if (extension === "txt") {
+        return "text/plain";
+    }
+    if (extension === "jpg" || extension === "jpeg") {
+        return "image/jpeg";
+    }
+    if (extension === "png") {
+        return "image/png";
+    }
+    if (extension === "webp") {
+        return "image/webp";
+    }
+    if (extension === "doc") {
+        return "application/msword";
+    }
+    if (extension === "docx") {
+        return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+    }
+    return "application/octet-stream";
+}
+
+function createId() {
+    if (window.crypto && crypto.randomUUID) {
+        return crypto.randomUUID();
+    }
+    return "material-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+}
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    }[char]));
+}
+
+function escapeAttribute(value) {
+    return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+
+function startSoundEngine() {
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        masterGain = audioContext.createGain();
+        masterGain.connect(audioContext.destination);
+    }
+
+    applySoundVolume();
+    if (soundEnabled) {
+        backgroundMusic.play().catch(() => {});
+    }
+}
+
+function applySoundVolume() {
+    backgroundMusic.volume = soundEnabled ? soundVolume / 100 : 0;
+    if (soundEnabled && backgroundMusic.paused) {
+        backgroundMusic.play().catch(() => {});
+    }
+    if (!soundEnabled) {
+        backgroundMusic.pause();
+    }
+    if (masterGain && audioContext) {
+        masterGain.gain.setTargetAtTime(soundEnabled ? soundVolume / 100 : 0, audioContext.currentTime, 0.04);
+    }
+}
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    localStorage.setItem("devanshaEduSound", soundEnabled ? "on" : "off");
+    document.getElementById("soundToggle").textContent = soundEnabled ? "On" : "Off";
+    startSoundEngine();
+    applySoundVolume();
+    playClickSound();
+}
+
+function playClickSound() {
+    if (!soundEnabled) {
+        return;
+    }
+    startSoundEngine();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(560, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(920, audioContext.currentTime + 0.05);
+    gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.18, audioContext.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.09);
+    oscillator.connect(gain);
+    gain.connect(masterGain || audioContext.destination);
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.1);
+}
+
+document.getElementById("readerModal").addEventListener("click", function(event) {
+    if (event.target.id === "readerModal") {
+        closeReader();
+    }
+});
+
+setMode("user");
+</script>
+</body>
+</html>
