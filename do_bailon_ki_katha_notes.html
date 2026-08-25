@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>दो बैलों की कथा — Class 9 Hindi Ganga Chapter 1 Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap');
+
+  :root {
+    --saffron: #E85D20;
+    --saffron-light: #FEF0E8;
+    --saffron-mid: #F5C4B3;
+    --green-deep: #1D9E75;
+    --green-light: #E1F5EE;
+    --amber-deep: #BA7517;
+    --amber-light: #FEF6E4;
+    --purple-deep: #534AB7;
+    --purple-light: #EEEDFE;
+    --blue-deep: #185FA5;
+    --blue-light: #EAF2FB;
+    --pink-deep: #993556;
+    --pink-light: #FCE9F2;
+    --red-deep: #A32D2D;
+    --red-light: #FCEBEB;
+    --bg: #F7F5F0;
+    --card: #FFFFFF;
+    --text: #1a1a18;
+    --text2: #5a5a55;
+    --text3: #8a8a85;
+    --border: rgba(0,0,0,0.10);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: linear-gradient(135deg, #E85D20 0%, #BA7517 55%, #1D9E75 100%);
+    padding: 2rem 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '🐂';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 96px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
+  }
+  .header-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+  .header-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.6px;
+    font-weight: 400;
+  }
+  .header-title { font-size: 28px; font-weight: 600; color: #fff; line-height: 1.2; }
+  .header-sub { font-size: 14px; color: rgba(255,255,255,0.82); margin-top: 5px; font-weight: 400; }
+  .header-badges { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .hbadge {
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+
+  /* CONTAINER */
+  .container { max-width: 860px; margin: 0 auto; padding: 1.5rem; }
+
+  /* NAV */
+  .nav-wrap {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 0.5px solid var(--border);
+    padding: 10px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+  .nav-tab {
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--border);
+    background: transparent;
+    color: var(--text2);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    font-weight: 400;
+  }
+  .nav-tab:hover { background: var(--bg); color: var(--text); }
+  .nav-tab.active { background: var(--saffron); color: #fff; border-color: var(--saffron); font-weight: 500; }
+
+  /* SECTIONS */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* SECTION LABEL */
+  .sec-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text3);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-body { font-size: 14px; color: var(--text2); line-height: 1.75; }
+  .card-accent { border-left: 3px solid var(--saffron); padding-left: 1rem; }
+  .card-accent.green { border-left-color: var(--green-deep); }
+  .card-accent.purple { border-left-color: var(--purple-deep); }
+  .card-accent.blue { border-left-color: var(--blue-deep); }
+  .card-accent.amber { border-left-color: var(--amber-deep); }
+
+  /* 2-COL GRID */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+  @media(max-width:540px){ .grid2 { grid-template-columns: 1fr; } }
+
+  /* OVERVIEW SMALL CARDS */
+  .ov-card { border-radius: var(--radius); padding: 14px; border: 0.5px solid var(--border); }
+
+  /* PARA ACCORDION */
+  .para-item {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .para-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    cursor: pointer;
+    background: #fafaf8;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .para-header:hover { background: #fff; }
+  .para-header-left { display: flex; align-items: center; gap: 10px; }
+  .para-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; color: #fff; flex-shrink: 0;
+  }
+  .para-title-text { font-size: 14px; font-weight: 500; color: var(--text); }
+  .para-arrow { font-size: 11px; color: var(--text3); transition: transform 0.25s; }
+  .para-arrow.open { transform: rotate(180deg); }
+  .para-body {
+    padding: 0 16px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s;
+  }
+  .para-body.open { max-height: 700px; padding: 14px 16px; }
+  .para-summary { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 10px; }
+  .para-conclusion {
+    background: var(--amber-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--amber-deep);
+    margin-bottom: 10px;
+    border-left: 3px solid var(--amber-deep);
+  }
+  .para-question {
+    background: var(--blue-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--blue-deep);
+    border-left: 3px solid var(--blue-deep);
+  }
+  .para-q-label { font-weight: 600; font-size: 11px; margin-bottom: 4px; letter-spacing: 0.3px; }
+
+  /* THEME GRID */
+  .theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .theme-card {
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    text-align: center;
+    border: 0.5px solid var(--border);
+  }
+  .t-emoji { font-size: 28px; margin-bottom: 6px; }
+  .t-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .t-desc { font-size: 11px; color: var(--text2); line-height: 1.5; }
+
+  /* CHARACTER GRID */
+  .char-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
+  @media(max-width:600px){ .char-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:380px){ .char-grid { grid-template-columns: 1fr; } }
+  .char-card { border-radius: var(--radius); padding: 1rem; border: 0.5px solid var(--border); }
+  .char-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 10px;
+  }
+  .char-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .char-role { font-size: 11px; margin-bottom: 8px; }
+  .char-traits { display: flex; gap: 4px; flex-wrap: wrap; }
+  .trait-pill { font-size: 11px; padding: 3px 9px; border-radius: 20px; }
+
+  /* Q&A */
+  .q-item {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .q-header {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 13px 16px; cursor: pointer;
+    background: #fafaf8; transition: background 0.2s;
+    user-select: none;
+  }
+  .q-header:hover { background: #fff; }
+  .q-num {
+    min-width: 24px; height: 24px; border-radius: 50%;
+    background: var(--saffron); color: #fff;
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px; flex-shrink: 0;
+  }
+  .q-text { font-size: 14px; color: var(--text); line-height: 1.5; flex: 1; }
+  .q-type {
+    font-size: 10px; padding: 2px 9px; border-radius: 20px;
+    margin-top: 2px; flex-shrink: 0; font-weight: 500;
+  }
+  .q-ans {
+    padding: 0 16px; max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s;
+    font-size: 13px; color: var(--text2); line-height: 1.75;
+    background: var(--card);
+  }
+  .q-ans.open { max-height: 400px; padding: 12px 16px; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 9px; top: 8px; bottom: 8px;
+    width: 1.5px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 1rem; }
+  .tl-dot {
+    position: absolute; left: -21px; top: 14px;
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1.5px rgba(0,0,0,0.12);
+  }
+  .tl-content {
+    background: var(--card); border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 12px 16px;
+  }
+  .tl-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+  .tl-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+  /* SHORT NOTES */
+  .snote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .snote { border-radius: var(--radius); padding: 14px; border: 0.5px solid var(--border); }
+  .snote-emoji { font-size: 20px; margin-bottom: 6px; }
+  .snote-title { font-size: 11px; font-weight: 600; margin-bottom: 5px; letter-spacing: 0.4px; text-transform: uppercase; }
+  .snote-text { font-size: 13px; color: var(--text); line-height: 1.55; }
+
+  /* DIVIDER */
+  hr.divider { border: none; border-top: 0.5px solid var(--border); margin: 1.5rem 0; }
+
+  /* FLOWCHART WRAPPER */
+  .flow-wrap { overflow-x: auto; background: var(--card); border-radius: var(--radius); border: 0.5px solid var(--border); padding: 1rem; }
+
+  /* WORD TABLE */
+  .word-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .word-table td { padding: 7px 12px; border-bottom: 0.5px solid var(--border); }
+  .word-table tr:last-child td { border-bottom: none; }
+  .word-table td:first-child { font-weight: 600; color: var(--saffron); width: 40%; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center; padding: 2rem 1rem;
+    font-size: 12px; color: var(--text3);
+    border-top: 0.5px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  /* PRINT */
+  @media print {
+    .nav-wrap { display: none; }
+    .section { display: block !important; }
+    .para-body, .q-ans { max-height: none !important; padding: 14px 16px !important; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="header-inner">
+    <div class="header-tag">NCERT · कक्षा 9 · हिंदी गंगा · गद्य खंड · अध्याय 1</div>
+    <div class="header-title">दो बैलों की कथा</div>
+    <div class="header-sub">The Tale of Two Oxen — Munshi Premchand</div>
+    <div class="header-badges">
+      <span class="hbadge">✍️ मुंशी प्रेमचंद</span>
+      <span class="hbadge">🐂 हीरा &amp; मोती</span>
+      <span class="hbadge">📖 Chapter 1</span>
+      <span class="hbadge">⚡ स्वतंत्रता · मित्रता · साहस</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="nav-wrap">
+    <button class="nav-tab active" onclick="showSection('overview')">📋 Overview</button>
+    <button class="nav-tab" onclick="showSection('paras')">📝 Para Notes</button>
+    <button class="nav-tab" onclick="showSection('flow')">🔀 Flowchart</button>
+    <button class="nav-tab" onclick="showSection('chars')">👥 Characters</button>
+    <button class="nav-tab" onclick="showSection('themes')">💡 Themes</button>
+    <button class="nav-tab" onclick="showSection('questions')">❓ Q&amp;A</button>
+    <button class="nav-tab" onclick="showSection('summary')">📄 Full Summary</button>
+    <button class="nav-tab" onclick="showSection('shortnotes')">🗒️ Short Notes</button>
+  </div>
+
+  <!-- ======== OVERVIEW ======== -->
+  <div id="s-overview" class="section active">
+    <div class="sec-label">At a glance</div>
+    <div class="card card-accent" style="margin-bottom:1rem;">
+      <div class="card-title">📖 पाठ परिचय</div>
+      <div class="card-body">यह पाठ मुंशी प्रेमचंद द्वारा लिखित एक भावपूर्ण कहानी है जिसमें <strong>हीरा</strong> और <strong>मोती</strong> नामक दो बैलों की गहरी मित्रता, स्वाभिमान और स्वतंत्रता की भावना को दर्शाया गया है। प्रेमचंद ने बैलों को मानवीय भावनाओं से विभूषित किया है और उनके माध्यम से सामाजिक तथा नैतिक मूल्यों को उजागर किया है।</div>
+    </div>
+    <div class="grid2">
+      <div class="ov-card" style="background:var(--saffron-light);border-color:var(--saffron-mid);">
+        <div class="card-title" style="color:var(--saffron);">✍️ लेखक</div>
+        <div class="card-body" style="color:#713C1C;">मुंशी प्रेमचंद — हिंदी साहित्य के उपन्यास सम्राट। सामाजिक यथार्थवाद के प्रमुख लेखक।</div>
+      </div>
+      <div class="ov-card" style="background:var(--green-light);">
+        <div class="card-title" style="color:var(--green-deep);">📍 स्थान-क्रम</div>
+        <div class="card-body" style="color:#085041;">झूरी का घर → गया का घर → कांजीहौस → वापस झूरी के घर</div>
+      </div>
+      <div class="ov-card" style="background:var(--purple-light);">
+        <div class="card-title" style="color:var(--purple-deep);">🎯 मुख्य विषय</div>
+        <div class="card-body" style="color:#3C3489;">मित्रता, वफ़ादारी, स्वाभिमान और स्वतंत्रता की अदम्य भावना</div>
+      </div>
+      <div class="ov-card" style="background:var(--amber-light);">
+        <div class="card-title" style="color:var(--amber-deep);">🐂 मुख्य पात्र</div>
+        <div class="card-body" style="color:#633806;">हीरा, मोती (बैल), झूरी (मालिक), गया, नन्ही लड़की, झूरी की पत्नी</div>
+      </div>
+    </div>
+    <div class="card card-accent amber">
+      <div class="card-title">💎 कहानी का सार (One-Line Summary)</div>
+      <div class="card-body">दो बैल — हीरा और मोती — अपने मालिक झूरी के प्रति अटूट निष्ठा रखते हुए, गया के घर की दासता और कांजीहौस की कैद से मुक्त होकर, अनेक संघर्षों के बाद अपने असली घर लौट आते हैं — यह कहानी स्वतंत्रता और आत्मसम्मान की विजय का प्रतीक है।</div>
+    </div>
+  </div>
+
+  <!-- ======== PARA NOTES ======== -->
+  <div id="s-paras" class="section">
+    <div class="sec-label">Paragraph-wise breakdown — click to expand</div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--saffron);">1</div>
+          <div class="para-title-text">परिचय — हीरा और मोती की मित्रता</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">झूरी काछी के दो बैल हीरा और मोती की जोड़ी का परिचय दिया गया है। दोनों में गाढ़ी मित्रता थी — एक-दूसरे को चाटना, साथ बैठना, साथ खाना — यह मूक प्रेम की भाषा थी। लेखक बताते हैं कि गधे को बेवकूफ माना जाता है, परंतु बैलों में सहनशीलता और धैर्य का गुण होता है।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> मित्रता और प्रेम केवल वाणी से नहीं, बल्कि व्यवहार और समर्पण से प्रकट होती है।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          हीरा और मोती की मित्रता का वर्णन किस प्रकार किया गया है? उनकी प्रेम-भाषा क्या थी?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--amber-deep);">2</div>
+          <div class="para-title-text">गया के घर भेजा जाना</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">झूरी ने दोनों बैलों को अपने साले गया के घर भेज दिया। बैलों को यह पसंद नहीं था — वे नए घर में अजनबियत महसूस करते हैं। गया और उसके घर वाले उनके साथ कठोर व्यवहार करते हैं, उन्हें पर्याप्त भोजन नहीं देते।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> अपनापन और ममता किसी भी प्राणी के लिए आवश्यक है — उसके बिना जीवन नीरस और कठिन हो जाता है।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          गया के घर जाने पर हीरा-मोती के साथ कैसा व्यवहार हुआ? उनकी मनोदशा कैसी थी?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--purple-deep);">3</div>
+          <div class="para-title-text">पहली बार भाग कर झूरी के पास लौटना</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">रात के अंधेरे में दोनों बैल अपनी रस्सियाँ तोड़कर भाग जाते हैं और झूरी के घर पहुँच जाते हैं। झूरी खुश होता है पर उसकी पत्नी नाराज हो जाती है और उन्हें "आवारा" कहती है। दूसरी बार फिर गया के यहाँ भेज दिया जाता है।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> घर और मालिक के प्रति प्रेम इतना गहरा होता है कि कोई भी बंधन उसे नहीं रोक सकता।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          बैलों ने पहली बार भागने का साहस क्यों किया? झूरी की पत्नी की प्रतिक्रिया क्या थी?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--green-deep);">4</div>
+          <div class="para-title-text">नन्ही लड़की की ममता</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">दूसरी बार गया के घर में बैलों को मोटी नाथ (नाक में रस्सी) और कठोर पहरा दिया जाता है। भूखे रहते हैं। परंतु गया की छोटी बच्ची उनसे प्यार करती है — रोटी खिलाती है। बैल भी उस नन्ही बच्ची से बेहद लगाव महसूस करते हैं।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> बच्चों का निश्छल प्रेम हर प्राणी के दिल को छू लेता है।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          गया की छोटी लड़की का बैलों के प्रति व्यवहार कैसा था? इससे क्या नैतिक शिक्षा मिलती है?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--blue-deep);">5</div>
+          <div class="para-title-text">दूसरी बार भागना — संघर्ष</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">बैल फिर भाग निकलते हैं। रास्ते में कई चुनौतियों का सामना करते हैं। एक सांड से भिड़ंत होती है जिसमें मोती बहादुरी से लड़ता है। वे एक मटर के खेत में पहुँचते हैं और भरपेट खाते हैं — परंतु किसान द्वारा पकड़े जाते हैं।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> स्वतंत्रता के रास्ते में संघर्ष अनिवार्य है। साहस और एकता से हर बाधा पार की जा सकती है।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          दूसरी बार भागते समय बैलों को किन-किन कठिनाइयों का सामना करना पड़ा?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--pink-deep);">6</div>
+          <div class="para-title-text">कांजीहौस में बंधन</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">बैलों को कांजीहौस में बंद कर दिया जाता है। वहाँ कई जानवर बंद हैं — सब भूखे-प्यासे। मोती दीवार तोड़कर भागना चाहता है। परंतु हीरा उसे धैर्य रखने को कहता है।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> विवेक और धैर्य ही सही समय पर सही कदम उठाने में मदद करते हैं।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          कांजीहौस में हीरा और मोती की क्या स्थिति थी? दोनों के विचारों में क्या अंतर था?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:#0F6E56;">7</div>
+          <div class="para-title-text">दीवार तोड़ना — मुक्ति का प्रयास</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">अंततः मोती दीवार तोड़ देता है। सभी बंदी जानवर भाग जाते हैं। हीरा अभी भी बंधा है — मोती उसे छोड़ नहीं सकता। दोनों को फिर पकड़ लिया जाता है। परंतु इस प्रयास से दोनों का साहस और मित्रता उजागर होती है।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> सच्चा मित्र अपनी स्वतंत्रता की कीमत पर भी साथी को नहीं छोड़ता।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          मोती ने दीवार क्यों तोड़ी? और हीरा के बंधे रहने पर उसने क्या किया?
+        </div>
+      </div>
+    </div>
+
+    <div class="para-item">
+      <div class="para-header" onclick="togglePara(this)">
+        <div class="para-header-left">
+          <div class="para-num" style="background:var(--saffron);">8</div>
+          <div class="para-title-text">सुखद अंत — घर वापसी</div>
+        </div>
+        <span class="para-arrow">▼</span>
+      </div>
+      <div class="para-body">
+        <div class="para-summary">नीलामी में झूरी दोनों बैलों को पहचान लेता है और वापस ले जाता है। घर पहुँचकर बैल खुशी से दौड़ते हैं। झूरी की पत्नी भी इस बार खुशी से स्वागत करती है। कहानी का सुखद अंत होता है।</div>
+        <div class="para-conclusion">💡 <strong>निष्कर्ष:</strong> अटूट निष्ठा, साहस और संघर्ष के बाद स्वतंत्रता और अपनापन की जीत होती है।</div>
+        <div class="para-question">
+          <div class="para-q-label">❓ अभ्यास प्रश्न</div>
+          कहानी के अंत में झूरी की पत्नी का व्यवहार पहले से कैसे बदला? इसका क्या कारण था?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== FLOWCHART ======== -->
+  <div id="s-flow" class="section">
+    <div class="sec-label">कहानी का प्रवाह — Story Flowchart</div>
+    <div class="flow-wrap">
+      <svg width="100%" viewBox="0 0 680 880" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>दो बैलों की कथा — Story Flowchart</title>
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+        <!-- Node 1 -->
+        <rect x="215" y="20" width="250" height="54" rx="27" fill="#FEF6E4" stroke="#BA7517" stroke-width="1.2"/>
+        <text x="340" y="42" text-anchor="middle" font-size="15" font-weight="600" fill="#633806" font-family="Poppins,sans-serif">🏡 झूरी का घर</text>
+        <text x="340" y="61" text-anchor="middle" font-size="12" fill="#8a6030" font-family="Poppins,sans-serif">हीरा-मोती की खुशहाल जिंदगी</text>
+        <!-- Arrow 1 -->
+        <line x1="340" y1="74" x2="340" y2="110" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="355" y="96" font-size="11" fill="#aaa" font-family="Poppins,sans-serif">भेजे गए</text>
+        <!-- Node 2 -->
+        <rect x="200" y="110" width="280" height="54" rx="10" fill="#FAECE7" stroke="#E85D20" stroke-width="1.2"/>
+        <text x="340" y="132" text-anchor="middle" font-size="15" font-weight="600" fill="#7a2e10" font-family="Poppins,sans-serif">😠 गया के घर</text>
+        <text x="340" y="151" text-anchor="middle" font-size="12" fill="#993c1d" font-family="Poppins,sans-serif">कठोर व्यवहार, भूख, कठिनाई</text>
+        <!-- Loop arrow -->
+        <path d="M480 137 Q560 137 560 300 Q560 370 480 370" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+        <text x="570" y="265" font-size="11" fill="#bbb" font-family="Poppins,sans-serif">फिर भेजे</text>
+        <!-- Arrow 2 -->
+        <line x1="340" y1="164" x2="340" y2="200" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Node 3 -->
+        <rect x="195" y="200" width="290" height="54" rx="10" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.2"/>
+        <text x="340" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#085041" font-family="Poppins,sans-serif">🏃 पहली बार भागना</text>
+        <text x="340" y="241" text-anchor="middle" font-size="12" fill="#0F6E56" font-family="Poppins,sans-serif">झूरी के घर वापस, पत्नी नाराज</text>
+        <!-- Arrow 3 -->
+        <line x1="340" y1="254" x2="340" y2="290" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Node 4 -->
+        <rect x="195" y="290" width="290" height="54" rx="10" fill="#FBEAF0" stroke="#993556" stroke-width="1.2"/>
+        <text x="340" y="312" text-anchor="middle" font-size="15" font-weight="600" fill="#72243E" font-family="Poppins,sans-serif">👧 नन्ही लड़की की ममता</text>
+        <text x="340" y="331" text-anchor="middle" font-size="12" fill="#993556" font-family="Poppins,sans-serif">रोटी, प्यार, अपनापन</text>
+        <!-- Arrow 4 -->
+        <line x1="340" y1="344" x2="340" y2="380" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Node 5 -->
+        <rect x="195" y="380" width="290" height="54" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+        <text x="340" y="402" text-anchor="middle" font-size="15" font-weight="600" fill="#26215C" font-family="Poppins,sans-serif">⚔️ दूसरी बार भागना</text>
+        <text x="340" y="421" text-anchor="middle" font-size="12" fill="#534AB7" font-family="Poppins,sans-serif">सांड से लड़ाई, खेत, संघर्ष</text>
+        <!-- Arrow 5 -->
+        <line x1="340" y1="434" x2="340" y2="470" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="355" y="456" font-size="11" fill="#aaa" font-family="Poppins,sans-serif">पकड़े गए</text>
+        <!-- Node 6 -->
+        <rect x="205" y="470" width="270" height="54" rx="10" fill="#FCEBEB" stroke="#A32D2D" stroke-width="1.2"/>
+        <text x="340" y="492" text-anchor="middle" font-size="15" font-weight="600" fill="#501313" font-family="Poppins,sans-serif">🔒 कांजीहौस</text>
+        <text x="340" y="511" text-anchor="middle" font-size="12" fill="#A32D2D" font-family="Poppins,sans-serif">भूख, कैद, जानवरों की पीड़ा</text>
+        <!-- Arrow 6 -->
+        <line x1="340" y1="524" x2="340" y2="560" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Diamond -->
+        <polygon points="340,560 430,604 340,648 250,604" fill="#fff" stroke="#ccc" stroke-width="1.2"/>
+        <text x="340" y="598" text-anchor="middle" font-size="12" fill="#666" font-family="Poppins,sans-serif">भागें?</text>
+        <text x="340" y="614" text-anchor="middle" font-size="11" fill="#999" font-family="Poppins,sans-serif">Escape?</text>
+        <!-- Arrow 7 -->
+        <line x1="340" y1="648" x2="340" y2="684" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="354" y="670" font-size="11" fill="#1D9E75" font-weight="600" font-family="Poppins,sans-serif">हाँ!</text>
+        <!-- Node 7 -->
+        <rect x="195" y="684" width="290" height="54" rx="10" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.5"/>
+        <text x="340" y="706" text-anchor="middle" font-size="15" font-weight="600" fill="#085041" font-family="Poppins,sans-serif">💪 दीवार तोड़ी</text>
+        <text x="340" y="725" text-anchor="middle" font-size="12" fill="#0F6E56" font-family="Poppins,sans-serif">मोती का साहस, सब जानवर भागे</text>
+        <!-- Arrow 8 -->
+        <line x1="340" y1="738" x2="340" y2="774" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Node 8 -->
+        <rect x="215" y="774" width="250" height="54" rx="27" fill="#FEF6E4" stroke="#BA7517" stroke-width="2"/>
+        <text x="340" y="796" text-anchor="middle" font-size="15" font-weight="600" fill="#633806" font-family="Poppins,sans-serif">🎉 घर वापसी!</text>
+        <text x="340" y="815" text-anchor="middle" font-size="12" fill="#8a6030" font-family="Poppins,sans-serif">झूरी ने पहचाना, सुखद अंत</text>
+        <!-- Side labels -->
+        <text x="55" y="230" text-anchor="middle" font-size="12" fill="#E85D20" font-weight="600" font-family="Poppins,sans-serif">वफ़ादारी</text>
+        <text x="55" y="410" text-anchor="middle" font-size="12" fill="#534AB7" font-weight="600" font-family="Poppins,sans-serif">साहस</text>
+        <text x="55" y="604" text-anchor="middle" font-size="12" fill="#A32D2D" font-weight="600" font-family="Poppins,sans-serif">स्वाभिमान</text>
+        <text x="630" y="320" text-anchor="middle" font-size="12" fill="#993556" font-weight="600" font-family="Poppins,sans-serif">ममता</text>
+        <text x="630" y="714" text-anchor="middle" font-size="12" fill="#1D9E75" font-weight="600" font-family="Poppins,sans-serif">मुक्ति</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ======== CHARACTERS ======== -->
+  <div id="s-chars" class="section">
+    <div class="sec-label">पात्र परिचय — Characters</div>
+    <div class="char-grid">
+      <div class="char-card" style="background:var(--saffron-light);border-color:var(--saffron-mid);">
+        <div class="char-avatar" style="background:var(--saffron-mid);">🐂</div>
+        <div class="char-name">हीरा (Heera)</div>
+        <div class="char-role" style="color:var(--saffron);">विवेकशील बैल · मुख्य पात्र</div>
+        <div class="char-traits">
+          <span class="trait-pill" style="background:rgba(232,93,32,0.12);color:var(--saffron);">विवेकी</span>
+          <span class="trait-pill" style="background:rgba(232,93,32,0.12);color:var(--saffron);">संयमी</span>
+          <span class="trait-pill" style="background:rgba(232,93,32,0.12);color:var(--saffron);">धैर्यवान</span>
+        </div>
+      </div>
+      <div class="char-card" style="background:var(--purple-light);">
+        <div class="char-avatar" style="background:#CECBF6;">🐂</div>
+        <div class="char-name">मोती (Moti)</div>
+        <div class="char-role" style="color:var(--purple-deep);">साहसी बैल · मुख्य पात्र</div>
+        <div class="char-traits">
+          <span class="trait-pill" style="background:rgba(83,74,183,0.12);color:var(--purple-deep);">साहसी</span>
+          <span class="trait-pill" style="background:rgba(83,74,183,0.12);color:var(--purple-deep);">उत्साही</span>
+          <span class="trait-pill" style="background:rgba(83,74,183,0.12);color:var(--purple-deep);">वफ़ादार</span>
+        </div>
+      </div>
+      <div class="char-card" style="background:var(--green-light);">
+        <div class="char-avatar" style="background:#9FE1CB;">👨‍🌾</div>
+        <div class="char-name">झूरी (Jhoori)</div>
+        <div class="char-role" style="color:var(--green-deep);">मालिक · किसान</div>
+        <div class="char-traits">
+          <span class="trait-pill" style="background:rgba(29,158,117,0.12);color:var(--green-deep);">दयालु</span>
+          <span class="trait-pill" style="background:rgba(29,158,117,0.12);color:var(--green-deep);">ममतालु</span>
+        </div>
+      </div>
+      <div class="char-card" style="background:var(--amber-light);">
+        <div class="char-avatar" style="background:#FAC775;">👨</div>
+        <div class="char-name">गया (Gaya)</div>
+        <div class="char-role" style="color:var(--amber-deep);">झूरी का साला</div>
+        <div class="char-traits">
+          <span class="trait-pill" style="background:rgba(186,117,23,0.12);color:var(--amber-deep);">कठोर</span>
+          <span class="trait-pill" style="background:rgba(186,117,23,0.12);color:var(--amber-deep);">शोषक</span>
+        </div>
+      </div>
+      <div class="char-card" style="background:var(--pink-light);">
+        <div class="char-avatar" style="background:#F4C0D1;">👧</div>
+        <div class="char-name">नन्ही लड़की</div>
+        <div class="char-role" style="color:var(--pink-deep);">गया की बेटी</div>
+        <div class="char-traits">
+          <span class="trait-pill" style="background:rgba(153,53,86,0.12);color:var(--pink-deep);">निश्छल</span>
+          <span class="trait-pill" style="background:rgba(153,53,86,0.12);color:var(--pink-deep);">करुणामयी</span>
+        </div>
+      </div>
+      <div class="char-card" style="background:var(--blue-light);">
+        <div class="char-avatar" style="background:#B5D4F4;">🏠</div>
+        <div class="char-name">झूरी की पत्नी</div>
+        <div class="char-role" style="color:var(--blue-deep);">गृहिणी</div>
+        <div class="char-traits">
+          <span class="trait-pill" style="background:rgba(24,95,165,0.12);color:var(--blue-deep);">व्यावहारिक</span>
+          <span class="trait-pill" style="background:rgba(24,95,165,0.12);color:var(--blue-deep);">परिवर्तनशील</span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-accent purple">
+      <div class="card-title">🔍 हीरा बनाम मोती — तुलनात्मक विश्लेषण</div>
+      <div class="card-body">
+        <strong>हीरा</strong> — विचारशील, संयमी, धैर्यवान। कांजीहौस में मोती को रोकता है। कठिन परिस्थिति में भी नेतृत्व करता है। मानसिक साहस का प्रतीक।<br><br>
+        <strong>मोती</strong> — जोशीला, साहसी, भावुक। सांड से लड़ता है, दीवार तोड़ता है। पर हीरा को कभी नहीं छोड़ता। शारीरिक साहस का प्रतीक।<br><br>
+        <strong>निष्कर्ष:</strong> दोनों मिलकर एक पूर्ण व्यक्तित्व बनाते हैं — विवेक + साहस = सफलता।
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== THEMES ======== -->
+  <div id="s-themes" class="section">
+    <div class="sec-label">मुख्य विषय-वस्तु — Key Themes</div>
+    <div class="theme-grid">
+      <div class="theme-card" style="background:var(--saffron-light);border-color:var(--saffron-mid);">
+        <div class="t-emoji">🤝</div>
+        <div class="t-name">मित्रता</div>
+        <div class="t-desc">हर मुसीबत में एक-दूसरे का साथ देना</div>
+      </div>
+      <div class="theme-card" style="background:var(--green-light);">
+        <div class="t-emoji">🗽</div>
+        <div class="t-name">स्वतंत्रता</div>
+        <div class="t-desc">दासता से मुक्ति की अदम्य इच्छाशक्ति</div>
+      </div>
+      <div class="theme-card" style="background:var(--purple-light);">
+        <div class="t-emoji">👑</div>
+        <div class="t-name">स्वाभिमान</div>
+        <div class="t-desc">अत्याचार के सामने झुकने से इनकार</div>
+      </div>
+      <div class="theme-card" style="background:var(--amber-light);">
+        <div class="t-emoji">💪</div>
+        <div class="t-name">साहस</div>
+        <div class="t-desc">भय के बावजूद सही कदम उठाना</div>
+      </div>
+      <div class="theme-card" style="background:var(--blue-light);">
+        <div class="t-emoji">❤️</div>
+        <div class="t-name">वफ़ादारी</div>
+        <div class="t-desc">मालिक के प्रति समर्पण और निष्ठा</div>
+      </div>
+      <div class="theme-card" style="background:var(--pink-light);">
+        <div class="t-emoji">🌱</div>
+        <div class="t-name">एकता</div>
+        <div class="t-desc">मिलकर लड़ने से बड़ी मुश्किल हल होती है</div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="sec-label">साहित्यिक विशेषताएँ — Literary Devices</div>
+    <div class="card card-accent green">
+      <div class="card-title">✍️ मानवीकरण (Personification)</div>
+      <div class="card-body">प्रेमचंद ने बैलों को मानवीय भावनाएँ दी हैं — वे सोचते हैं, महसूस करते हैं, निर्णय लेते हैं। यह शिल्प पाठक को जानवरों से सीधे जोड़ता है और संदेश अधिक प्रभावशाली बनता है।</div>
+    </div>
+    <div class="card card-accent blue">
+      <div class="card-title">🪞 सामाजिक संदेश</div>
+      <div class="card-body">बैलों की कहानी के माध्यम से प्रेमचंद ने शोषित वर्ग की पीड़ा और संघर्ष को दर्शाया है। यह केवल जानवरों की नहीं, बल्कि हर दबे-कुचले व्यक्ति की कहानी है।</div>
+    </div>
+  </div>
+
+  <!-- ======== Q&A ======== -->
+  <div id="s-questions" class="section">
+    <div class="sec-label">प्रश्नोत्तर — Click to reveal answers</div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">1</div>
+        <div class="q-text">हीरा और मोती के बीच मित्रता की भाषा क्या थी?</div>
+        <span class="q-type" style="background:var(--green-light);color:var(--green-deep);">NCERT</span>
+      </div>
+      <div class="q-ans">दोनों बैलों में एक मूक भाषा थी। वे एक-दूसरे को चाटते, सूँघते, और साथ बैठते थे। उनकी आँखों में और शरीर की भाव-भंगिमा में ही उनका प्रेम प्रकट होता था। प्रेमचंद के अनुसार यह मूक भाषा, मनुष्य की बोली से कहीं अधिक भावपूर्ण थी।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">2</div>
+        <div class="q-text">कांजीहौस में मोती ने दीवार क्यों तोड़ी?</div>
+        <span class="q-type" style="background:var(--blue-light);color:var(--blue-deep);">NCERT</span>
+      </div>
+      <div class="q-ans">कांजीहौस में सभी जानवर भूखे और बेहाल थे। मोती स्वभाव से साहसी था और दासता उसे असहनीय लगती थी। उसने सोचा कि यदि यहाँ रहे तो धीरे-धीरे मर जाएँगे। इसलिए उसने दीवार तोड़कर सभी बंदी जानवरों को मुक्त कराने का प्रयास किया।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">3</div>
+        <div class="q-text">गया की छोटी लड़की ने बैलों के लिए क्या किया? क्या संदेश मिलता है?</div>
+        <span class="q-type" style="background:var(--amber-light);color:var(--amber-deep);">Extra</span>
+      </div>
+      <div class="q-ans">गया की छोटी बच्ची ने चोरी से बैलों को रोटी खिलाई और उनसे प्यार से पेश आई। संदेश यह है कि बच्चों का प्रेम निश्छल और भेदभाव-रहित होता है। करुणा और दया किसी भी प्राणी के दिल को छू सकती है।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">4</div>
+        <div class="q-text">हीरा और मोती में से अधिक साहसी कौन था और क्यों?</div>
+        <span class="q-type" style="background:var(--pink-light);color:var(--pink-deep);">Extra</span>
+      </div>
+      <div class="q-ans">दोनों अपने-अपने गुणों में विशेष थे। मोती शारीरिक साहस में आगे था — वह सांड से लड़ा, दीवार तोड़ी। वहीं हीरा मानसिक साहस का प्रतीक था — धैर्यपूर्वक सही समय का इंतज़ार करना भी एक गहरा साहस है। दोनों मिलकर ही पूर्ण थे।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">5</div>
+        <div class="q-text">प्रेमचंद ने बैलों को मानवीय गुण क्यों दिए?</div>
+        <span class="q-type" style="background:var(--purple-light);color:var(--purple-deep);">Higher Order</span>
+      </div>
+      <div class="q-ans">प्रेमचंद एक सामाजिक लेखक थे। बैलों के माध्यम से उन्होंने समाज के शोषित वर्ग की बात कही जिनकी आवाज़ नहीं सुनी जाती। मानवीकरण से पाठक आसानी से इन पात्रों से जुड़ते हैं और संदेश अधिक प्रभावशाली बनता है।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">6</div>
+        <div class="q-text">झूरी की पत्नी के व्यवहार में कहानी के अंत तक क्या परिवर्तन आया?</div>
+        <span class="q-type" style="background:var(--green-light);color:var(--green-deep);">NCERT</span>
+      </div>
+      <div class="q-ans">शुरुआत में झूरी की पत्नी बैलों को "आवारा" कहकर स्वीकार नहीं करती थी। परंतु जब उसने देखा कि इन बैलों ने इतनी मुश्किलों के बाद भी झूरी के घर को ही अपना घर माना, तो उसके मन में श्रद्धा जागी। अंत में वह खुद आगे आकर उनका स्वागत करती है।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">7</div>
+        <div class="q-text">"दो बैलों की कथा" का मुख्य संदेश क्या है?</div>
+        <span class="q-type" style="background:var(--amber-light);color:var(--amber-deep);">Board Imp.</span>
+      </div>
+      <div class="q-ans">इस कहानी का मुख्य संदेश है — मित्रता, साहस और एकता से किसी भी विपरीत परिस्थिति को जीता जा सकता है। स्वाभिमान और स्वतंत्रता की भावना हर प्राणी में होती है। अन्याय का प्रतिरोध करना ही जीवन का सही मार्ग है।</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-header" onclick="toggleQ(this)">
+        <div class="q-num">8</div>
+        <div class="q-text">कांजीहौस क्या होता है? वहाँ का दृश्य कैसा था?</div>
+        <span class="q-type" style="background:var(--blue-light);color:var(--blue-deep);">Extra</span>
+      </div>
+      <div class="q-ans">कांजीहौस एक सरकारी पशु-निरोधक केंद्र होता था जहाँ आवारा जानवरों को बंद किया जाता था। वहाँ का दृश्य दयनीय था — घोड़े, गधे, भैंसें, बैल सब भूखे-प्यासे थे। जानवरों की हड्डियाँ निकली हुई थीं और सब निराश, टूटे हुए थे।</div>
+    </div>
+  </div>
+
+  <!-- ======== FULL SUMMARY ======== -->
+  <div id="s-summary" class="section">
+    <div class="sec-label">विस्तृत सारांश — Detailed Summary</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--saffron);"></div>
+        <div class="tl-content">
+          <div class="tl-title">📖 कहानी की शुरुआत</div>
+          <div class="tl-desc">मुंशी प्रेमचंद गधे और बैल की तुलना से शुरुआत करते हैं। झूरी काछी के पास हीरा और मोती नामक दो बैल हैं जो सगे भाइयों जैसे हैं। उनकी मित्रता अनूठी और गहरी है — मूक भाषा में व्यक्त।</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--amber-deep);"></div>
+        <div class="tl-content">
+          <div class="tl-title">🏡 गया के घर जाना</div>
+          <div class="tl-desc">झूरी दोनों बैलों को अपने साले गया के यहाँ भेज देता है। वहाँ उनके साथ कठोर व्यवहार होता है — काम अधिक, खाना कम। बैलों का मन झूरी के घर के लिए तड़पता रहता है।</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--green-deep);"></div>
+        <div class="tl-content">
+          <div class="tl-title">🏃 पहली वापसी और फिर जाना</div>
+          <div class="tl-desc">एक रात दोनों बैल रस्सियाँ तोड़कर झूरी के दरवाज़े पर पहुँचते हैं। झूरी प्रसन्न होता है परंतु उसकी पत्नी उन्हें "आवारा" कहती है। कुछ दिन बाद झूरी फिर उन्हें गया के पास भेज देता है।</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--pink-deep);"></div>
+        <div class="tl-content">
+          <div class="tl-title">👧 नन्ही लड़की का प्यार</div>
+          <div class="tl-desc">दूसरी बार गया के घर में और कठोर बंधन। परंतु गया की छोटी बच्ची चोरी से रोटी खिलाती है और प्यार करती है। यह निश्छल करुणा बैलों के दिल को छू जाती है।</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--purple-deep);"></div>
+        <div class="tl-content">
+          <div class="tl-title">⚔️ संघर्षपूर्ण यात्रा</div>
+          <div class="tl-desc">दूसरी बार भागते समय एक भयंकर सांड से भिड़ंत होती है — मोती बहादुरी से लड़ता है। एक मटर के खेत में खाते-खाते किसान पकड़ लेता है और उन्हें कांजीहौस भेजा जाता है।</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--red-deep);"></div>
+        <div class="tl-content">
+          <div class="tl-title">🔒 कांजीहौस की यातना</div>
+          <div class="tl-desc">कांजीहौस में कई जानवर बंद हैं — सब भूखे और बेहाल। मोती चाहता है तुरंत भागें, पर हीरा रोकता है। अंततः मोती दीवार तोड़ देता है — सभी जानवर भाग जाते हैं। परंतु हीरा बंधा है — मोती उसे नहीं छोड़ता — दोनों फिर पकड़े जाते हैं।</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--green-deep);"></div>
+        <div class="tl-content">
+          <div class="tl-title">🎉 सुखद समापन</div>
+          <div class="tl-desc">नीलामी में झूरी दोनों बैलों को पहचान लेता है और खरीद लेता है। घर पहुँचते ही बैल खुशी से दौड़ते हैं। इस बार झूरी की पत्नी भी भावुक होकर स्वागत करती है। स्वतंत्रता, प्रेम और निष्ठा की जीत होती है।</div>
+        </div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="card" style="background:var(--saffron-light);border-color:var(--saffron-mid);">
+      <div class="card-title" style="color:var(--saffron);">📌 केंद्रीय भाव — Central Message</div>
+      <div class="card-body" style="color:#713C1C;">"दो बैलों की कथा" केवल दो जानवरों की कहानी नहीं है — यह उस हर प्राणी की कहानी है जिसे दासता में रखा जाता है पर जिसके भीतर स्वाभिमान और स्वतंत्रता की ज्वाला जलती रहती है। प्रेमचंद यह सिद्ध करते हैं कि सच्ची मित्रता, एकता और साहस से हर बंधन टूट सकता है।</div>
+    </div>
+  </div>
+
+  <!-- ======== SHORT NOTES ======== -->
+  <div id="s-shortnotes" class="section">
+    <div class="sec-label">Quick Revision — परीक्षा के लिए शॉर्ट नोट्स</div>
+    <div class="snote-grid">
+      <div class="snote" style="background:var(--saffron-light);border-color:var(--saffron-mid);">
+        <div class="snote-emoji">✍️</div>
+        <div class="snote-title" style="color:var(--saffron);">Author</div>
+        <div class="snote-text">मुंशी प्रेमचंद — उपन्यास सम्राट। सामाजिक यथार्थवादी लेखक।</div>
+      </div>
+      <div class="snote" style="background:var(--purple-light);">
+        <div class="snote-emoji">🐂</div>
+        <div class="snote-title" style="color:var(--purple-deep);">Main Chars</div>
+        <div class="snote-text">हीरा (विवेकी) + मोती (साहसी) = अटूट जोड़ी</div>
+      </div>
+      <div class="snote" style="background:var(--green-light);">
+        <div class="snote-emoji">📍</div>
+        <div class="snote-title" style="color:var(--green-deep);">Settings</div>
+        <div class="snote-text">झूरी → गया → कांजीहौस → झूरी</div>
+      </div>
+      <div class="snote" style="background:var(--amber-light);">
+        <div class="snote-emoji">💡</div>
+        <div class="snote-title" style="color:var(--amber-deep);">Themes</div>
+        <div class="snote-text">मित्रता · स्वतंत्रता · साहस · वफ़ादारी · स्वाभिमान</div>
+      </div>
+      <div class="snote" style="background:var(--blue-light);">
+        <div class="snote-emoji">🔑</div>
+        <div class="snote-title" style="color:var(--blue-deep);">Key Term</div>
+        <div class="snote-text">कांजीहौस = सरकारी पशु निरोधक केंद्र</div>
+      </div>
+      <div class="snote" style="background:var(--pink-light);">
+        <div class="snote-emoji">📖</div>
+        <div class="snote-title" style="color:var(--pink-deep);">Literary Device</div>
+        <div class="snote-text">मानवीकरण — बैलों में मानवीय भावनाएँ</div>
+      </div>
+      <div class="snote" style="background:var(--green-light);">
+        <div class="snote-emoji">🌟</div>
+        <div class="snote-title" style="color:var(--green-deep);">Moral</div>
+        <div class="snote-text">एकता में शक्ति है। स्वाभिमान सबसे बड़ी दौलत है।</div>
+      </div>
+      <div class="snote" style="background:var(--red-light);">
+        <div class="snote-emoji">🏆</div>
+        <div class="snote-title" style="color:var(--red-deep);">Board Tip</div>
+        <div class="snote-text">हीरा-मोती का तुलनात्मक चरित्र-चित्रण अक्सर पूछा जाता है!</div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="sec-label">महत्वपूर्ण शब्दार्थ</div>
+    <div class="card">
+      <table class="word-table">
+        <tr><td>कांजीहौस</td><td>सरकारी पशु निरोधक केंद्र (animal pound)</td></tr>
+        <tr><td>मोटी नाथ</td><td>नाक में डाली गई रस्सी</td></tr>
+        <tr><td>काछी</td><td>किसान जाति</td></tr>
+        <tr><td>साला</td><td>पत्नी का भाई</td></tr>
+        <tr><td>मूक भाषा</td><td>बिना शब्द का संचार</td></tr>
+        <tr><td>सहनशीलता</td><td>कष्ट सहने की शक्ति</td></tr>
+        <tr><td>स्वाभिमान</td><td>अपने सम्मान की भावना</td></tr>
+        <tr><td>नीलामी</td><td>सार्वजनिक बिक्री/auction</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  दो बैलों की कथा — Class 9 Hindi Ganga Chapter 1 · मुंशी प्रेमचंद · NCERT 2026-27
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('s-' + id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function togglePara(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.para-arrow');
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.para-body.open').forEach(b => {
+      b.classList.remove('open');
+      b.previousElementSibling.querySelector('.para-arrow').classList.remove('open');
+    });
+    if (!isOpen) { body.classList.add('open'); arrow.classList.add('open'); }
+  }
+  function toggleQ(header) {
+    const ans = header.nextElementSibling;
+    const isOpen = ans.classList.contains('open');
+    document.querySelectorAll('.q-ans.open').forEach(a => a.classList.remove('open'));
+    if (!isOpen) ans.classList.add('open');
+  }
+</script>
+</body>
+</html>

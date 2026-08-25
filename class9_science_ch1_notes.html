@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 9 Science – Chapter 1: Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f1e;
+    --card: #111827;
+    --card2: #1a2235;
+    --border: #2a3a5c;
+    --purple: #a855f7;
+    --blue: #3b82f6;
+    --cyan: #06b6d4;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --orange: #f97316;
+    --pink: #ec4899;
+    --red: #ef4444;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --glow-purple: 0 0 20px #a855f740;
+    --glow-blue: 0 0 20px #3b82f640;
+    --glow-cyan: 0 0 20px #06b6d440;
+    --glow-green: 0 0 20px #10b98140;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    padding: 60px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, #a855f720 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, #3b82f620 0%, transparent 60%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--purple), var(--blue));
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(26px, 5vw, 52px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  }
+  .hero-tag {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    margin: 50px 0 24px;
+    padding: 18px 24px;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sh-purple { background: linear-gradient(135deg, #a855f715, #7c3aed10); border-left: 4px solid var(--purple); }
+  .sh-blue   { background: linear-gradient(135deg, #3b82f615, #1d4ed810); border-left: 4px solid var(--blue); }
+  .sh-cyan   { background: linear-gradient(135deg, #06b6d415, #0284c710); border-left: 4px solid var(--cyan); }
+  .sh-green  { background: linear-gradient(135deg, #10b98115, #05966910); border-left: 4px solid var(--green); }
+  .sh-yellow { background: linear-gradient(135deg, #f59e0b15, #d97706 10); border-left: 4px solid var(--yellow); }
+  .sh-pink   { background: linear-gradient(135deg, #ec489915, #be185d10); border-left: 4px solid var(--pink); }
+  .sh-orange { background: linear-gradient(135deg, #f9731615, #c2410c10); border-left: 4px solid var(--orange); }
+
+  .sh-icon { font-size: 30px; }
+  .sh-text h2 { font-size: 22px; font-weight: 800; color: #fff; }
+  .sh-text p  { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); }
+
+  .card-purple { border-color: #a855f740; box-shadow: var(--glow-purple); }
+  .card-blue   { border-color: #3b82f640; box-shadow: var(--glow-blue); }
+  .card-cyan   { border-color: #06b6d440; box-shadow: var(--glow-cyan); }
+  .card-green  { border-color: #10b98140; box-shadow: var(--glow-green); }
+  .card-yellow { border-color: #f59e0b40; box-shadow: 0 0 20px #f59e0b20; }
+  .card-pink   { border-color: #ec489940; box-shadow: 0 0 20px #ec489920; }
+  .card-orange { border-color: #f9731640; box-shadow: 0 0 20px #f9731620; }
+
+  .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+  .card p  { color: var(--muted); line-height: 1.8; }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .highlight-box {
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .hb-purple { background: linear-gradient(135deg, #a855f720, #7c3aed10); border: 1px solid #a855f740; }
+  .hb-blue   { background: linear-gradient(135deg, #3b82f620, #1d4ed810); border: 1px solid #3b82f640; }
+  .hb-green  { background: linear-gradient(135deg, #10b98120, #05966910); border: 1px solid #10b98140; }
+  .hb-yellow { background: linear-gradient(135deg, #f59e0b20, #d9770610); border: 1px solid #f59e0b40; }
+  .hb-cyan   { background: linear-gradient(135deg, #06b6d420, #0284c710); border: 1px solid #06b6d440; }
+  .hb-orange { background: linear-gradient(135deg, #f9731620, #c2410c10); border: 1px solid #f9731640; }
+  .hb-pink   { background: linear-gradient(135deg, #ec489920, #be185d10); border: 1px solid #ec489940; }
+
+  .hb-icon { font-size: 28px; flex-shrink: 0; }
+  .hb-content h4 { font-weight: 700; margin-bottom: 6px; font-size: 16px; }
+  .hb-content p  { color: var(--muted); font-size: 14px; }
+
+  /* ── DEFINITION TERM ── */
+  .def-term {
+    background: var(--card2);
+    border-left: 4px solid var(--cyan);
+    border-radius: 0 12px 12px 0;
+    padding: 14px 20px;
+    margin: 14px 0;
+  }
+  .def-term strong { color: var(--cyan); font-size: 16px; display: block; margin-bottom: 4px; }
+  .def-term p { color: var(--muted); font-size: 14px; }
+
+  /* ── COMPARISON TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 14px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { padding: 14px 18px; font-weight: 700; text-align: left; }
+  tbody td { padding: 12px 18px; border-top: 1px solid var(--border); color: var(--muted); }
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  .t-purple thead { background: linear-gradient(90deg, #a855f730, #7c3aed20); }
+  .t-blue   thead { background: linear-gradient(90deg, #3b82f630, #1d4ed820); }
+  .t-green  thead { background: linear-gradient(90deg, #10b98130, #05966920); }
+
+  /* ── VISUAL DIAGRAM ── */
+  .diagram {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 20px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .diagram-title { font-size: 15px; font-weight: 700; color: var(--muted); margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* Science Method Flow */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+  .flow-step {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    color: #fff;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .flow-arrow { color: var(--muted); font-size: 20px; }
+
+  /* Concentric circles diagram */
+  .concentric { position: relative; width: 260px; height: 260px; margin: 0 auto 20px; }
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Pyramid */
+  .pyramid { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 20px 0; }
+  .pyr-row {
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    padding: 12px 20px;
+  }
+
+  /* Brain map */
+  .brain-map { position: relative; min-height: 300px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; padding: 20px; }
+  .bm-center {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    border-radius: 50%;
+    width: 110px; height: 110px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px; text-align: center;
+    color: #fff;
+    box-shadow: 0 0 30px #a855f750;
+  }
+  .bm-node {
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 12px; font-weight: 700;
+    text-align: center;
+    max-width: 110px;
+  }
+
+  /* ── MCQ ── */
+  .mcq-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .mcq-card .qnum { font-size: 11px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .mcq-card .question { font-weight: 600; font-size: 15px; margin-bottom: 14px; color: #fff; }
+  .mcq-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mcq-opt {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mcq-opt:hover { border-color: var(--purple); color: #fff; }
+  .mcq-opt.correct { background: #10b98120; border-color: var(--green); color: var(--green); }
+  .mcq-opt.wrong   { background: #ef444420; border-color: var(--red);   color: var(--red); }
+  .mcq-answer { margin-top: 12px; font-size: 13px; color: var(--green); display: none; }
+  .mcq-answer.show { display: block; }
+  .reveal-btn {
+    background: linear-gradient(90deg, var(--purple), var(--blue));
+    border: none; color: #fff;
+    border-radius: 8px; padding: 7px 18px;
+    font-size: 12px; font-weight: 700;
+    cursor: pointer; margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .reveal-btn:hover { opacity: 0.85; }
+
+  /* ── Q&A SECTIONS ── */
+  .qa-card {
+    background: var(--card2);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .qa-q {
+    padding: 16px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(168,85,247,0.06);
+    transition: background 0.2s;
+  }
+  .qa-q:hover { background: rgba(168,85,247,0.12); }
+  .qa-q span { font-size: 13px; }
+  .qa-toggle { color: var(--purple); font-size: 18px; transition: transform 0.3s; }
+  .qa-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; color: var(--muted); font-size: 14px; line-height: 1.8; }
+  .qa-a.open { max-height: 1000px; padding: 16px 20px; }
+
+  /* ── FILL UPS ── */
+  .fill-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .fill-item .blank { display: inline-block; min-width: 80px; border-bottom: 2px dashed var(--cyan); color: var(--cyan); font-weight: 700; text-align: center; }
+  .fill-item .ans { color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+  /* ── TRICK/TIP BOX ── */
+  .tip-box {
+    background: linear-gradient(135deg, #f59e0b15, #f97316 10);
+    border: 1px dashed var(--yellow);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .tip-box .tip-label { font-size: 11px; font-weight: 800; color: var(--yellow); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+  .tip-box p { color: var(--muted); font-size: 14px; }
+
+  /* ── REAL-LIFE EXAMPLE BOX ── */
+  .real-box {
+    background: linear-gradient(135deg, #10b98115, #06b6d410);
+    border: 1px solid #10b98140;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .real-box .real-label { font-size: 11px; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+  .real-box p { color: var(--muted); font-size: 14px; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: linear-gradient(135deg, #3b82f620, #7c3aed15);
+    border: 1px solid #3b82f640;
+    border-radius: 14px;
+    padding: 20px 24px;
+    text-align: center;
+    margin: 16px 0;
+  }
+  .formula-box .formula { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 1px; margin: 8px 0; font-family: 'Orbitron', monospace; }
+  .formula-box .formula-desc { font-size: 13px; color: var(--muted); }
+
+  /* ── KEYWORD BADGE ── */
+  .kw { display: inline-block; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.4); color: var(--purple); padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; margin: 2px; }
+  .kw-blue   { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: var(--blue); }
+  .kw-green  { background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.4); color: var(--green); }
+  .kw-yellow { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); color: var(--yellow); }
+  .kw-cyan   { background: rgba(6,182,212,0.15);  border-color: rgba(6,182,212,0.4);  color: var(--cyan); }
+  .kw-pink   { background: rgba(236,72,153,0.15); border-color: rgba(236,72,153,0.4); color: var(--pink); }
+  .kw-orange { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.4); color: var(--orange); }
+
+  /* ── NUMBERD LIST ── */
+  .num-list { list-style: none; counter-reset: nl; }
+  .num-list li { counter-increment: nl; display: flex; gap: 14px; margin-bottom: 14px; color: var(--muted); font-size: 14px; }
+  .num-list li::before {
+    content: counter(nl);
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    color: #fff;
+    font-weight: 800;
+    font-size: 12px;
+    min-width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, #a855f720 0%, transparent 70%);
+  }
+  .footer-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(22px, 4vw, 40px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .footer-sub { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+  .footer-badge {
+    display: inline-flex; gap: 10px; align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: var(--muted);
+    flex-wrap: wrap; justify-content: center;
+  }
+  .footer-badge span { color: var(--cyan); font-weight: 700; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 40px 0; }
+
+  /* Progress tracker */
+  .progress-strip {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .progress-label { font-size: 13px; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+  .progress-bar { height: 8px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+  .progress-fill { height: 100%; border-radius: 99px; transition: width 1s; }
+
+  /* Responsive */
+  @media(max-width:600px){
+    .mcq-options { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .hero h1 { font-size: 26px; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; }
+
+  /* Chapter nav */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 30px 0;
+  }
+  .toc h3 { color: var(--purple); font-size: 15px; font-weight: 800; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .toc-list li a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    display: flex; gap: 12px; align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .toc-list li a:hover { color: #fff; background: rgba(168,85,247,0.1); }
+  .toc-list li a .toc-num { color: var(--purple); font-weight: 800; min-width: 22px; }
+
+  /* Score badge */
+  .score-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    color: #fff; font-weight: 800; font-size: 13px;
+    padding: 6px 18px; border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* animated gradient text */
+  .grad-text {
+    background: linear-gradient(135deg, var(--purple), var(--blue), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+  }
+
+  .sub-heading {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    margin: 24px 0 12px;
+    padding-left: 14px;
+    border-left: 3px solid var(--purple);
+  }
+
+  ul.bullet-list { padding-left: 0; list-style: none; }
+  ul.bullet-list li { padding: 5px 0 5px 28px; position: relative; color: var(--muted); font-size: 14px; }
+  ul.bullet-list li::before { content: '▸'; position: absolute; left: 6px; color: var(--purple); }
+  ul.bullet-list.green li::before { color: var(--green); }
+  ul.bullet-list.blue li::before  { color: var(--blue); }
+  ul.bullet-list.cyan li::before  { color: var(--cyan); }
+
+  .big-text { font-size: 15px; color: var(--text); line-height: 1.9; }
+
+  /* SVG diagrams */
+  svg text { font-family: 'Poppins', sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<div class="hero">
+  <div class="hero-badge">📘 NCERT Class 9 · Science · Chapter 1</div>
+  <h1>Exploration: Entering the<br>World of Secondary Science</h1>
+  <p class="hero-sub">Complete Study Notes · Diagrams · Examples · MCQs · Q&A</p>
+  <div class="hero-tags">
+    <span class="hero-tag">🔬 Scientific Models</span>
+    <span class="hero-tag">📐 Mathematics in Science</span>
+    <span class="hero-tag">⚖️ SI Units</span>
+    <span class="hero-tag">🔮 Laws, Theories & Principles</span>
+    <span class="hero-tag">🧠 Scientific Thinking</span>
+    <span class="hero-tag">🎯 Estimation</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════ TABLE OF CONTENTS ═══════════════ -->
+<div class="toc">
+  <h3>📋 Table of Contents</h3>
+  <ul class="toc-list">
+    <li><a href="#intro"><span class="toc-num">01</span> Introduction – What is Secondary Science?</a></li>
+    <li><a href="#models"><span class="toc-num">02</span> Scientific Models – Simplifying the World</a></li>
+    <li><a href="#language"><span class="toc-num">03</span> Language of Science – Terms, Symbols & Units</a></li>
+    <li><a href="#math"><span class="toc-num">04</span> Mathematics in Science</a></li>
+    <li><a href="#lawtheory"><span class="toc-num">05</span> Laws, Theories & Principles</a></li>
+    <li><a href="#prediction"><span class="toc-num">06</span> Scientific Predictions</a></li>
+    <li><a href="#estimation"><span class="toc-num">07</span> Estimation – The Power of Approximate Reasoning</a></li>
+    <li><a href="#interdisciplinary"><span class="toc-num">08</span> Interdisciplinary Nature of Science</a></li>
+    <li><a href="#mcq"><span class="toc-num">09</span> MCQ Questions (Interactive)</a></li>
+    <li><a href="#short"><span class="toc-num">10</span> Short Answer Questions</a></li>
+    <li><a href="#long"><span class="toc-num">11</span> Long Answer Questions</a></li>
+    <li><a href="#fillups"><span class="toc-num">12</span> Fill in the Blanks</a></li>
+    <li><a href="#extra"><span class="toc-num">13</span> Extra to Learn</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════ SECTION 1 ═══════════════════════ -->
+<div id="intro">
+<div class="section-header sh-purple">
+  <span class="sh-icon">🚀</span>
+  <div class="sh-text">
+    <h2>1. Introduction — What Is Secondary Science?</h2>
+    <p>The journey from curiosity to deep exploration begins here</p>
+  </div>
+</div>
+
+<div class="card card-purple">
+  <h3 class="grad-text">The Big Picture 🌍</h3>
+  <p class="big-text">
+    In your middle school years (Classes 6–8), science was about <strong style="color:#a855f7">being curious</strong> — noticing the world, asking questions, and doing experiments. Now in Class 9, science goes <em>deeper</em>. It's not just about <strong>what we know</strong>, but <strong>how we know it</strong>.
+  </p>
+</div>
+
+<div class="grid-2">
+  <div class="highlight-box hb-blue">
+    <span class="hb-icon">🔭</span>
+    <div class="hb-content">
+      <h4>Magnifying Glass Symbol 🔍</h4>
+      <p>Represents <strong>careful observation</strong> — noticing patterns and paying attention to what might otherwise be missed.</p>
+    </div>
+  </div>
+  <div class="highlight-box hb-green">
+    <span class="hb-icon">🧭</span>
+    <div class="hb-content">
+      <h4>Compass Symbol 🧭</h4>
+      <p>Represents <strong>direction in exploration</strong> — choosing appropriate models, asking the right questions, knowing limits of ideas.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sub-heading">🎯 What Secondary Science Emphasizes</div>
+
+<div class="grid-3">
+  <div class="card card-cyan">
+    <h3 style="color:var(--cyan)">📏 Measurements</h3>
+    <p>How observations lead to precise <strong>measurements</strong> using standard instruments and units.</p>
+  </div>
+  <div class="card card-purple">
+    <h3 style="color:var(--purple)">🔢 Symbols & Equations</h3>
+    <p>How patterns are expressed using <strong>mathematical symbols and equations</strong> for clarity.</p>
+  </div>
+  <div class="card card-blue">
+    <h3 style="color:var(--blue)">🏗️ Models</h3>
+    <p>How <strong>simplified models</strong> are built to represent complex real-world systems.</p>
+  </div>
+  <div class="card card-green">
+    <h3 style="color:var(--green)">🧪 Testing Ideas</h3>
+    <p>How ideas are <strong>tested, revised</strong>, and sometimes even <strong>discarded</strong> based on evidence.</p>
+  </div>
+  <div class="card card-yellow">
+    <h3 style="color:var(--yellow)">🔗 Connections</h3>
+    <p>Connecting ideas from <strong>Physics, Chemistry, Biology, and Earth Science</strong>.</p>
+  </div>
+  <div class="card card-pink">
+    <h3 style="color:var(--pink)">🌐 Nature & Technology</h3>
+    <p>Understanding how science helps us make sense of <strong>nature, technology</strong>, and our place in them.</p>
+  </div>
+</div>
+
+<div class="real-box">
+  <div class="real-label">🌟 Daily Life Example</div>
+  <p>When you check the <strong>weather forecast</strong> on your phone, science is at work: measurements of temperature, pressure, humidity → mathematical models → predictions. That's exactly what secondary science teaches you — the <em>how</em> behind every such thing!</p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 2 ═══════════════════════ -->
+<div id="models">
+<div class="section-header sh-blue">
+  <span class="sh-icon">🏗️</span>
+  <div class="sh-text">
+    <h2>2. Scientific Models — Simplifying the Complex World</h2>
+    <p>How scientists make sense of a complicated universe</p>
+  </div>
+</div>
+
+<div class="def-term">
+  <strong>📖 What is a Scientific Model?</strong>
+  <p>A <strong>model</strong> is a simplified representation of a real system that focuses only on the most important features for a given question. It deliberately ignores certain details to make analysis possible.</p>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">💡 Key Trick to Remember</div>
+  <p><strong>"A model is a LIE that tells the TRUTH!"</strong> It's not a complete picture — but it captures what matters most for the question we're asking. The ignored details are NOT mistakes, they're intentional!</p>
+</div>
+
+<div class="sub-heading">Models in Different Branches of Science</div>
+
+<div class="table-wrap">
+  <table class="t-purple">
+    <thead>
+      <tr>
+        <th>🔬 Branch</th>
+        <th>What is modeled?</th>
+        <th>How is it modeled?</th>
+        <th>What is ignored?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="kw">Physics</span></td><td>Moving car</td><td>Single point (point mass)</td><td>Shape, size, colour, engine type</td></tr>
+      <tr><td><span class="kw-blue">Chemistry</span></td><td>Atoms & molecules</td><td>Spheres and bonds (ball-and-stick)</td><td>Electron clouds, quantum details</td></tr>
+      <tr><td><span class="kw-green">Biology</span></td><td>Cell</td><td>Labeled diagram highlighting key parts</td><td>Individual molecular interactions</td></tr>
+      <tr><td><span class="kw-cyan">Earth Science</span></td><td>Earth</td><td>Smooth sphere, layered regions</td><td>Mountains, valleys, exact topography</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sub-heading">📌 How Models Are Built — The Process</div>
+<div class="diagram">
+  <div class="diagram-title">Model Building Process</div>
+  <div class="flow">
+    <div class="flow-step">1. Ask a Question</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">2. Identify Key Factors</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">3. Make Assumptions</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">4. Ignore Irrelevant Details</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">5. Build Simple Model</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">6. Test & Refine</div>
+  </div>
+</div>
+
+<div class="sub-heading">🏏 Example 1.1 — Cricket Shot (NCERT Example)</div>
+<div class="card card-orange">
+  <h3 style="color:var(--orange)">🎯 Question: Will the ball hit a six?</h3>
+  <div class="grid-2" style="margin-top:14px">
+    <div>
+      <p style="color:var(--green);font-weight:700;margin-bottom:8px">✅ INCLUDE in Model:</p>
+      <ul class="bullet-list green">
+        <li>Mass of the ball</li>
+        <li>Speed of the ball</li>
+        <li>Direction of the hit</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color:var(--red);font-weight:700;margin-bottom:8px">❌ IGNORE in Model:</p>
+      <ul class="bullet-list">
+        <li style="--c:var(--red)">Brand of the bat</li>
+        <li>Colour of the ball</li>
+        <li>Amount of grass on field</li>
+        <li>Ball's stitching (in simple model)</li>
+        <li>Spin of the ball (in simple model)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="real-box">
+  <div class="real-label">🏠 Daily Life Examples of Models</div>
+  <p>
+    ① <strong>Google Maps:</strong> Shows roads as lines — ignores the width of roads, colour of buildings, trees. But it tells you how to reach from A to B!<br><br>
+    ② <strong>Body temperature model:</strong> Doctor checks your temperature (37°C normal). Ignores blood pressure, emotions, diet. But for fever diagnosis — it's perfect!<br><br>
+    ③ <strong>Bicycle ride home (Activity 1.1):</strong> To model travel time, keep: distance, average speed, traffic signals. Ignore: colour of cycle, what you're wearing, which hand holds the handle!
+  </p>
+</div>
+
+<div class="card card-purple">
+  <h3>🧑‍🔬 Meet a Scientist: Meghnad Saha</h3>
+  <div class="highlight-box hb-purple" style="margin-top:14px">
+    <span class="hb-icon">⭐</span>
+    <div class="hb-content">
+      <h4>Simplifying the Stars</h4>
+      <p>Physicist <strong>Meghnad Saha</strong> studied light from stars. He did NOT model every atom or every reaction. Instead, he treated star matter as a <strong>hot gas</strong> and focused only on <em>temperature, pressure, and how atoms form ions</em>. This simple model explained why the <strong>colour of stars is connected to their temperature</strong>. His famous <strong>Saha Ionization Equation</strong> revolutionized astrophysics!</p>
+    </div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">✨ Memory Trick for Models</div>
+  <p><strong>QIAB</strong> = <strong>Q</strong>uestion → <strong>I</strong>mportant details → <strong>A</strong>ssumptions → <strong>B</strong>uild model. Always ask: "What am I trying to find?" before deciding what to keep!</p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 3 ═══════════════════════ -->
+<div id="language">
+<div class="section-header sh-cyan">
+  <span class="sh-icon">🔤</span>
+  <div class="sh-text">
+    <h2>3. Language of Science — Terms, Symbols & Units</h2>
+    <p>Why science speaks its own precise language</p>
+  </div>
+</div>
+
+<div class="highlight-box hb-cyan">
+  <span class="hb-icon">💬</span>
+  <div class="hb-content">
+    <h4>Science Uses Language Precisely</h4>
+    <p>Words like <strong>force, work, cell, reaction</strong> have everyday meanings AND very specific scientific meanings. In science, every term is defined carefully so there's <em>no ambiguity</em> — scientists worldwide must understand each other!</p>
+  </div>
+</div>
+
+<div class="sub-heading">Common Words vs Scientific Meanings</div>
+<div class="table-wrap">
+  <table class="t-blue">
+    <thead>
+      <tr><th>Word</th><th>Everyday Meaning</th><th>Scientific Meaning</th><th>Subject</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="kw-blue">Force</span></td><td>Power, strength</td><td>Push or pull that changes motion (F = ma)</td><td>Physics</td></tr>
+      <tr><td><span class="kw-green">Work</span></td><td>Job, task</td><td>Force × displacement (only when in same direction)</td><td>Physics</td></tr>
+      <tr><td><span class="kw-pink">Cell</span></td><td>Prison cell, phone</td><td>Basic unit of life</td><td>Biology</td></tr>
+      <tr><td><span class="kw-orange">Reaction</span></td><td>Response, anger</td><td>Chemical change where new substances form</td><td>Chemistry</td></tr>
+      <tr><td><span class="kw">Power</span></td><td>Electricity, authority</td><td>Rate of doing work (W/t)</td><td>Physics</td></tr>
+      <tr><td><span class="kw-cyan">Salt</span></td><td>Table salt (NaCl)</td><td>Product of acid + base reaction</td><td>Chemistry</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sub-heading">📐 Scientific Symbols and Their Quantities</div>
+<div class="grid-3">
+  <div class="card card-blue">
+    <h3 style="color:var(--blue)">⚖️ Mass</h3>
+    <div class="formula-box" style="margin:10px 0;">
+      <div class="formula">m</div>
+      <div class="formula-desc">Unit: kilogram (kg)</div>
+    </div>
+    <p>Amount of matter in an object</p>
+  </div>
+  <div class="card card-purple">
+    <h3 style="color:var(--purple)">💨 Velocity</h3>
+    <div class="formula-box" style="margin:10px 0;">
+      <div class="formula">v</div>
+      <div class="formula-desc">Unit: m/s (metres per second)</div>
+    </div>
+    <p>Speed in a specific direction</p>
+  </div>
+  <div class="card card-orange">
+    <h3 style="color:var(--orange)">💥 Force</h3>
+    <div class="formula-box" style="margin:10px 0;">
+      <div class="formula">F</div>
+      <div class="formula-desc">Unit: Newton (N) = kg·m/s²</div>
+    </div>
+    <p>Push or pull on an object</p>
+  </div>
+  <div class="card card-cyan">
+    <h3 style="color:var(--cyan)">⚡ Electric Current</h3>
+    <div class="formula-box" style="margin:10px 0;">
+      <div class="formula">I</div>
+      <div class="formula-desc">Unit: Ampere (A)</div>
+    </div>
+    <p>Flow of electric charge</p>
+  </div>
+  <div class="card card-green">
+    <h3 style="color:var(--green)">⏱️ Time</h3>
+    <div class="formula-box" style="margin:10px 0;">
+      <div class="formula">t</div>
+      <div class="formula-desc">Unit: second (s)</div>
+    </div>
+    <p>Duration of an event</p>
+  </div>
+  <div class="card card-yellow">
+    <h3 style="color:var(--yellow)">📏 Distance</h3>
+    <div class="formula-box" style="margin:10px 0;">
+      <div class="formula">d or s</div>
+      <div class="formula-desc">Unit: metre (m)</div>
+    </div>
+    <p>Length of path covered</p>
+  </div>
+</div>
+
+<div class="sub-heading">🌍 Why Standard (SI) Units Matter</div>
+
+<div class="card card-cyan">
+  <h3 style="color:var(--cyan)">✈️ The Airplane Fuel Disaster — A Real Case!</h3>
+  <div class="highlight-box hb-orange" style="margin-top:14px">
+    <span class="hb-icon">⚠️</span>
+    <div class="hb-content">
+      <h4>What Happened?</h4>
+      <p>A passenger aircraft ran out of fuel mid-flight! The plane needed <strong>22,300 kg</strong> of fuel. The ground crew used density in <strong>pounds (lb) per litre</strong> instead of <strong>kilograms (kg) per litre</strong>. The plane was <strong>15,000 litres short</strong> of fuel! Luckily it glided to an emergency landing — no casualties, but the aircraft was damaged.</p>
+    </div>
+  </div>
+  <p style="color:var(--muted);margin-top:12px;font-size:14px">📌 <strong>Lesson:</strong> Using standard SI units everywhere avoids unit-conversion errors that can be catastrophic!</p>
+</div>
+
+<div class="real-box">
+  <div class="real-label">🛒 Why is a Kilogram Used Everywhere?</div>
+  <p>When you buy 1 kg of rice from a shop in Bhopal or 1 kg from Delhi — it's the <strong>same amount</strong>! Imagine the chaos if every city used a different weight standard. Measurements are based on <strong>agreed international standards</strong> — not local objects or traditions. This ensures <strong>fairness in trade and science</strong>.</p>
+</div>
+
+<div class="highlight-box hb-purple">
+  <span class="hb-icon">🔤</span>
+  <div class="hb-content">
+    <h4>🌟 Threads of Curiosity: Why is speed of light 'c'?</h4>
+    <p>The symbol <strong>'c'</strong> for speed of light comes from the <strong>Latin word "celeritas"</strong> meaning <em>speed</em>. Scientific symbols often come from history and international agreements — NOT just abbreviations. The speed of light is defined as exactly <strong>299,792,458 m/s</strong> (about 3 × 10⁸ m/s).</p>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">🎯 Memory Trick for SI Base Units</div>
+  <p><strong>"My King Henry Died By Drinking Cold Milk"</strong><br>
+  <strong>M</strong>etre (length) · <strong>K</strong>ilogram (mass) · <strong>H</strong>our→Second (time) · <strong>D</strong>egree→Kelvin (temperature) · <strong>B</strong>→Ampere (current) · <strong>D</strong>→Candela (luminosity) · <strong>C</strong>→Mole (amount) · <strong>M</strong>etre again</p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 4 ═══════════════════════ -->
+<div id="math">
+<div class="section-header sh-green">
+  <span class="sh-icon">📐</span>
+  <div class="sh-text">
+    <h2>4. Mathematics in Science</h2>
+    <p>Your most powerful thinking tool — not a hurdle!</p>
+  </div>
+</div>
+
+<div class="highlight-box hb-green">
+  <span class="hb-icon">🧮</span>
+  <div class="hb-content">
+    <h4>Mathematics = Language of Science</h4>
+    <p>Mathematics in science is <strong>NOT meant to be a hurdle</strong>. It is a language that helps us think <em>more clearly about the world</em>. An equation is not just a calculation — it's a <strong>compact statement about how things are related</strong>.</p>
+  </div>
+</div>
+
+<div class="sub-heading">Key Mathematical Relationships in Science</div>
+
+<div class="grid-2">
+  <div class="card card-blue">
+    <h3 style="color:var(--blue)">🏃 Motion</h3>
+    <div class="formula-box">
+      <div class="formula-desc">Distance = Speed × Time</div>
+      <div class="formula">d = v × t</div>
+    </div>
+    <p>Tells us where an object will be at a later moment.</p>
+    <div class="real-box" style="margin-top:12px">
+      <div class="real-label">Example</div>
+      <p>A bus travels at 60 km/h for 2 hours → d = 60 × 2 = <strong>120 km</strong></p>
+    </div>
+  </div>
+
+  <div class="card card-orange">
+    <h3 style="color:var(--orange)">⚗️ Chemical Reactions</h3>
+    <div class="formula-box">
+      <div class="formula-desc">Rate of Reaction</div>
+      <div class="formula">r = Δc / Δt</div>
+    </div>
+    <p>Describes how fast a reaction proceeds — change in concentration per time.</p>
+  </div>
+
+  <div class="card card-green">
+    <h3 style="color:var(--green)">🌱 Population Growth</h3>
+    <div class="formula-box">
+      <div class="formula-desc">Exponential Growth Pattern</div>
+      <div class="formula">P = P₀ × 2ⁿ</div>
+    </div>
+    <p>Models how a bacterial population doubles every generation.</p>
+  </div>
+
+  <div class="card card-purple">
+    <h3 style="color:var(--purple)">⚡ Energy</h3>
+    <div class="formula-box">
+      <div class="formula-desc">Kinetic Energy</div>
+      <div class="formula">KE = ½mv²</div>
+    </div>
+    <p>Describes energy changes in a moving system.</p>
+  </div>
+</div>
+
+<div class="sub-heading">🧠 How to Use Mathematics in Science (The Right Way)</div>
+
+<div class="card card-cyan">
+  <ol class="num-list">
+    <li><strong style="color:#fff">Understand the situation first</strong> — What is actually happening? Visualize it mentally or draw it.</li>
+    <li><strong style="color:#fff">Identify relevant quantities</strong> — What do you know? What are you finding? Which quantities matter?</li>
+    <li><strong style="color:#fff">Find the relationship</strong> — Which equation connects these quantities?</li>
+    <li><strong style="color:#fff">Substitute and solve</strong> — Put numbers in, keep track of units.</li>
+    <li><strong style="color:#fff">Check if the answer makes sense</strong> — Does the magnitude feel right? Are units correct?</li>
+  </ol>
+</div>
+
+<div class="real-box">
+  <div class="real-label">🌟 Real Life: Math Everywhere!</div>
+  <p>
+    ① <strong>EMI Calculation:</strong> Bank uses formulas to calculate your monthly payment — that's math in economics!<br>
+    ② <strong>Cooking:</strong> A recipe says "250g flour for 4 people" → for 10 people, you need 250 × (10/4) = 625g. <em>Proportional reasoning = science math!</em><br>
+    ③ <strong>Cricket wagon wheel:</strong> Predicting where the ball goes based on angles and speed — physics + math!
+  </p>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">💡 Golden Rule</div>
+  <p>If you focus first on <strong>understanding the situation</strong> and the quantities involved, equations will begin to feel less like obstacles and more like <strong>helpful guides</strong> in your exploration of science!</p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 5 ═══════════════════════ -->
+<div id="lawtheory">
+<div class="section-header sh-yellow">
+  <span class="sh-icon">⚖️</span>
+  <div class="sh-text">
+    <h2>5. Laws, Theories and Principles</h2>
+    <p>The organized pillars of scientific knowledge</p>
+  </div>
+</div>
+
+<div class="diagram">
+  <div class="diagram-title">Hierarchy of Scientific Knowledge</div>
+  <div class="pyramid">
+    <div class="pyr-row" style="background:linear-gradient(135deg,#a855f7,#7c3aed);width:180px">🏔️ Principle</div>
+    <div class="pyr-row" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);width:280px">🔭 Theory</div>
+    <div class="pyr-row" style="background:linear-gradient(135deg,#10b981,#059669);width:380px">📜 Law</div>
+    <div class="pyr-row" style="background:linear-gradient(135deg,#f59e0b,#d97706);width:480px">🔬 Observation & Experiment</div>
+  </div>
+  <p style="color:var(--muted);font-size:13px;margin-top:16px">Each level is built on the one below it</p>
+</div>
+
+<div class="grid-3">
+  <div class="card card-green">
+    <div class="score-badge">📜 Law</div>
+    <h3 style="color:var(--green)">Scientific Law</h3>
+    <p>Describes a <strong>regular pattern</strong> observed in nature, often expressed using words or mathematical relationships.</p>
+    <div class="real-box" style="margin-top:14px">
+      <div class="real-label">Example</div>
+      <p><strong>Newton's Laws of Motion</strong> — explain the jerk felt when a bus stops suddenly. You fly forward because your body was in motion!</p>
+    </div>
+  </div>
+
+  <div class="card card-blue">
+    <div class="score-badge">🔭 Theory</div>
+    <h3 style="color:var(--blue)">Scientific Theory</h3>
+    <p>Provides an <strong>explanation of WHY</strong> patterns occur, based on evidence gathered over time.</p>
+    <div class="real-box" style="margin-top:14px">
+      <div class="real-label">Example</div>
+      <p><strong>Atomic Theory</strong> — explains how molecules are formed from atoms combining in specific ratios.</p>
+    </div>
+  </div>
+
+  <div class="card card-purple">
+    <div class="score-badge">🏔️ Principle</div>
+    <h3 style="color:var(--purple)">Scientific Principle</h3>
+    <p>Broad ideas that help us <strong>make sense</strong> of a given situation across multiple contexts.</p>
+    <div class="real-box" style="margin-top:14px">
+      <div class="real-label">Example</div>
+      <p><strong>Conservation of Energy</strong> — when you climb stairs, chemical energy (food) converts to potential energy (height). Total energy is conserved!</p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box hb-yellow">
+  <span class="hb-icon">⚡</span>
+  <div class="hb-content">
+    <h4>🚨 IMPORTANT: Theory ≠ Guess!</h4>
+    <p>In everyday language, "theory" means an unproven guess. But in science, a <strong>theory is a well-tested explanation</strong> supported by lots of evidence! The <em>Theory of Evolution</em>, <em>Atomic Theory</em>, <em>Germ Theory of Disease</em> — all are incredibly well-supported scientific theories!</p>
+  </div>
+</div>
+
+<div class="sub-heading">Key Feature of Science — Open to Change!</div>
+<div class="card card-cyan">
+  <p class="big-text">Scientific ideas are <strong>always open to improvement</strong> and often change as new evidence becomes available. This is NOT a weakness — it's science's greatest strength! No scientific theory is ever final, and none is beyond question.</p>
+</div>
+
+<div class="table-wrap">
+  <table class="t-green">
+    <thead>
+      <tr><th>Feature</th><th>Law</th><th>Theory</th><th>Principle</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>What it does</td><td>Describes pattern</td><td>Explains WHY</td><td>Broad guiding idea</td></tr>
+      <tr><td>Based on</td><td>Repeated observations</td><td>Evidence over time</td><td>Fundamental reasoning</td></tr>
+      <tr><td>Example</td><td>Newton's Law of Gravity</td><td>Atomic Theory</td><td>Conservation of Energy</td></tr>
+      <tr><td>Can it change?</td><td>Rarely (highly tested)</td><td>Yes, with new evidence</td><td>Very broad, rarely changes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">🎯 Memory Trick: LTP</div>
+  <p><strong>L</strong>aw = <strong>L</strong>ooks at what happens (describes)<br>
+     <strong>T</strong>heory = <strong>T</strong>ells us why it happens (explains)<br>
+     <strong>P</strong>rinciple = <strong>P</strong>ointer — broad direction/guidance</p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 6 ═══════════════════════ -->
+<div id="prediction">
+<div class="section-header sh-pink">
+  <span class="sh-icon">🔮</span>
+  <div class="sh-text">
+    <h2>6. Scientific Predictions</h2>
+    <p>The power to see into the future — with evidence!</p>
+  </div>
+</div>
+
+<div class="highlight-box hb-pink">
+  <span class="hb-icon">🎯</span>
+  <div class="hb-content">
+    <h4>What is a Scientific Prediction?</h4>
+    <p>When laws, theories, and models are well established, they allow us to <strong>anticipate what will happen</strong> under new or different conditions — <em>before performing an experiment</em>, and sometimes even if the experiment is impossible!</p>
+  </div>
+</div>
+
+<div class="sub-heading">Examples of Scientific Predictions</div>
+<div class="grid-2">
+  <div class="card card-blue">
+    <h3 style="color:var(--blue)">⚽ Football Trajectory</h3>
+    <p>Using ideas about <strong>motion</strong>, we can predict how far a kicked football will travel based on angle, speed, and gravity.</p>
+  </div>
+  <div class="card card-orange">
+    <h3 style="color:var(--orange)">🧪 Carbon Dioxide Production</h3>
+    <p>Using <strong>chemical knowledge</strong>, we can estimate exactly how much CO₂ is produced when fuel burns.</p>
+  </div>
+  <div class="card card-green">
+    <h3 style="color:var(--green)">🏃 Breathing While Running</h3>
+    <p>Using <strong>biological principles</strong>, we predict that breathing rate increases when exercising (more oxygen needed).</p>
+  </div>
+  <div class="card card-purple">
+    <h3 style="color:var(--purple)">🍞 Softness of Bread</h3>
+    <p>Using <strong>chemistry of baking</strong>, we can estimate how soft bread will be based on yeast activity and temperature.</p>
+  </div>
+</div>
+
+<div class="sub-heading">📌 Example 1.2: Making Predictions Testable (NCERT)</div>
+<div class="card card-cyan">
+  <p><strong style="color:#fff">Varsha says: "It will rain this afternoon because the clouds look dark."</strong></p>
+  <p style="color:var(--muted);margin:10px 0">How can Meghna make this scientifically testable?</p>
+  <div class="grid-2" style="margin-top:12px">
+    <div class="highlight-box hb-green" style="margin:0">
+      <span class="hb-icon">✅</span>
+      <div class="hb-content">
+        <h4>Good Scientific Questions:</h4>
+        <ul class="bullet-list green">
+          <li>What was humidity last time it rained? (Was it above 80%?)</li>
+          <li>What is today's wind speed/direction?</li>
+          <li>Is the temperature dropping like before rain?</li>
+          <li>What was the sky like when it last rained?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box hb-orange" style="margin:0">
+      <span class="hb-icon">❌</span>
+      <div class="hb-content">
+        <h4>Not Enough (Why?):</h4>
+        <ul class="bullet-list">
+          <li>"Do the clouds look dark?" — subjective!</li>
+          <li>"Does it feel like rain?" — not measurable</li>
+          <li>"Is it cloudy?" — yes/no, not data-based</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sub-heading">🌦️ Why Do Weather Forecasts Sometimes Go Wrong?</div>
+<div class="card card-blue">
+  <p class="big-text">Weather depends on <strong>many changing factors</strong> — temperature, pressure, humidity, wind. Forecasts use measurements and models, but <strong>tiny differences in initial conditions</strong> can grow over time and lead to completely different outcomes. This is called the <em>"Butterfly Effect"</em> (related to Chaos Theory). This is why forecasts are reliable for a few hours or days, but less certain further into the future.</p>
+</div>
+
+<div class="diagram">
+  <div class="diagram-title">The Prediction Cycle in Science</div>
+  <div class="flow">
+    <div class="flow-step">Observation</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Build Model/Theory</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Make Prediction</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Test Prediction</div>
+    <div class="flow-arrow">↓</div>
+  </div>
+  <div class="grid-2" style="margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto">
+    <div style="background:#10b98120;border:1px solid #10b98140;border-radius:10px;padding:14px;text-align:center">
+      <div style="color:var(--green);font-weight:800">✅ Match!</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:6px">Confidence in theory grows</div>
+    </div>
+    <div style="background:#ef444420;border:1px solid #ef444440;border-radius:10px;padding:14px;text-align:center">
+      <div style="color:var(--red);font-weight:800">❌ Mismatch!</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:6px">Scientists re-examine model → Improvement!</div>
+    </div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">🌐 Myth Buster — Social Media Check!</div>
+  <p><strong>"Food becomes harmful during a solar eclipse"</strong> — Is this true?<br><br>
+  An eclipse is just a <strong>play of shadows</strong>. Ask: Does temperature change significantly? Does food go bad if left in shadow? No physical, chemical, or biological mechanism supports this claim. <strong>Science disproves this myth easily!</strong></p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 7 ═══════════════════════ -->
+<div id="estimation">
+<div class="section-header sh-orange">
+  <span class="sh-icon">🎯</span>
+  <div class="sh-text">
+    <h2>7. Estimation — The Power of Approximate Reasoning</h2>
+    <p>Science values careful reasoning more than exact calculation!</p>
+  </div>
+</div>
+
+<div class="highlight-box hb-orange">
+  <span class="hb-icon">💡</span>
+  <div class="hb-content">
+    <h4>What is Estimation?</h4>
+    <p>Making a <strong>rough but reasonable calculation</strong> without needing exact values. An approximate estimate is enough to tell you whether a result is <em>reasonable or impossible</em>. It builds intuition, detects errors, and develops confidence.</p>
+  </div>
+</div>
+
+<div class="sub-heading">The 3-Step Estimation Strategy</div>
+<div class="card card-purple">
+  <ol class="num-list">
+    <li><strong style="color:#fff">Understand the situation</strong> — What exactly are you estimating?</li>
+    <li><strong style="color:#fff">Identify quantities that matter</strong> — Which numbers do you need?</li>
+    <li><strong style="color:#fff">Make a rough estimate</strong> — Use simple, round numbers. Check if it makes sense!</li>
+  </ol>
+</div>
+
+<div class="sub-heading">📌 Example 1.3: How Much Air Do You Breathe in a Day? (NCERT)</div>
+<div class="card card-cyan">
+  <h3 style="color:var(--cyan)">🫁 Step-by-Step Estimation</h3>
+  <div class="grid-2" style="margin-top:14px">
+    <div>
+      <div class="def-term">
+        <strong>Step 1: Breaths per minute</strong>
+        <p>At rest: 12–15 breaths/minute → use 15</p>
+      </div>
+      <div class="def-term">
+        <strong>Step 2: Minutes in a day</strong>
+        <p>60 × 24 = <strong>1440 minutes/day</strong></p>
+      </div>
+      <div class="def-term">
+        <strong>Step 3: Total breaths/day</strong>
+        <p>15 × 1440 ≈ <strong>~20,000 breaths/day</strong></p>
+      </div>
+    </div>
+    <div>
+      <div class="def-term">
+        <strong>Step 4: Volume per breath</strong>
+        <p>~4-5 breaths fill a 2L balloon → 1 breath ≈ <strong>0.5 litres</strong></p>
+      </div>
+      <div class="def-term">
+        <strong>Step 5: Total air per day</strong>
+        <p>20,000 × 0.5 = <strong>10,000 litres/day!</strong></p>
+      </div>
+      <div class="formula-box">
+        <div class="formula-desc">Final Estimate</div>
+        <div class="formula">~10,000 L/day</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sub-heading">🍚 Estimation Example: Rice for a Family</div>
+<div class="card card-green">
+  <h3 style="color:var(--green)">Family of 4, for 1 Month</h3>
+  <ul class="bullet-list green" style="margin-top:12px">
+    <li>Adult needs ~2000–2500 kcal/day</li>
+    <li>100g cooked rice ≈ ~130 kcal</li>
+    <li>Daily rice needed per person ≈ ~400g</li>
+    <li>Family of 4 per day: 400 × 4 = <strong>1600g = 1.6 kg/day</strong></li>
+    <li>For 30 days: 1.6 × 30 = <strong>~48 kg per month</strong></li>
+  </ul>
+  <p style="color:var(--muted);font-size:13px;margin-top:12px">📌 100g for a month = too little. A few tonnes = too much. ~48 kg makes sense!</p>
+</div>
+
+<div class="real-box">
+  <div class="real-label">🌟 Estimation in Daily Life</div>
+  <p>
+    ① <strong>Before buying anything:</strong> "Roughly 50 people at the party, 2 samosas each → I need ~100 samosas." No need for exact count!<br><br>
+    ② <strong>Travel time:</strong> "My school is ~3 km, I cycle at ~10 km/h → ~18 minutes." You plan your morning accordingly!<br><br>
+    ③ <strong>Budget planning:</strong> "Roughly ₹200/day × 30 days = ₹6000/month for food." That's estimation-based financial planning!
+  </p>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">💡 When is Approximation OK vs. Exact Needed?</div>
+  <p>
+    <strong>Approximate is fine:</strong> Estimating attendance at a school event, rough travel time, amount of material to buy.<br><br>
+    <strong>Exact value needed:</strong> Medicine dosage (too little = ineffective, too much = dangerous!), aircraft fuel, bridge load calculations, chemical synthesis in labs.
+  </p>
+</div>
+</div>
+
+<!-- ═══════════════════════ SECTION 8 ═══════════════════════ -->
+<div id="interdisciplinary">
+<div class="section-header sh-purple">
+  <span class="sh-icon">🌐</span>
+  <div class="sh-text">
+    <h2>8. Interdisciplinary Nature of Science</h2>
+    <p>Real problems need all branches working together</p>
+  </div>
+</div>
+
+<div class="diagram">
+  <div class="diagram-title">How Branches of Science Connect</div>
+  <div class="brain-map">
+    <div class="bm-center">REAL WORLD PROBLEMS</div>
+    <div class="bm-node" style="background:linear-gradient(135deg,#3b82f620,#1d4ed810);border:1px solid #3b82f640;color:var(--blue)">⚡ Physics<br>Forces, Energy, Motion</div>
+    <div class="bm-node" style="background:linear-gradient(135deg,#10b98120,#05966910);border:1px solid #10b98140;color:var(--green)">🧬 Biology<br>Life, Cells, Systems</div>
+    <div class="bm-node" style="background:linear-gradient(135deg,#f59e0b20,#d9770610);border:1px solid #f59e0b40;color:var(--yellow)">⚗️ Chemistry<br>Materials, Reactions</div>
+    <div class="bm-node" style="background:linear-gradient(135deg,#06b6d420,#0284c710);border:1px solid #06b6d440;color:var(--cyan)">🌍 Earth Science<br>Climate, Geology</div>
+    <div class="bm-node" style="background:linear-gradient(135deg,#a855f720,#7c3aed10);border:1px solid #a855f740;color:var(--purple)">📐 Mathematics<br>Patterns, Proofs</div>
+    <div class="bm-node" style="background:linear-gradient(135deg,#ec489920,#be185d10);border:1px solid #ec489940;color:var(--pink)">💻 Technology<br>Applications</div>
+  </div>
+</div>
+
+<div class="sub-heading">🦠 How a Mask Works — COVID-19 Example</div>
+<div class="card card-blue">
+  <p style="color:var(--muted);margin-bottom:16px">Understanding how a surgical mask works requires <strong>ALL branches of science</strong>:</p>
+  <div class="grid-2">
+    <div class="highlight-box hb-blue" style="margin:0">
+      <span class="hb-icon">⚡</span>
+      <div class="hb-content"><h4>Physics</h4><p>Particle motion and electrostatic attraction — charged fibres trap particles</p></div>
+    </div>
+    <div class="highlight-box hb-yellow" style="margin:0">
+      <span class="hb-icon">⚗️</span>
+      <div class="hb-content"><h4>Chemistry</h4><p>Properties of polymer fibres — what material makes the best filter layer?</p></div>
+    </div>
+    <div class="highlight-box hb-green" style="margin:0">
+      <span class="hb-icon">🧬</span>
+      <div class="hb-content"><h4>Biology</h4><p>Size and behaviour of viruses — how small is the particle we're blocking?</p></div>
+    </div>
+    <div class="highlight-box hb-purple" style="margin:0">
+      <span class="hb-icon">📐</span>
+      <div class="hb-content"><h4>Mathematics</h4><p>Modelling airflow and filtration efficiency — how much protection does it give?</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="sub-heading">Other Interdisciplinary Problems</div>
+<div class="grid-3">
+  <div class="card card-green">
+    <h3 style="color:var(--green)">🌡️ Climate Change</h3>
+    <p>Physics (radiation), Chemistry (greenhouse gases), Biology (ecosystems), Earth Science (atmosphere), Math (climate models)</p>
+  </div>
+  <div class="card card-purple">
+    <h3 style="color:var(--purple)">💊 Developing Medicines</h3>
+    <p>Biology (disease mechanism), Chemistry (drug compounds), Physics (delivery systems), Math (dosage calculations)</p>
+  </div>
+  <div class="card card-cyan">
+    <h3 style="color:var(--cyan)">♻️ Sustainable Tech</h3>
+    <p>Physics (energy), Chemistry (materials), Biology (environment), Earth Science (resources), Math (efficiency)</p>
+  </div>
+</div>
+
+<div class="real-box">
+  <div class="real-label">💡 Pressure Cooker — Multi-Science Object!</div>
+  <p>
+    🔴 <strong>Physics:</strong> Pressure and boiling point — higher pressure raises water's boiling point above 100°C, cooking faster.<br>
+    🟡 <strong>Chemistry:</strong> Maillard reaction — proteins and sugars react at high heat to create flavour.<br>
+    🟢 <strong>Biology:</strong> Why cooking food makes it safer — kills bacteria and pathogens.<br>
+    🔵 <strong>Material Science:</strong> Why steel and rubber are chosen for the cooker body and gasket.
+  </p>
+</div>
+
+<div class="card card-purple">
+  <h3>🌟 Science is a Human Activity!</h3>
+  <p class="big-text" style="margin-top:12px">Science is not just a collection of facts, equations, or experiments. It is a <strong>human activity</strong> shaped by curiosity, creativity, collaboration, and careful questioning. It grows as people ask questions, test ideas, share results, and <em>learn from mistakes</em>. Science develops through the work of many individuals across different cultures and generations.</p>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════ MCQ SECTION ═══════════════════════ -->
+<div id="mcq">
+<div class="section-header sh-purple">
+  <span class="sh-icon">❓</span>
+  <div class="sh-text">
+    <h2>9. MCQ Questions (Interactive)</h2>
+    <p>Click "Show Answer" to reveal the correct option</p>
+  </div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 01 · Scientific Models</div>
+  <div class="question">When a physicist models a moving car as a single point, which details are being IGNORED?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) Speed of the car</div>
+    <div class="mcq-opt correct">B) Shape, size, and colour of the car</div>
+    <div class="mcq-opt">C) Direction of motion</div>
+    <div class="mcq-opt">D) Mass of the car</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: B — Shape, size, and colour are irrelevant for studying motion. The point mass model keeps speed, mass, and direction.</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 02 · SI Units</div>
+  <div class="question">The symbol 'c' for speed of light comes from which Latin word?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) Corpus</div>
+    <div class="mcq-opt">B) Calor</div>
+    <div class="mcq-opt correct">C) Celeritas</div>
+    <div class="mcq-opt">D) Celsius</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: C — "Celeritas" means speed in Latin. Speed of light = exactly 299,792,458 m/s</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 03 · Laws vs Theories</div>
+  <div class="question">In science, a 'theory' is best described as:</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) An untested guess or idea</div>
+    <div class="mcq-opt">B) A pattern observed in nature</div>
+    <div class="mcq-opt correct">C) A well-tested explanation based on evidence</div>
+    <div class="mcq-opt">D) A broad guiding principle</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: C — A scientific theory is NOT a guess. It's an explanation supported by careful testing and evidence (e.g., Atomic Theory, Theory of Evolution)</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 04 · Estimation</div>
+  <div class="question">According to NCERT, roughly how many litres of air do we breathe in one day?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) 100 litres</div>
+    <div class="mcq-opt">B) 1,000 litres</div>
+    <div class="mcq-opt correct">C) 10,000 litres</div>
+    <div class="mcq-opt">D) 1,00,000 litres</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: C — ~20,000 breaths/day × 0.5 litres/breath = ~10,000 litres/day</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 05 · Scientific Models</div>
+  <div class="question">What is the main purpose of making assumptions in a scientific model?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) To make the scientist's job easier</div>
+    <div class="mcq-opt correct">B) To simplify the system while still answering the key question</div>
+    <div class="mcq-opt">C) Because we don't know the ignored details</div>
+    <div class="mcq-opt">D) To save money on experiments</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: B — Assumptions are deliberate choices to keep things simple enough to find answers, NOT because we're ignorant of the details!</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 06 · Mathematics in Science</div>
+  <div class="question">An equation in science is best described as:</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) A tool only for finding numerical answers</div>
+    <div class="mcq-opt">B) A difficult formula to memorize</div>
+    <div class="mcq-opt correct">C) A compact statement about how certain things are related</div>
+    <div class="mcq-opt">D) A method used only in physics</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: C — Equations express relationships between quantities, making them a language for thinking, not just calculating.</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 07 · Predictions</div>
+  <div class="question">When scientific predictions do NOT match observations, what should scientists do?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) Reject the observations as wrong</div>
+    <div class="mcq-opt">B) Ignore the mismatch</div>
+    <div class="mcq-opt correct">C) Re-examine assumptions, models, or measurements</div>
+    <div class="mcq-opt">D) Reject ideas based on opinion or belief</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: C — Mismatches drive improvement! Scientists only reject ideas based on evidence, not opinion. This is what makes science reliable.</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 08 · Interdisciplinary Science</div>
+  <div class="question">Understanding how a surgical mask works requires knowledge from which branches?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) Only biology and chemistry</div>
+    <div class="mcq-opt">B) Only physics and mathematics</div>
+    <div class="mcq-opt correct">C) Physics, chemistry, biology, and mathematics</div>
+    <div class="mcq-opt">D) Only earth science and biology</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: C — All four branches are needed: physics (particle motion), chemistry (polymer fibres), biology (virus size), mathematics (airflow modelling)</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 09 · Laws & Principles</div>
+  <div class="question">Newton's Laws of Motion explain why you feel a jerk when a bus stops suddenly. This is an example of a:</div>
+  <div class="mcq-options">
+    <div class="mcq-opt correct">A) Scientific Law</div>
+    <div class="mcq-opt">B) Scientific Theory</div>
+    <div class="mcq-opt">C) Scientific Principle</div>
+    <div class="mcq-opt">D) Scientific Model</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: A — Newton's Laws describe a regular pattern (law). They describe WHAT happens. The atomic theory, for example, would explain WHY (theory).</div>
+</div>
+
+<div class="mcq-card">
+  <div class="qnum">MCQ 10 · Meghnad Saha</div>
+  <div class="question">What did Meghnad Saha treat stars as, in his simplified model?</div>
+  <div class="mcq-options">
+    <div class="mcq-opt">A) A collection of complex molecules</div>
+    <div class="mcq-opt correct">B) A hot gas with temperature and pressure</div>
+    <div class="mcq-opt">C) A solid sphere of atoms</div>
+    <div class="mcq-opt">D) A liquid with currents</div>
+  </div>
+  <button class="reveal-btn" onclick="this.nextSibling.classList.toggle('show')">Show Answer</button>
+  <div class="mcq-answer">✅ Answer: B — Saha treated star matter as a hot gas, focused on temperature, pressure, and ion formation — ignoring complex processes. This let him connect star colour to temperature.</div>
+</div>
+</div>
+
+<!-- ═══════════════════════ SHORT ANSWER ═══════════════════════ -->
+<div id="short">
+<div class="section-header sh-cyan">
+  <span class="sh-icon">✍️</span>
+  <div class="sh-text">
+    <h2>10. Short Answer Questions (2–3 Marks)</h2>
+    <p>Click each question to expand the answer</p>
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q1. What is a scientific model? Why do scientists ignore certain details while building a model?</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    A <strong>scientific model</strong> is a simplified representation of a real system that focuses only on what is most important for a given question. Scientists ignore certain details deliberately — not because they don't know them — but to keep the analysis manageable and focused. For example, when studying a falling object, air resistance may be ignored to understand gravity's basic effect. These ignored details are intentional simplifications, not mistakes. As the model becomes more refined, more details can be added back in for greater accuracy.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q2. Differentiate between a law, a theory, and a principle in science. Give one example of each.</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    <strong>Scientific Law:</strong> Describes a regular pattern observed in nature. Example — Newton's Laws of Motion (describe how objects move under forces).<br><br>
+    <strong>Scientific Theory:</strong> Provides an explanation of WHY patterns occur, based on evidence. Example — Atomic Theory (explains how atoms combine to form molecules).<br><br>
+    <strong>Scientific Principle:</strong> A broad idea that applies across many situations. Example — Principle of Conservation of Energy (energy cannot be created or destroyed, only converted).
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q3. Why is using standard SI units important in science? Give a real-life example of what can go wrong.</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    Standard SI units ensure that scientific results can be compared worldwide and that measurements are consistent. The airplane fuel incident illustrates this perfectly: A passenger aircraft needed 22,300 kg of fuel, but the ground crew used density in pounds per litre instead of kg per litre. The aircraft was 15,000 litres short of fuel and had to make an emergency landing. If SI units had been used consistently, this dangerous mistake would have been avoided. In everyday life, it's the same reason a kilogram of rice is the same everywhere in the world.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q4. What is estimation? Give one example of estimation used in daily life.</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    <strong>Estimation</strong> is making a reasonable approximate calculation without needing exact values. It helps build intuition, detect errors, and check whether an answer is sensible. <br><br>
+    Example: Before a school party, you estimate ~50 students × 2 snack packets = ~100 packets needed. You don't need to count exact attendance — the rough estimate helps you plan. Similarly, the NCERT example estimates we breathe ~10,000 litres of air per day using breath rate and breath volume.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q5. What does the magnifying glass and compass symbol on the textbook page represent?</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    The <strong>magnifying glass</strong> symbolizes careful observation — noticing patterns and paying attention to what might otherwise be missed. It represents the habit of looking closely at the world.<br><br>
+    The <strong>compass</strong> symbolizes direction in exploration — choosing appropriate models, asking the right questions, and knowing the limits of where ideas apply. Together they tell us that science is not random wandering, but purposeful, directed exploration.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q6. Why does a scientific theory NOT mean a "guess"? Why is it considered reliable?</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    In everyday language, "theory" can mean an untested idea. But in science, a theory is an explanation based on <strong>careful testing, critical examination, and accumulated evidence</strong> over time. Scientific theories are open to improvement — if new evidence contradicts a theory, scientists revise it. This openness to correction is what makes science reliable. Examples: Atomic Theory, Germ Theory of Disease, and Theory of Evolution are all thoroughly tested scientific theories.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>Q7. What contribution did Meghnad Saha make to science? What simplification did he use?</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    <strong>Meghnad Saha</strong> was an Indian physicist who studied the light emitted by stars. Rather than trying to model every atom and every reaction inside a star (which would be impossibly complex), he treated the stellar matter as a <strong>hot gas</strong> and focused only on temperature, pressure, and how atoms form ions. This simplification — a scientific model — allowed him to explain why the <strong>colour of stars is deeply connected to their temperature</strong>. His work is known as the <em>Saha Ionization Equation</em> and it revolutionized our understanding of stellar spectra.
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════ LONG ANSWER ═══════════════════════ -->
+<div id="long">
+<div class="section-header sh-green">
+  <span class="sh-icon">📝</span>
+  <div class="sh-text">
+    <h2>11. Long Answer Questions (5 Marks)</h2>
+    <p>Detailed, exam-ready answers</p>
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>LA1. Explain the role of scientific models in understanding nature. How are models used in different branches of science? Give examples. Why are assumptions important?</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    <strong>Introduction:</strong> The natural world is incredibly complex and cannot be studied in full detail all at once. To make sense of this complexity, scientists use <em>models</em> — simplified representations of real systems that focus on what is most important for a given question.<br><br>
+    <strong>Definition:</strong> A scientific model is a deliberate simplification of reality. It involves making assumptions and intentionally ignoring certain details that are not relevant to the question being studied.<br><br>
+    <strong>Use in Different Branches:</strong><br>
+    • <strong>Physics:</strong> A moving car is represented as a single point (point mass). Details like car shape, colour, and engine type are ignored. What matters is mass, velocity, and direction.<br>
+    • <strong>Chemistry:</strong> Atoms and molecules are drawn as spheres connected by bonds (ball-and-stick model). This helps visualize molecular structure.<br>
+    • <strong>Biology:</strong> Cells are shown as labeled diagrams highlighting key organelles. Individual molecular interactions are ignored to understand the cell as a whole.<br>
+    • <strong>Earth Science:</strong> Earth is treated as a smooth sphere with distinct layers. Mountains and valleys are ignored to study large-scale geological processes.<br><br>
+    <strong>Why Assumptions Are Important:</strong> Assumptions are not mistakes — they are deliberate choices. For example, when studying a falling object, ignoring air resistance allows us to understand the basic effect of gravity first. Once understood, air resistance can be added back to create a more accurate model.<br><br>
+    <strong>Meghnad Saha's Example:</strong> Saha treated stars as hot gases and focused only on temperature, pressure, and ionization — ignoring the immense complexity of stellar interiors. This simple model allowed him to explain the relationship between star colour and temperature.<br><br>
+    <strong>Conclusion:</strong> Scientific models are powerful tools. As knowledge grows, models are refined to add more detail. The goal is always to keep things "simple enough but accurate enough" to answer the question at hand.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>LA2. "When predictions do not match observations, it is science's greatest strength, not weakness." Explain this statement with examples.</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    <strong>Introduction:</strong> One of science's most remarkable abilities is making predictions — anticipating what will happen under new conditions before experiments are done. But equally important is what happens when predictions fail.<br><br>
+    <strong>How Predictions Work:</strong> When laws, theories, and models are well established, they help us predict outcomes. For example: using motion principles to predict how far a football travels; using chemical knowledge to estimate CO₂ production; using biology to predict breathing changes during exercise.<br><br>
+    <strong>When Predictions Match Observations:</strong> Confidence in the underlying science grows. The theory is further validated.<br><br>
+    <strong>When Predictions Fail — The Real Strength:</strong> When predictions do NOT match observations, scientists do NOT: reject ideas based on opinion or belief. They DO: re-examine their assumptions, models, and measurements. This leads to:<br>
+    • Better, more accurate models<br>
+    • Discovery of new phenomena<br>
+    • Deeper understanding<br><br>
+    <strong>Example 1 — Newtonian Mechanics:</strong> Newton's laws perfectly predicted planetary orbits — until the orbit of Mercury showed tiny discrepancies. Instead of ignoring this, scientists re-examined and Einstein developed General Relativity, which explained Mercury's orbit correctly.<br><br>
+    <strong>Example 2 — Weather Forecasts:</strong> Weather models sometimes fail because tiny differences in initial conditions grow over time (Butterfly Effect). Scientists use these failures to improve their models and measurement precision.<br><br>
+    <strong>Why This Makes Science Reliable:</strong> No scientific theory is ever final. Science's openness to correction by nature itself — based purely on evidence — is what distinguishes it from dogma. It continuously self-corrects and improves. This is not weakness; it is the engine of scientific progress.<br><br>
+    <strong>Conclusion:</strong> "Science that can be disproved is strong science." The willingness to be proven wrong, and the process of updating beliefs based on evidence, is what has allowed science to give us modern medicine, technology, and our understanding of the universe.
+  </div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-q" onclick="this.nextSibling.classList.toggle('open');this.querySelector('.qa-toggle').style.transform=this.nextSibling.classList.contains('open')?'rotate(45deg)':'rotate(0)'">
+    <span>LA3. Explain the interdisciplinary nature of science with the example of how a surgical mask works. What does this tell us about how real-world problems are solved?</span>
+    <span class="qa-toggle">+</span>
+  </div>
+  <div class="qa-a">
+    <strong>Introduction:</strong> The natural world does not follow the boundaries we draw between physics, chemistry, biology, and mathematics. These divisions are human-made, created only to organize knowledge. Real-world problems require knowledge from multiple disciplines working together.<br><br>
+    <strong>How a Surgical Mask Works:</strong><br>
+    • <strong>Physics — Particle Motion & Electrostatics:</strong> Aerosol particles (like virus-carrying droplets) move in air currents. The mask fibres are electrostatically charged, attracting and trapping particles that would otherwise pass through. Understanding

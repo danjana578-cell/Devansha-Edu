@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 – Coordinates | Class 9 Math Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e1a;
+  --bg2:#0f1528;
+  --bg3:#141c35;
+  --card:#161e36;
+  --card2:#1a2340;
+  --border:#2a3560;
+  --accent:#f7c948;
+  --accent2:#ff6b6b;
+  --accent3:#4ecdc4;
+  --accent4:#a855f7;
+  --accent5:#3b82f6;
+  --green:#22c55e;
+  --orange:#f97316;
+  --text:#e8eaf6;
+  --text2:#9ba8c9;
+  --text3:#6b7aa1;
+  --heading:#ffffff;
+  --formula-bg:#0d1f3c;
+  --formula-border:#2563eb;
+  --example-bg:#0f2218;
+  --example-border:#22c55e;
+  --warning-bg:#1f1506;
+  --warning-border:#f7c948;
+  --tip-bg:#1a0f2e;
+  --tip-border:#a855f7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Nunito',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  overflow-x:hidden;
+}
+
+/* ===== LOADER ===== */
+#loader{
+  position:fixed;inset:0;
+  background:var(--bg);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  z-index:9999;
+  transition:opacity 0.6s ease, visibility 0.6s;
+}
+#loader.hidden{opacity:0;visibility:hidden;}
+
+.loader-logo{
+  font-family:'Rajdhani',sans-serif;
+  font-size:3rem;font-weight:700;
+  background:linear-gradient(135deg,#f7c948,#ff6b6b,#4ecdc4,#a855f7);
+  background-size:300% 300%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gradShift 2s ease infinite;
+  letter-spacing:4px;
+}
+.loader-sub{
+  font-family:'Baloo 2',sans-serif;
+  color:var(--text2);font-size:1rem;
+  margin-top:8px;letter-spacing:2px;
+}
+.loader-bar-wrap{
+  width:280px;height:4px;
+  background:var(--border);border-radius:4px;
+  margin-top:32px;overflow:hidden;
+}
+.loader-bar{
+  height:100%;width:0;
+  background:linear-gradient(90deg,#f7c948,#ff6b6b,#4ecdc4);
+  border-radius:4px;
+  animation:loadFill 2.8s ease forwards;
+}
+.loader-dots{
+  display:flex;gap:8px;margin-top:24px;
+}
+.loader-dots span{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);
+  animation:dotBounce 1.2s ease infinite;
+}
+.loader-dots span:nth-child(2){animation-delay:.2s;background:var(--accent2);}
+.loader-dots span:nth-child(3){animation-delay:.4s;background:var(--accent3);}
+.loader-text-seq{
+  margin-top:16px;height:24px;
+  color:var(--accent3);font-family:'JetBrains Mono',monospace;
+  font-size:0.8rem;letter-spacing:1px;
+}
+
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes loadFill{0%{width:0}60%{width:75%}100%{width:100%}}
+@keyframes dotBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ===== HEADER ===== */
+header{
+  background:linear-gradient(135deg,#0d1228 0%,#1a2040 50%,#0d1228 100%);
+  border-bottom:2px solid var(--border);
+  padding:60px 24px 48px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(247,201,72,0.08) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 50%,rgba(78,205,196,0.08) 0%,transparent 60%);
+}
+.header-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--accent),var(--orange));
+  color:#0a0e1a;
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:0.85rem;
+  padding:6px 18px;border-radius:20px;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+header h1{
+  font-family:'Baloo 2',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:800;color:var(--heading);
+  line-height:1.2;margin-bottom:12px;
+}
+header h1 span{
+  background:linear-gradient(135deg,#f7c948,#ff6b6b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.header-sub{
+  color:var(--text2);font-size:1.05rem;
+  max-width:600px;margin:0 auto 24px;
+}
+.header-tags{
+  display:flex;flex-wrap:wrap;gap:10px;
+  justify-content:center;margin-top:16px;
+}
+.tag{
+  background:var(--card2);border:1px solid var(--border);
+  color:var(--text2);font-size:0.8rem;
+  padding:5px 14px;border-radius:20px;
+  font-family:'JetBrains Mono',monospace;
+}
+.tag.accent{border-color:var(--accent);color:var(--accent);}
+.tag.green{border-color:var(--green);color:var(--green);}
+.tag.purple{border-color:var(--accent4);color:var(--accent4);}
+
+/* ===== TOC ===== */
+.toc{
+  max-width:900px;margin:40px auto;padding:0 24px;
+}
+.toc-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:32px;
+  border-left:4px solid var(--accent);
+}
+.toc-title{
+  font-family:'Rajdhani',sans-serif;
+  font-size:1.4rem;font-weight:700;
+  color:var(--accent);letter-spacing:2px;
+  margin-bottom:20px;text-transform:uppercase;
+}
+.toc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+.toc-item{
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:10px;padding:12px 16px;
+  text-decoration:none;color:var(--text);
+  font-size:0.9rem;transition:all 0.3s;
+  display:flex;align-items:center;gap:10px;
+}
+.toc-item:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(4px);
+}
+.toc-num{
+  background:var(--accent);color:#0a0e1a;
+  width:24px;height:24px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:0.75rem;flex-shrink:0;
+}
+
+/* ===== MAIN CONTENT ===== */
+main{max-width:960px;margin:0 auto;padding:0 24px 80px;}
+
+/* ===== SECTION ===== */
+.section{
+  margin-bottom:56px;
+  animation:fadeUp 0.6s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+.section-header{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:28px;padding-bottom:16px;
+  border-bottom:2px solid var(--border);
+}
+.section-num{
+  width:52px;height:52px;
+  background:linear-gradient(135deg,var(--accent),var(--orange));
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  font-family:'Rajdhani',sans-serif;font-weight:700;
+  font-size:1.4rem;color:#0a0e1a;flex-shrink:0;
+  box-shadow:0 4px 20px rgba(247,201,72,0.3);
+}
+.section-title{
+  font-family:'Baloo 2',sans-serif;
+  font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:700;color:var(--heading);
+  line-height:1.2;
+}
+.section-title span{color:var(--accent);}
+
+/* ===== PROSE ===== */
+p{
+  color:var(--text);line-height:1.85;
+  margin-bottom:16px;font-size:1.02rem;
+}
+p strong{color:var(--accent);font-weight:700;}
+p em{color:var(--accent3);font-style:normal;font-weight:600;}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:24px;
+  margin-bottom:20px;
+}
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;margin-bottom:20px;
+}
+.mini-card{
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+  transition:transform 0.3s,border-color 0.3s;
+}
+.mini-card:hover{transform:translateY(-3px);}
+.mini-card.yellow{border-left:3px solid var(--accent);}
+.mini-card.red{border-left:3px solid var(--accent2);}
+.mini-card.cyan{border-left:3px solid var(--accent3);}
+.mini-card.purple{border-left:3px solid var(--accent4);}
+.mini-card.blue{border-left:3px solid var(--accent5);}
+.mini-card.green{border-left:3px solid var(--green);}
+.mini-card h4{
+  font-family:'Rajdhani',sans-serif;font-weight:700;
+  font-size:1.05rem;margin-bottom:8px;
+}
+.mini-card.yellow h4{color:var(--accent);}
+.mini-card.red h4{color:var(--accent2);}
+.mini-card.cyan h4{color:var(--accent3);}
+.mini-card.purple h4{color:var(--accent4);}
+.mini-card.blue h4{color:var(--accent5);}
+.mini-card.green h4{color:var(--green);}
+
+/* ===== FORMULA BOX ===== */
+.formula-box{
+  background:var(--formula-bg);
+  border:2px solid var(--formula-border);
+  border-radius:14px;padding:24px;
+  margin:20px 0;position:relative;overflow:hidden;
+}
+.formula-box::before{
+  content:'FORMULA';position:absolute;top:12px;right:16px;
+  font-family:'JetBrains Mono',monospace;font-size:0.65rem;
+  color:var(--formula-border);letter-spacing:2px;
+  background:rgba(37,99,235,0.15);padding:3px 8px;border-radius:4px;
+}
+.formula-box h4{
+  color:#60a5fa;font-family:'Rajdhani',sans-serif;
+  font-size:1.1rem;font-weight:700;margin-bottom:14px;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.formula-eq{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.2rem;color:#ffffff;
+  background:rgba(0,0,0,0.3);
+  border:1px solid rgba(37,99,235,0.4);
+  border-radius:8px;padding:14px 20px;
+  text-align:center;margin:10px 0;
+  letter-spacing:1px;
+}
+.formula-note{color:var(--text2);font-size:0.9rem;margin-top:10px;}
+
+/* ===== EXAMPLE BOX ===== */
+.example-box{
+  background:var(--example-bg);
+  border:2px solid var(--example-border);
+  border-radius:14px;padding:24px;
+  margin:20px 0;position:relative;
+}
+.example-box::before{
+  content:'EXAMPLE';position:absolute;top:12px;right:16px;
+  font-family:'JetBrains Mono',monospace;font-size:0.65rem;
+  color:var(--green);letter-spacing:2px;
+  background:rgba(34,197,94,0.12);padding:3px 8px;border-radius:4px;
+}
+.example-box h4{
+  color:var(--green);font-family:'Rajdhani',sans-serif;
+  font-size:1.05rem;font-weight:700;margin-bottom:12px;
+}
+.example-box p{color:#c8f0d8;}
+
+/* ===== REMEMBER BOX ===== */
+.remember-box{
+  background:var(--warning-bg);
+  border:2px solid var(--warning-border);
+  border-radius:14px;padding:22px 24px;
+  margin:20px 0;
+}
+.remember-box h4{
+  color:var(--accent);font-family:'Rajdhani',sans-serif;
+  font-size:1.05rem;font-weight:700;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.remember-box p, .remember-box li{color:#f5e0a0;font-size:0.95rem;}
+
+/* ===== TIP BOX ===== */
+.tip-box{
+  background:var(--tip-bg);
+  border:2px solid var(--tip-border);
+  border-radius:14px;padding:22px 24px;
+  margin:20px 0;
+}
+.tip-box h4{
+  color:var(--accent4);font-family:'Rajdhani',sans-serif;
+  font-size:1.05rem;font-weight:700;margin-bottom:10px;
+}
+.tip-box p{color:#d8b4fe;font-size:0.95rem;}
+
+/* ===== SVG DIAGRAMS ===== */
+.diagram-wrap{
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  margin:24px 0;text-align:center;
+}
+.diagram-wrap svg{max-width:100%;height:auto;}
+.diagram-caption{
+  color:var(--text2);font-size:0.85rem;
+  margin-top:12px;font-style:italic;
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* ===== TABLE ===== */
+.styled-table{
+  width:100%;border-collapse:collapse;
+  margin:20px 0;font-size:0.93rem;
+}
+.styled-table th{
+  background:linear-gradient(135deg,var(--card2),var(--card));
+  color:var(--accent);font-family:'Rajdhani',sans-serif;
+  font-weight:700;padding:12px 16px;
+  border:1px solid var(--border);
+  letter-spacing:1px;text-transform:uppercase;font-size:0.85rem;
+}
+.styled-table td{
+  padding:11px 16px;border:1px solid var(--border);
+  color:var(--text);
+}
+.styled-table tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.styled-table tr:hover td{background:rgba(247,201,72,0.04);}
+
+/* ===== STEP LIST ===== */
+.step-list{list-style:none;counter-reset:steps;margin:16px 0;}
+.step-list li{
+  counter-increment:steps;
+  padding:14px 18px 14px 60px;
+  position:relative;margin-bottom:10px;
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:10px;color:var(--text);
+}
+.step-list li::before{
+  content:counter(steps);
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:30px;height:30px;border-radius:8px;
+  background:linear-gradient(135deg,var(--accent),var(--orange));
+  color:#0a0e1a;font-weight:800;font-size:0.9rem;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ===== BULLET LIST ===== */
+.bullet-list{list-style:none;margin:14px 0;}
+.bullet-list li{
+  padding:8px 0 8px 28px;
+  position:relative;color:var(--text);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.bullet-list li::before{
+  content:'▸';
+  position:absolute;left:0;color:var(--accent);font-size:1rem;
+}
+
+/* ===== QUADRANT VISUAL ===== */
+.quadrant-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3px;margin:20px 0;
+  background:var(--border);border-radius:12px;overflow:hidden;
+}
+.quad{
+  padding:20px;text-align:center;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;
+}
+.quad-num{
+  font-family:'Rajdhani',sans-serif;font-weight:700;
+  font-size:1rem;letter-spacing:1px;
+}
+.quad-sign{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.1rem;font-weight:700;
+}
+.quad-desc{font-size:0.8rem;color:var(--text2);}
+
+/* ===== HISTORY TIMELINE ===== */
+.timeline{margin:24px 0;position:relative;}
+.timeline::before{
+  content:'';position:absolute;left:28px;top:0;bottom:0;
+  width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent3));
+}
+.timeline-item{
+  padding:0 0 28px 70px;position:relative;
+}
+.timeline-dot{
+  position:absolute;left:20px;top:4px;
+  width:18px;height:18px;border-radius:50%;
+  border:3px solid var(--accent);background:var(--bg);
+  z-index:1;
+}
+.timeline-year{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--accent);font-size:0.85rem;font-weight:700;
+  margin-bottom:4px;
+}
+.timeline-name{
+  font-family:'Baloo 2',sans-serif;font-weight:700;
+  font-size:1rem;color:var(--heading);margin-bottom:4px;
+}
+.timeline-desc{color:var(--text2);font-size:0.9rem;}
+
+/* ===== EXERCISES ===== */
+.exercise-box{
+  background:linear-gradient(135deg,#0f1a2e,#1a1030);
+  border:2px solid var(--accent4);
+  border-radius:14px;padding:24px;margin:20px 0;
+}
+.exercise-box h4{
+  color:var(--accent4);font-family:'Rajdhani',sans-serif;
+  font-size:1.1rem;font-weight:700;margin-bottom:16px;
+  letter-spacing:1px;
+}
+.exercise-item{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(168,85,247,0.2);
+  border-radius:8px;padding:14px 18px;
+  margin-bottom:10px;
+}
+.exercise-q{color:var(--text);font-size:0.95rem;margin-bottom:8px;}
+.exercise-a{
+  color:#d8b4fe;font-size:0.9rem;
+  font-family:'JetBrains Mono',monospace;
+  background:rgba(168,85,247,0.08);
+  border-radius:6px;padding:8px 12px;margin-top:6px;
+}
+
+/* ===== HIGHLIGHT TEXT ===== */
+.hl-yellow{color:var(--accent);font-weight:700;}
+.hl-cyan{color:var(--accent3);font-weight:700;}
+.hl-red{color:var(--accent2);font-weight:700;}
+.hl-purple{color:var(--accent4);font-weight:700;}
+.hl-green{color:var(--green);font-weight:700;}
+.hl-blue{color:var(--accent5);font-weight:700;}
+.mono{font-family:'JetBrains Mono',monospace;font-size:0.92em;}
+
+/* ===== DIVIDER ===== */
+.divider{
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--accent3),transparent);
+  margin:48px 0;border:none;border-radius:1px;
+}
+
+/* ===== SIGNATURE ===== */
+.signature{
+  background:linear-gradient(135deg,#1a1030,#0f1a2e,#0d1f1a);
+  border:2px solid var(--border);border-radius:20px;
+  padding:40px;text-align:center;margin-top:60px;
+  position:relative;overflow:hidden;
+}
+.signature::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(168,85,247,0.07) 0%,transparent 70%);
+}
+.sig-title{
+  font-family:'Rajdhani',sans-serif;font-size:0.8rem;
+  color:var(--text3);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.sig-name{
+  font-family:'Baloo 2',sans-serif;font-weight:800;
+  font-size:2.2rem;
+  background:linear-gradient(135deg,#f7c948,#ff6b6b,#a855f7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.sig-school{color:var(--text2);font-size:1rem;margin-top:8px;}
+.sig-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(247,201,72,0.1);border:1px solid var(--accent);
+  color:var(--accent);padding:8px 20px;border-radius:20px;
+  font-size:0.85rem;font-weight:700;margin-top:16px;
+  letter-spacing:1px;
+}
+.sig-copyright{
+  color:var(--text3);font-size:0.8rem;margin-top:20px;
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* ===== SCROLL BAR ===== */
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .card-grid{grid-template-columns:1fr;}
+  .quadrant-grid .quad{padding:14px;}
+  header{padding:40px 16px 32px;}
+  main{padding:0 16px 60px;}
+}
+
+/* animations */
+.fade-in{animation:fadeUp 0.7s ease both;}
+.delay-1{animation-delay:0.1s;}
+.delay-2{animation-delay:0.2s;}
+.delay-3{animation-delay:0.3s;}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">∑ GANITA</div>
+  <div class="loader-sub">CLASS 9 · MATHEMATICS · CHAPTER 1</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-dots">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="loader-text-seq" id="loaderText">Initializing coordinate plane...</div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-badge">📐 Class 9 · CBSE · Ganita Manjari</div>
+  <h1>Chapter 1: <span>Orienting Yourself</span><br>The Use of Coordinates</h1>
+  <p class="header-sub">Coordinate Geometry ka complete, deep aur detailed explanation — history se lekar formulas tak — sab kuch ek jagah!</p>
+  <div class="header-tags">
+    <span class="tag accent">Cartesian Plane</span>
+    <span class="tag green">Distance Formula</span>
+    <span class="tag purple">Quadrants</span>
+    <span class="tag">Coordinates</span>
+    <span class="tag">x-axis &amp; y-axis</span>
+    <span class="tag accent">Baudhāyana Theorem</span>
+  </div>
+</header>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-card">
+    <div class="toc-title">📋 Table of Contents — Chapter Index</div>
+    <div class="toc-grid">
+      <a href="#history" class="toc-item"><span class="toc-num">1</span>History &amp; Background</a>
+      <a href="#intro" class="toc-item"><span class="toc-num">2</span>Introduction to Coordinates</a>
+      <a href="#cartesian" class="toc-item"><span class="toc-num">3</span>2D Cartesian System</a>
+      <a href="#axes" class="toc-item"><span class="toc-num">4</span>Axes &amp; Origin</a>
+      <a href="#quadrants" class="toc-item"><span class="toc-num">5</span>Four Quadrants</a>
+      <a href="#points" class="toc-item"><span class="toc-num">6</span>Plotting Points</a>
+      <a href="#distance" class="toc-item"><span class="toc-num">7</span>Distance Formula</a>
+      <a href="#reflection" class="toc-item"><span class="toc-num">8</span>Reflection</a>
+      <a href="#midpoint" class="toc-item"><span class="toc-num">9</span>Midpoint Concept</a>
+      <a href="#exercises" class="toc-item"><span class="toc-num">10</span>Solved Exercises</a>
+      <a href="#formulas" class="toc-item"><span class="toc-num">11</span>All Formulas</a>
+      <a href="#summary" class="toc-item"><span class="toc-num">12</span>Chapter Summary</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== SECTION 1: HISTORY ===== -->
+<section class="section" id="history">
+  <div class="section-header">
+    <div class="section-num">🏛️</div>
+    <div class="section-title">Section 1.1 — <span>History &amp; Background</span><br><small style="font-size:0.6em;color:var(--text2);">Coordinates ki kahani — Bhārat se Descartes tak</small></div>
+  </div>
+
+  <p>Coordinates ka idea bohot purana hai. Ye sirf math ki theory nahi hai — yeh ek <strong>practical tool</strong> hai jo hamare ancestors ne thousands of years pehle use kiya tha, actual cities banane mein, navigation mein, aur astronomy mein.</p>
+
+  <div class="tip-box">
+    <h4>🌟 Interesting Fact — Dil ko Chhu Jane Wali Baat</h4>
+    <p>Tumhara apna sheher <strong>Bhopal, Madhya Pradesh</strong> bhi coordinates ke zariye map par locate hota hai! Latitude 23.26°N aur Longitude 77.40°E — ye coordinates hi batate hain ki Bhopal duniya mein exactly kahan hai. Aaj jo seekhoge, woh same system use hota hai GPS, Google Maps, satellite navigation sab mein!</p>
+  </div>
+
+  <p>Aao ek interesting sawaal se shuru karte hain: <strong>"Kisi jagah ko exactly describe kaise karein?"</strong></p>
+
+  <p>Sochो — agar tumhara dost phone kare aur puchhe "Tum kahan ho?" — tum kya bologe? "Market ke paas" ya "Mandir ke left mein" — ye sab <em>relative descriptions</em> hain. Par agar tumhe exact location batani ho — toh tumhe coordinates chahiye!</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">~3000 BCE (3000 saal pehle)</div>
+      <div class="timeline-name">🏙️ Sindhu-Sarasvatī Civilisation — Mohenjo-daro &amp; Harappa</div>
+      <div class="timeline-desc">Duniya ki pehli grid-based city planning! Streets bilkul North–South aur East–West direction mein thi — har 10 metres ke interval par. Ye soch ke toh dekho — ek merchant apni dukan ya godown dhundh sakta tha sirf steps count karke — "5 steps East, 3 steps North" — exactly like coordinates! <strong>Yeh history ka pehla practical coordinate system tha.</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--orange);"></div>
+      <div class="timeline-year">~800 BCE</div>
+      <div class="timeline-name">📐 Baudhāyana — The OG Mathematician</div>
+      <div class="timeline-desc">Baudhāyana ne East–West aur North–South lines use karke deep geometric constructions kiye. Unhone <strong>Baudhāyana–Pythagoras Theorem</strong> develop kiya — jo aaj hum "Pythagoras Theorem" bolte hain! Yahi theorem baad mein Distance Formula ka base banega.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--accent3);"></div>
+      <div class="timeline-year">~4th Century BCE</div>
+      <div class="timeline-name">🌍 Ujjayinī — India's Greenwich Meridian</div>
+      <div class="timeline-desc">Ancient Siddhāntas mein <strong>Ujjayinī (aaj ka Ujjain, Madhya Pradesh)</strong> ko zero longitude ka reference point banaya gaya tha! Sari duniya ki locations yahan se measure hoti thi. Ptolemy ne bhi apni maps mein isko "Ozine" ke naam se include kiya. Interesting na — MP ka connection coordinate geometry se!</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--accent4);"></div>
+      <div class="timeline-year">499 CE</div>
+      <div class="timeline-name">⭐ Āryabhaṭa — Sky ka Coordinate Mapper</div>
+      <div class="timeline-desc">Āryabhaṭa ne Greek "chords" ko "sines" se replace kiya — jisse stars aur cities ke coordinates calculate karna bahut aasaan ho gaya. Unhone Celestial Coordinates use karke poora sky map kiya. <strong>Sine (sin) function jo aaj Class 10 mein padhoge — woh Āryabhaṭa ki den hai!</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--accent2);"></div>
+      <div class="timeline-year">628 CE</div>
+      <div class="timeline-name">🔢 Brahmagupta — Zero aur Negative Numbers</div>
+      <div class="timeline-desc">Brahmagupta ne zero (0) aur negative numbers ko formal algebraic entities ke roop mein define kiya. <strong>Bina negative numbers ke four-quadrant Cartesian plane possible hi nahi hota!</strong> Jab hum x = −3 likhte hain, yeh Brahmagupta ki den hai. Origin "0" bhi unka concept hai.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--green);"></div>
+      <div class="timeline-year">~1000 CE</div>
+      <div class="timeline-name">🔭 Al-Bīrūnī — Astrolabe Perfecter</div>
+      <div class="timeline-desc">Arab scholar Al-Bīrūnī India aaye, Siddhāntas padhe, aur Indian trigonometry use karke thousands of cities ke coordinates calculate kiye. Unhone <strong>Astrolabe</strong> perfect kiya — ek handheld device jo sailors ko stars dekh ke apni coordinates find karne mein help karta tha. GPS ka ancestor!</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--accent);"></div>
+      <div class="timeline-year">1637 CE</div>
+      <div class="timeline-name">📊 René Descartes — Final Formalisation</div>
+      <div class="timeline-desc">Fermat ke kaam ke baad, French mathematician Descartes ne formally establish kiya ki <strong>any 2D point ko sirf 2 numbers se define kiya ja sakta hai</strong> — perpendicular axes se distance. Isliye ise "Cartesian" plane bolte hain (Descartes ke naam par). Geometry aur algebra finally formally mile!</div>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <h4>🎯 Key Takeaway — History se Lesson</h4>
+    <p>Coordinate system ek collaborative human achievement hai — <strong>India → Arabia → Europe</strong> ka intellectual journey. Brahmagupta ka zero, Āryabhaṭa ka sine, Baudhāyana ka theorem — inka contribution coordinate geometry mein directly hai. Yeh apna Indian pride hai!</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 2: INTRODUCTION ===== -->
+<section class="section" id="intro">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <div class="section-title">Section 1.2 — <span>Coordinates Kya Hote Hain?</span><br><small style="font-size:0.6em;color:var(--text2);">Real-life samajh se shuru karte hain</small></div>
+  </div>
+
+  <p>Ek <strong>coordinate system</strong> ek structured framework hai — jaise map par grid lines ya graph paper ki lines — jo hume numbers use karke kisi bhi point ya object ki <em>exact physical location</em> describe karne mein help karta hai.</p>
+
+  <div class="card-grid">
+    <div class="mini-card yellow">
+      <h4>🗺️ Map Wali Analogy</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Google Maps par search karo "Bhel Puri stand near MP Nagar Bhopal" — toh GPS exactly 23.2356°N, 77.4021°E dega. Ye coordinates hain! Bina coordinates ke exact location nahi milti.</p>
+    </div>
+    <div class="mini-card cyan">
+      <h4>🎮 Game Analogy</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">PUBG/Free Fire mein "Drop at coordinates (52, 78)" — yeh bhi same concept. Row aur column number se exact spot pata chalta hai. Chess board mein "E4" — E column, 4th row — woh bhi coordinate system hai!</p>
+    </div>
+    <div class="mini-card red">
+      <h4>🏫 School Analogy</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Attendance mein "Row 3, Seat 5" — yeh coordinates hain! Cinema hall mein "Row G, Seat 12" — same system. Duniya mein har jagah coordinates use ho rahe hain.</p>
+    </div>
+  </div>
+
+  <p>NCERT ki story mein <strong>Reiaan</strong> (jo dekh nahi sakta) aur uski behen <strong>Shalini</strong> hain. Shalini ne coordinate system use karke apne kamre ka ek physical map banaya — pins aur threads se — taaki Reiaan apni fingers se room ka layout feel kar sake. Yeh ek beautiful example hai ki coordinates real life mein kaise help karte hain.</p>
+
+  <div class="example-box">
+    <h4>🏠 Reiaan ke Kamre ka Example</h4>
+    <p>Shalini ne 1 cm = 1 foot ka scale use kiya. Matlab agar kamra 12 ft × 10 ft ka hai, toh graph par 12 cm × 10 cm ka rectangle banega. Khidki, door, wardrobe, bathroom — sab kuch coordinates se describe kiya. <strong>Yeh exactly wahi kaam hai jo architects aur interior designers karte hain!</strong></p>
+    <p style="margin-top:10px;">Important observation: <strong>Windows ka position is map par nahi dikhaya ja sakta</strong> — kyunki ye map sirf floor (ground level) dikhata hai. Windows walls par hoti hain — unhe floor map mein nahi dikh sakta. Isliye hume 3D coordinates ki zaroorat padti (jo Class 11 mein padhoge).</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Room background -->
+      <rect x="10" y="10" width="540" height="300" rx="8" fill="#141c35" stroke="#2a3560" stroke-width="1.5"/>
+      <!-- Grid lines -->
+      <g stroke="#1e2a4a" stroke-width="0.5">
+        <line x1="60" y1="10" x2="60" y2="310"/>
+        <line x1="110" y1="10" x2="110" y2="310"/>
+        <line x1="160" y1="10" x2="160" y2="310"/>
+        <line x1="210" y1="10" x2="210" y2="310"/>
+        <line x1="260" y1="10" x2="260" y2="310"/>
+        <line x1="310" y1="10" x2="310" y2="310"/>
+        <line x1="360" y1="10" x2="360" y2="310"/>
+        <line x1="410" y1="10" x2="410" y2="310"/>
+        <line x1="460" y1="10" x2="460" y2="310"/>
+        <line x1="510" y1="10" x2="510" y2="310"/>
+        <line x1="10" y1="60" x2="550" y2="60"/>
+        <line x1="10" y1="110" x2="550" y2="110"/>
+        <line x1="10" y1="160" x2="550" y2="160"/>
+        <line x1="10" y1="210" x2="550" y2="210"/>
+        <line x1="10" y1="260" x2="550" y2="260"/>
+      </g>
+      <!-- X axis -->
+      <line x1="10" y1="260" x2="550" y2="260" stroke="#f7c948" stroke-width="2"/>
+      <text x="545" y="256" fill="#f7c948" font-size="10" font-family="JetBrains Mono">x</text>
+      <!-- Y axis -->
+      <line x1="60" y1="10" x2="60" y2="310" stroke="#4ecdc4" stroke-width="2"/>
+      <text x="64" y="18" fill="#4ecdc4" font-size="10" font-family="JetBrains Mono">y</text>
+      <!-- Origin -->
+      <circle cx="60" cy="260" r="4" fill="#ffffff"/>
+      <text x="32" y="275" fill="#ffffff" font-size="9" font-family="JetBrains Mono">O(0,0)</text>
+      <!-- Room outline -->
+      <rect x="60" y="10" width="480" height="250" fill="rgba(247,201,72,0.06)" stroke="#f7c948" stroke-width="2.5" stroke-dasharray="none"/>
+      <!-- Corner labels -->
+      <text x="30" y="22" fill="#f7c948" font-size="9" font-family="JetBrains Mono">C(0,10)</text>
+      <text x="502" y="22" fill="#f7c948" font-size="9" font-family="JetBrains Mono">B(12,10)</text>
+      <text x="502" y="270" fill="#f7c948" font-size="9" font-family="JetBrains Mono">A(12,0)</text>
+      <!-- Room label -->
+      <text x="250" y="140" fill="#ffffff" font-size="14" font-family="Nunito" text-anchor="middle" font-weight="700">Bedroom</text>
+      <text x="250" y="158" fill="#9ba8c9" font-size="10" font-family="Nunito" text-anchor="middle">12 ft × 10 ft</text>
+      <!-- Axis numbers -->
+      <g fill="#6b7aa1" font-size="8" font-family="JetBrains Mono">
+        <text x="106" y="274">1</text>
+        <text x="156" y="274">2</text>
+        <text x="206" y="274">3</text>
+        <text x="256" y="274">4</text>
+        <text x="306" y="274">5</text>
+        <text x="356" y="274">6</text>
+        <text x="406" y="274">7</text>
+        <text x="456" y="274">8</text>
+        <text x="506" y="274">9</text>
+        <text x="44" y="214">2</text>
+        <text x="44" y="164">4</text>
+        <text x="44" y="114">6</text>
+        <text x="44" y="64">8</text>
+        <text x="38" y="22">10</text>
+      </g>
+      <!-- Scale note -->
+      <text x="200" y="296" fill="#9ba8c9" font-size="9" font-family="Nunito" text-anchor="middle">Scale: 1 unit = 1 foot | Reiaan ke Kamre ka Floor Map</text>
+    </svg>
+    <div class="diagram-caption">Fig: Reiaan ke kamre ka coordinate map — O = Origin (bottom-left corner)</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 3: 2D CARTESIAN ===== -->
+<section class="section" id="cartesian">
+  <div class="section-header">
+    <div class="section-num">🧭</div>
+    <div class="section-title">Section 1.3 — <span>2D Cartesian Coordinate System</span><br><small style="font-size:0.6em;color:var(--text2);">The Main Engine of Coordinate Geometry</small></div>
+  </div>
+
+  <p>Class 7-8 mein tumne <strong>Number Line</strong> padhi thi — jo 1-dimensional thi (sirf ek line par numbers). Ab hum <strong>2-dimensional (2D) plane</strong> mein kaam karenge — jahan hum kisi bhi point ko uniquely locate kar sakte hain.</p>
+
+  <div class="card">
+    <p><strong>Definition:</strong> 2D Cartesian Coordinate System ek aise framework ko kaha jaata hai jisme <em>do perpendicular (90° par) lines</em> use karke 2D space mein kisi bhi point ki exact location batayi ja sakti hai numbers ke zariye.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="mini-card yellow">
+      <h4>📏 X-axis (Horizontal)</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Seedhi horizontal line. Origin ke <strong>right side</strong> positive numbers (+1, +2, +3…) aur <strong>left side</strong> negative numbers (−1, −2, −3…).</p>
+    </div>
+    <div class="mini-card cyan">
+      <h4>📏 Y-axis (Vertical)</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Seedhi vertical line. Origin ke <strong>upar (upward)</strong> positive numbers (+1, +2, +3…) aur <strong>neeche (downward)</strong> negative numbers (−1, −2, −3…).</p>
+    </div>
+    <div class="mini-card red">
+      <h4>⭕ Origin O (0, 0)</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">X-axis aur Y-axis ka intersection point. Coordinates hain (0, 0). Ye <strong>reference point</strong> hai — sari distances isi se measure hoti hain. Brahmagupta ka zero concept yahan apply hota hai.</p>
+    </div>
+    <div class="mini-card purple">
+      <h4>✈️ Coordinate Axes</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">"Axis" ka plural "Axes" hai. X-axis aur Y-axis milkar <strong>Coordinate Axes</strong> banate hain. Ye do axes milkar poori 2D plane ko define karte hain.</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <!-- Complete Cartesian Plane Diagram -->
+    <svg viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowY" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#4ecdc4"/>
+        </marker>
+        <marker id="arrowX" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#f7c948"/>
+        </marker>
+        <marker id="arrowXN" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#f7c948"/>
+        </marker>
+        <marker id="arrowYN" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#4ecdc4"/>
+        </marker>
+      </defs>
+      <rect width="560" height="440" fill="#0a0e1a" rx="8"/>
+      <!-- Grid -->
+      <g stroke="#1a2340" stroke-width="0.8">
+        <line x1="280" y1="20" x2="280" y2="420"/>
+        <line x1="20" y1="220" x2="540" y2="220"/>
+        <!-- Vertical grid lines -->
+        <line x1="320" y1="20" x2="320" y2="420"/><line x1="360" y1="20" x2="360" y2="420"/>
+        <line x1="400" y1="20" x2="400" y2="420"/><line x1="440" y1="20" x2="440" y2="420"/>
+        <line x1="480" y1="20" x2="480" y2="420"/><line x1="520" y1="20" x2="520" y2="420"/>
+        <line x1="240" y1="20" x2="240" y2="420"/><line x1="200" y1="20" x2="200" y2="420"/>
+        <line x1="160" y1="20" x2="160" y2="420"/><line x1="120" y1="20" x2="120" y2="420"/>
+        <line x1="80" y1="20" x2="80" y2="420"/><line x1="40" y1="20" x2="40" y2="420"/>
+        <!-- Horizontal grid lines -->
+        <line x1="20" y1="180" x2="540" y2="180"/><line x1="20" y1="140" x2="540" y2="140"/>
+        <line x1="20" y1="100" x2="540" y2="100"/><line x1="20" y1="60" x2="540" y2="60"/>
+        <line x1="20" y1="260" x2="540" y2="260"/><line x1="20" y1="300" x2="540" y2="300"/>
+        <line x1="20" y1="340" x2="540" y2="340"/><line x1="20" y1="380" x2="540" y2="380"/>
+      </g>
+      <!-- X-axis -->
+      <line x1="25" y1="220" x2="535" y2="220" stroke="#f7c948" stroke-width="2.5" marker-end="url(#arrowX)" marker-start="url(#arrowXN)"/>
+      <!-- Y-axis -->
+      <line x1="280" y1="425" x2="280" y2="25" stroke="#4ecdc4" stroke-width="2.5" marker-end="url(#arrowY)" marker-start="url(#arrowYN)"/>
+      <!-- Axis labels -->
+      <text x="530" y="215" fill="#f7c948" font-size="14" font-family="Nunito" font-weight="700">x</text>
+      <text x="285" y="18" fill="#4ecdc4" font-size="14" font-family="Nunito" font-weight="700">y</text>
+      <!-- Origin -->
+      <circle cx="280" cy="220" r="5" fill="white"/>
+      <text x="258" y="238" fill="#ffffff" font-size="11" font-family="JetBrains Mono">O(0,0)</text>
+      <!-- Axis numbers -->
+      <g fill="#4a5568" font-size="9" font-family="JetBrains Mono" text-anchor="middle">
+        <text x="320" y="233">1</text><text x="360" y="233">2</text><text x="400" y="233">3</text>
+        <text x="440" y="233">4</text><text x="480" y="233">5</text><text x="520" y="233">6</text>
+        <text x="240" y="233">-1</text><text x="200" y="233">-2</text><text x="160" y="233">-3</text>
+        <text x="120" y="233">-4</text><text x="80" y="233">-5</text><text x="40" y="233">-6</text>
+        <text x="272" y="183">1</text><text x="272" y="143">2</text><text x="272" y="103">3</text><text x="272" y="63">4</text>
+        <text x="268" y="263">-1</text><text x="268" y="303">-2</text><text x="268" y="343">-3</text><text x="268" y="383">-4</text>
+      </g>
+      <!-- Quadrant Labels (bg boxes) -->
+      <rect x="290" y="30" width="90" height="28" rx="5" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="1"/>
+      <text x="335" y="49" fill="#22c55e" font-size="11" font-family="Nunito" font-weight="700" text-anchor="middle">Quadrant I</text>
+      <rect x="170" y="30" width="90" height="28" rx="5" fill="rgba(59,130,246,0.12)" stroke="#3b82f6" stroke-width="1"/>
+      <text x="215" y="49" fill="#3b82f6" font-size="11" font-family="Nunito" font-weight="700" text-anchor="middle">Quadrant II</text>
+      <rect x="170" y="385" width="90" height="28" rx="5" fill="rgba(255,107,107,0.12)" stroke="#ff6b6b" stroke-width="1"/>
+      <text x="215" y="404" fill="#ff6b6b" font-size="11" font-family="Nunito" font-weight="700" text-anchor="middle">Quadrant III</text>
+      <rect x="295" y="385" width="90" height="28" rx="5" fill="rgba(168,85,247,0.12)" stroke="#a855f7" stroke-width="1"/>
+      <text x="340" y="404" fill="#a855f7" font-size="11" font-family="Nunito" font-weight="700" text-anchor="middle">Quadrant IV</text>
+      <!-- Points -->
+      <circle cx="440" cy="140" r="6" fill="#f7c948"/>
+      <text x="448" y="135" fill="#f7c948" font-size="10" font-family="JetBrains Mono">B(4.5, 0)→</text>
+      <circle cx="440" cy="220" r="5" fill="#f7c948"/>
+      <text x="448" y="218" fill="#f7c948" font-size="9" font-family="JetBrains Mono">B(4.5,0)</text>
+      <circle cx="280" cy="60" r="5" fill="#4ecdc4"/>
+      <text x="288" y="58" fill="#4ecdc4" font-size="9" font-family="JetBrains Mono">H(0,4)</text>
+      <circle cx="280" cy="400" r="5" fill="#ff6b6b"/>
+      <text x="288" y="398" fill="#ff6b6b" font-size="9" font-family="JetBrains Mono">G(0,-4.5)</text>
+      <!-- Dashed lines for B(4.5,0) - actually it's on x-axis so just mark -->
+      <!-- Example Point P(3,2) in Q1 -->
+      <circle cx="400" cy="140" r="6" fill="#22c55e"/>
+      <line x1="400" y1="140" x2="400" y2="220" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="280" y1="140" x2="400" y2="140" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="404" y="138" fill="#22c55e" font-size="10" font-family="JetBrains Mono">P(3,2)</text>
+      <!-- Example Point Q(-5,3) in Q2 -->
+      <circle cx="80" cy="100" r="6" fill="#3b82f6"/>
+      <line x1="80" y1="100" x2="80" y2="220" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="280" y1="100" x2="80" y2="100" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="26" y="98" fill="#3b82f6" font-size="10" font-family="JetBrains Mono">Q(-5,3)</text>
+      <!-- Example Point S(3,-5) in Q4 -->
+      <circle cx="400" cy="420" r="5" fill="#a855f7"/>
+      <text x="404" y="418" fill="#a855f7" font-size="10" font-family="JetBrains Mono">S(3,-5)</text>
+    </svg>
+    <div class="diagram-caption">Fig 1.2 — Complete 2D Cartesian Coordinate Plane — Char Quadrants, Dono Axes, aur Points ke saath</div>
+  </div>
+
+  <!-- Key Definitions -->
+  <div id="axes" class="section-header" style="margin-top:36px;">
+    <div class="section-num" style="width:44px;height:44px;font-size:1.1rem;">📌</div>
+    <div class="section-title" style="font-size:1.4rem;">Key Definitions — Important Definitions Yaad Karo</div>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Term</th><th>Definition (Hinglish)</th><th>Example / Key Point</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="hl-yellow">X-axis</td>
+        <td>Horizontal number line — baayi se daai (left to right)</td>
+        <td>Points like (3, 0), (−5, 0) — y-coordinate always 0</td>
+      </tr>
+      <tr>
+        <td class="hl-cyan">Y-axis</td>
+        <td>Vertical number line — neeche se upar (bottom to top)</td>
+        <td>Points like (0, 4), (0, −2) — x-coordinate always 0</td>
+      </tr>
+      <tr>
+        <td class="hl-red">Origin O</td>
+        <td>X aur Y axes ka intersection point, coordinates = (0, 0)</td>
+        <td>Sab distances isi se measure hoti hain</td>
+      </tr>
+      <tr>
+        <td class="hl-green">X-coordinate (Abscissa)</td>
+        <td>Point ki y-axis se perpendicular distance — x-axis par measure</td>
+        <td>Point P(3, 5) mein x-coordinate = 3</td>
+      </tr>
+      <tr>
+        <td class="hl-purple">Y-coordinate (Ordinate)</td>
+        <td>Point ki x-axis se perpendicular distance — y-axis par measure</td>
+        <td>Point P(3, 5) mein y-coordinate = 5</td>
+      </tr>
+      <tr>
+        <td class="hl-blue">Coordinates (x, y)</td>
+        <td>Point ka address — x pehle, y baad mein (ordered pair)</td>
+        <td>P(3, 5) ≠ P(5, 3) — ORDER MATTER KARTA HAI!</td>
+      </tr>
+      <tr>
+        <td style="color:var(--orange)">Cartesian Plane</td>
+        <td>Woh poora 2D surface jahan axes hain — coordinate plane ya xy-plane bhi bolte hain</td>
+        <td>Descartes ke naam par Cartesian</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="remember-box">
+    <h4>⚠️ CRITICAL Rule — Yaad Rakhna Zaroori Hai!</h4>
+    <ul class="bullet-list">
+      <li><strong>P(x, y) — x PEHLE aata hai, y BAAD MEIN</strong> — ye order change mat karo!</li>
+      <li>P(3, 5) aur P(5, 3) <strong>ALAG ALAG POINTS</strong> hain — same nahi!</li>
+      <li>Agar x = y ho, tabhi P(x,y) = P(y,x) hoga. Jaise P(4,4) = P(4,4).</li>
+      <li>X-axis par har point ka y-coordinate = 0 hota hai.</li>
+      <li>Y-axis par har point ka x-coordinate = 0 hota hai.</li>
+    </ul>
+  </div>
+
+  <div class="formula-box">
+    <h4>General Form of Coordinates</h4>
+    <div class="formula-eq">P = (x, y)</div>
+    <div class="formula-eq">X-axis par koi point: P = (x, 0)</div>
+    <div class="formula-eq">Y-axis par koi point: P = (0, y)</div>
+    <div class="formula-eq">Origin: O = (0, 0)</div>
+    <p class="formula-note">x = y-axis se perpendicular distance (along x-axis) | y = x-axis se perpendicular distance (along y-axis)</p>
+  </div>
+
+  <div class="example-box">
+    <h4>🌟 Practical Examples — Coordinate Likhna Practice Karo</h4>
+    <p><strong>B(4.5, 0):</strong> X-axis par hai, origin se 4.5 units right side mein. Y-coordinate = 0 kyunki axis par hai.</p>
+    <p><strong>G(0, −4.5):</strong> Y-axis par hai, origin se 4.5 units neeche. X-coordinate = 0 kyunki y-axis par hai.</p>
+    <p><strong>H(0, 4):</strong> Y-axis par hai, origin se 4 units upar. X-coordinate = 0.</p>
+    <p><strong>E(−2.9, 0):</strong> X-axis par hai, origin se 2.9 units left side mein (negative kyunki left).</p>
+    <p>💡 <strong>Trick:</strong> Pehle x (right/left, + / −), phir y (up/down, + / −) — "Walk then Climb" method!</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 4: QUADRANTS ===== -->
+<section class="section" id="quadrants">
+  <div class="section-header">
+    <div class="section-num">🔲</div>
+    <div class="section-title">Quadrants — <span>Char Hisse of the Plane</span><br><small style="font-size:0.6em;color:var(--text2);">Axes plane ko 4 parts mein baant deti hain</small></div>
+  </div>
+
+  <p>X-axis aur Y-axis milkar poore plane ko <strong>4 equal parts</strong> mein baantiti hain, jinhe <strong>Quadrants</strong> bolte hain. Anti-clockwise direction mein number kiye jaate hain — I, II, III, IV (Roman numerals mein).</p>
+
+  <div class="quadrant-grid">
+    <div class="quad" style="background:#0f2218;order:1;">
+      <div class="quad-num" style="color:#22c55e;">Quadrant II</div>
+      <div class="quad-sign" style="color:#3b82f6;">(−, +)</div>
+      <div class="quad-desc">x negative, y positive<br><span style="color:#9ba8c9;">Left of y-axis, above x-axis</span><br><br>Example: (−3, 4), (−7, 2)</div>
+    </div>
+    <div class="quad" style="background:#0f2218;order:2;">
+      <div class="quad-num" style="color:#22c55e;">Quadrant I</div>
+      <div class="quad-sign" style="color:#22c55e;">(+, +)</div>
+      <div class="quad-desc">x positive, y positive<br><span style="color:#9ba8c9;">Right of y-axis, above x-axis</span><br><br>Example: (3, 4), (7, 2)</div>
+    </div>
+    <div class="quad" style="background:#1a0f10;order:3;">
+      <div class="quad-num" style="color:#ff6b6b;">Quadrant III</div>
+      <div class="quad-sign" style="color:#ff6b6b;">(−, −)</div>
+      <div class="quad-desc">x negative, y negative<br><span style="color:#9ba8c9;">Left of y-axis, below x-axis</span><br><br>Example: (−3, −4), (−5, −1)</div>
+    </div>
+    <div class="quad" style="background:#1a0f2e;order:4;">
+      <div class="quad-num" style="color:#a855f7;">Quadrant IV</div>
+      <div class="quad-sign" style="color:#a855f7;">(+, −)</div>
+      <div class="quad-desc">x positive, y negative<br><span style="color:#9ba8c9;">Right of y-axis, below x-axis</span><br><br>Example: (3, −4), (5, −1)</div>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <h4>🧠 Quadrant Signs — Memory Trick (CBSE Exams mein bahut kaam aata hai!)</h4>
+    <p>Ek easy trick yaad karo: <strong>"All Students Take Classes"</strong></p>
+    <ul class="bullet-list">
+      <li><strong>A</strong>ll — Quadrant I: All (+, +) dono positive</li>
+      <li><strong>S</strong>tudents — Quadrant II: Sin positive (−, +) yaani y positive</li>
+      <li><strong>T</strong>ake — Quadrant III: Tan positive (−, −) dono negative</li>
+      <li><strong>C</strong>lasses — Quadrant IV: Cos positive (+, −) yaani x positive</li>
+    </ul>
+    <p style="margin-top:10px;">Ya phir simple yaad raho: <strong>I=(+,+), II=(−,+), III=(−,−), IV=(+,−)</strong></p>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+      <tr><th>Point</th><th>Coordinates</th><th>Quadrant</th><th>Reason</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>S</td><td>(3, −5)</td><td class="hl-purple">Quadrant IV</td><td>x=+3 (positive), y=−5 (negative)</td></tr>
+      <tr><td>Q</td><td>(−5, 3)</td><td class="hl-blue">Quadrant II</td><td>x=−5 (negative), y=+3 (positive)</td></tr>
+      <tr><td>A</td><td>(−3, −4)</td><td class="hl-red">Quadrant III</td><td>x=−3 (negative), y=−4 (negative)</td></tr>
+      <tr><td>B</td><td>(7, 2)</td><td class="hl-green">Quadrant I</td><td>x=+7 (positive), y=+2 (positive)</td></tr>
+      <tr><td>C</td><td>(4, 0)</td><td class="hl-yellow">X-axis par</td><td>y=0 means on x-axis, no quadrant</td></tr>
+      <tr><td>D</td><td>(0, −3)</td><td class="hl-cyan">Y-axis par</td><td>x=0 means on y-axis, no quadrant</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <h4>💡 Important Note — Axes par points kisi Quadrant mein nahi hote!</h4>
+    <p>Agar point x-axis ya y-axis par ho, toh woh kisi bhi quadrant mein nahi hota. Axes quadrants ke beech mein ki boundaries hain. Jaise O(0,0) origin hai — ye kisi quadrant mein nahi, dono axes par hai.</p>
+  </div>
+
+  <div class="example-box">
+    <h4>🏙️ Daily Life Analogy — Bhopal City Grid</h4>
+    <p>Socho Bhopal ka center point O(0,0) hai — Lal Ghati Chauraha maano. Ab:</p>
+    <p><strong>Quadrant I (right-up):</strong> VIP Nagar, Arera Colony direction</p>
+    <p><strong>Quadrant II (left-up):</strong> Bairagarh, TT Nagar direction</p>
+    <p><strong>Quadrant III (left-down):</strong> Old Bhopal, Hamidia direction</p>
+    <p><strong>Quadrant IV (right-down):</strong> Hoshangabad Road, Huzur direction</p>
+    <p>GPS exactly aise hi kaam karta hai — coordinate system mein city divided hai!</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 5: PLOTTING POINTS ===== -->
+<section class="section" id="points">
+  <div class="section-header">
+    <div class="section-num">✏️</div>
+    <div class="section-title">Plotting Points — <span>Graph par Point Kaise Mark Karein?</span><br><small style="font-size:0.6em;color:var(--text2);">Step-by-step method with practice</small></div>
+  </div>
+
+  <p>Coordinates di hui hain — graph par point mark karna seekhte hain. Ye CBSE board exam mein direct marks aata hai!</p>
+
+  <div class="card">
+    <h4 style="color:var(--accent);margin-bottom:14px;font-family:'Rajdhani',sans-serif;font-size:1.1rem;">METHOD: "Walk then Climb" Technique</h4>
+    <p>Imagine karo tum Origin O(0,0) par khade ho. Point P(x, y) tak pahunchne ke liye:</p>
+    <ol class="step-list">
+      <li><strong>X-axis par chalo:</strong> x positive hai toh right jao, x negative hai toh left jao, |x| units</li>
+      <li><strong>Wahan se vertical chalo:</strong> y positive hai toh upar jao, y negative hai toh neeche jao, |y| units</li>
+      <li><strong>Point mark karo:</strong> Jahan ruke — wahi tumhara point hai!</li>
+    </ol>
+  </div>
+
+  <div class="example-box">
+    <h4>📍 Example: Point A(3, 4) plot karo</h4>
+    <p><strong>Step 1:</strong> x = 3 (positive) → Origin se 3 units right jaao x-axis par → (3, 0) par pohoncho</p>
+    <p><strong>Step 2:</strong> y = 4 (positive) → Wahan se 4 units upar jaao → (3, 4) par pohoncho</p>
+    <p><strong>Step 3:</strong> Yahan dot lagao aur A(3,4) likho ✓</p>
+    <p style="margin-top:10px;">💡 Dashed lines (dotted lines) bhi draw kar sakte ho — ek x-axis se vertical, ek y-axis se horizontal — dono jahan mile, wahi point hai!</p>
+  </div>
+
+  <div class="example-box">
+    <h4>📍 Example: Point Q(−5, 3) plot karo</h4>
+    <p><strong>Step 1:</strong> x = −5 (negative) → Origin se 5 units LEFT jaao x-axis par → (−5, 0) par pohoncho</p>
+    <p><strong>Step 2:</strong> y = 3 (positive) → Wahan se 3 units UPAR jaao → (−5, 3) par pohoncho</p>
+    <p><strong>Step 3:</strong> Yahan dot lagao aur Q(−5,3) likho ✓ → Quadrant II mein hai</p>
+  </div>
+
+  <div class="example-box">
+    <h4>📍 Example: Point S(3, −5) plot karo</h4>
+    <p><strong>Step 1:</strong> x = 3 (positive) → Origin se 3 units RIGHT jaao → (3, 0)</p>
+    <p><strong>Step 2:</strong> y = −5 (negative) → Wahan se 5 units NEECHE jaao → (3, −5)</p>
+    <p><strong>Step 3:</strong> Dot lagao aur S(3,−5) likho ✓ → Quadrant IV mein hai</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="400" fill="#0a0e1a" rx="8"/>
+      <!-- Grid light -->
+      <g stroke="#1a2340" stroke-width="0.5">
+        <line x1="250" y1="10" x2="250" y2="390"/><line x1="10" y1="200" x2="490" y2="200"/>
+        <line x1="290" y1="10" x2="290" y2="390"/><line x1="330" y1="10" x2="330" y2="390"/>
+        <line x1="370" y1="10" x2="370" y2="390"/><line x1="410" y1="10" x2="410" y2="390"/>
+        <line x1="450" y1="10" x2="450" y2="390"/><line x1="210" y1="10" x2="210" y2="390"/>
+        <line x1="170" y1="10" x2="170" y2="390"/><line x1="130" y1="10" x2="130" y2="390"/>
+        <line x1="90" y1="10" x2="90" y2="390"/><line x1="50" y1="10" x2="50" y2="390"/>
+        <line x1="10" y1="160" x2="490" y2="160"/><line x1="10" y1="120" x2="490" y2="120"/>
+        <line x1="10" y1="80" x2="490" y2="80"/><line x1="10" y1="40" x2="490" y2="40"/>
+        <line x1="10" y1="240" x2="490" y2="240"/><line x1="10" y1="280" x2="490" y2="280"/>
+        <line x1="10" y1="320" x2="490" y2="320"/><line x1="10" y1="360" x2="490" y2="360"/>
+      </g>
+      <!-- Axes -->
+      <line x1="15" y1="200" x2="485" y2="200" stroke="#f7c948" stroke-width="2.5"/>
+      <line x1="250" y1="15" x2="250" y2="385" stroke="#4ecdc4" stroke-width="2.5"/>
+      <!-- Arrows -->
+      <polygon points="485,196 493,200 485,204" fill="#f7c948"/>
+      <polygon points="15,196 7,200 15,204" fill="#f7c948"/>
+      <polygon points="246,15 250,7 254,15" fill="#4ecdc4"/>
+      <polygon points="246,385 250,393 254,385" fill="#4ecdc4"/>
+      <!-- Numbers -->
+      <g fill="#4a5568" font-size="9" font-family="JetBrains Mono" text-anchor="middle">
+        <text x="290" y="213">1</text><text x="330" y="213">2</text><text x="370" y="213">3</text><text x="410" y="213">4</text><text x="450" y="213">5</text>
+        <text x="210" y="213">-1</text><text x="170" y="213">-2</text><text x="130" y="213">-3</text><text x="90" y="213">-4</text><text x="50" y="213">-5</text>
+        <text x="242" y="163">1</text><text x="242" y="123">2</text><text x="242" y="83">3</text><text x="242" y="43">4</text>
+        <text x="238" y="243">-1</text><text x="238" y="283">-2</text><text x="238" y="323">-3</text><text x="238" y="363">-4</text>
+      </g>
+      <!-- Origin -->
+      <circle cx="250" cy="200" r="4" fill="white"/>
+      <text x="256" y="215" fill="white" font-size="9" font-family="JetBrains Mono">O</text>
+      <!-- Point A(3,4) -->
+      <line x1="370" y1="40" x2="370" y2="200" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="250" y1="40" x2="370" y2="40" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="370" cy="40" r="7" fill="#22c55e"/>
+      <text x="376" y="36" fill="#22c55e" font-size="11" font-family="JetBrains Mono" font-weight="700">A(3,4)</text>
+      <text x="376" y="48" fill="#22c55e" font-size="8" font-family="Nunito">Quadrant I</text>
+      <!-- Point Q(-5,3) -->
+      <line x1="50" y1="80" x2="50" y2="200" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="250" y1="80" x2="50" y2="80" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="50" cy="80" r="7" fill="#3b82f6"/>
+      <text x="14" y="74" fill="#3b82f6" font-size="11" font-family="JetBrains Mono" font-weight="700">Q(-5,3)</text>
+      <text x="14" y="86" fill="#3b82f6" font-size="8" font-family="Nunito">Quadrant II</text>
+      <!-- Point S(3,-5) would be off diagram, use S(3,-3) instead -->
+      <line x1="370" y1="320" x2="370" y2="200" stroke="#a855f7" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="250" y1="320" x2="370" y2="320" stroke="#a855f7" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="370" cy="320" r="7" fill="#a855f7"/>
+      <text x="376" y="316" fill="#a855f7" font-size="11" font-family="JetBrains Mono" font-weight="700">S(3,-3)</text>
+      <text x="376" y="328" fill="#a855f7" font-size="8" font-family="Nunito">Quadrant IV</text>
+      <!-- Point R(-4,-2) -->
+      <line x1="90" y1="280" x2="90" y2="200" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="250" y1="280" x2="90" y2="280" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="90" cy="280" r="7" fill="#ff6b6b"/>
+      <text x="6" y="276" fill="#ff6b6b" font-size="11" font-family="JetBrains Mono" font-weight="700">R(-4,-2)</text>
+      <text x="6" y="288" fill="#ff6b6b" font-size="8" font-family="Nunito">Quadrant III</text>
+      <!-- Axis labels -->
+      <text x="478" y="195" fill="#f7c948" font-size="12" font-family="Nunito" font-weight="700">x</text>
+      <text x="255" y="14" fill="#4ecdc4" font-size="12" font-family="Nunito" font-weight="700">y</text>
+      <!-- Caption inside -->
+      <text x="250" y="396" fill="#4a5568" font-size="9" font-family="Nunito" text-anchor="middle">Char quadrants mein 4 points — Dashed lines se plotting method dikha raha hai</text>
+    </svg>
+    <div class="diagram-caption">Fig: Plotting Points in 4 Quadrants — Dashed lines dikhati hain ki coordinates kaise count karte hain</div>
+  </div>
+
+  <div class="tip-box">
+    <h4>💡 Think &amp; Reflect — NCERT Ke Questions</h4>
+    <p><strong>Q: Y-axis par kisi point ka x-coordinate kya hoga?</strong><br>
+    Ans: Always 0 — kyunki Y-axis par hona matlab Y-axis se 0 distance, yaani x = 0.</p>
+    <p style="margin-top:8px;"><strong>Q: X-axis par kisi point ka y-coordinate kya hoga?</strong><br>
+    Ans: Always 0 — kyunki X-axis par hona matlab x-axis se 0 distance, yaani y = 0.</p>
+    <p style="margin-top:8px;"><strong>Q: Q(y,x) kabhi P(x,y) se coincide karega?</strong><br>
+    Ans: Haan — lekin sirf tab jab x = y. Jaise (3,3) hi single point hoga jo P(3,3) = Q(3,3) dono se match kare.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 6: DISTANCE FORMULA ===== -->
+<section class="section" id="distance">
+  <div class="section-header">
+    <div class="section-num">📐</div>
+    <div class="section-title">Section 1.4 — <span>Distance Formula</span><br><small style="font-size:0.6em;color:var(--text2);">Do points ke beech ki doori — The Most Important Formula</small></div>
+  </div>
+
+  <p>Ye chapter ka <strong>sabse important concept</strong> hai aur CBSE exams mein har saal aata hai. Do points ke beech ki distance nikalni ho toh Distance Formula use karte hain.</p>
+
+  <p>Pehle simple cases dekhte hain, phir general formula:</p>
+
+  <div class="card-grid">
+    <div class="mini-card yellow">
+      <h4>📏 Case 1: Points on X-axis</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Points (x₁, y) aur (x₂, y) — same y-coordinate<br><strong style="color:var(--accent);">Distance = |x₂ − x₁|</strong><br>Example: (3, 0) se (7, 0) tak = |7−3| = 4 units</p>
+    </div>
+    <div class="mini-card cyan">
+      <h4>📏 Case 2: Points on Y-axis</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Points (x, y₁) aur (x, y₂) — same x-coordinate<br><strong style="color:var(--accent3);">Distance = |y₂ − y₁|</strong><br>Example: (0, 2) se (0, 8) tak = |8−2| = 6 units</p>
+    </div>
+  </div>
+
+  <p>Ab general case — jab do points kisi bhi jagah hon:</p>
+
+  <div class="formula-box">
+    <h4>🔥 Distance Formula — THE MAIN FORMULA</h4>
+    <div class="formula-eq">d = √[ (x₂ − x₁)² + (y₂ − y₁)² ]</div>
+    <p class="formula-note">Jahan: P₁ = (x₁, y₁) aur P₂ = (x₂, y₂) hain<br>
+    Note: (x₂−x₁)² aur (y₂−y₁)² hamesha positive hote hain (square hai) — toh positive ya negative values se koi fark nahi padta!</p>
+  </div>
+
+  <div class="tip-box">
+    <h4>💡 Ye Formula Kahan Se Aaya? — Derivation (Samajhna Zaruri Hai)</h4>
+    <p>Ye formula actually <strong>Baudhāyana–Pythagoras Theorem</strong> ka direct application hai!</p>
+    <p style="margin-top:8px;">Socho: Do points A(x₁, y₁) aur D(x₂, y₂) hain. Inke beech ek right triangle banao:</p>
+    <p>→ Point F(x₁, y₂) banao (A se vertical, D se horizontal)</p>
+    <p>→ AF = |y₂ − y₁| (vertical side)</p>
+    <p>→ FD = |x₂ − x₁| (horizontal side)</p>
+    <p>→ AD = hypotenuse = √(AF² + FD²) = √[(x₂−x₁)² + (y₂−y₁)²]</p>
+    <p style="margin-top:8px;"><strong>Simple terms mein: Horizontal shift² + Vertical shift² = Distance²</strong></p>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="320" fill="#0a0e1a" rx="8"/>
+      <!-- Grid -->
+      <g stroke="#1a2340" stroke-width="0.5">
+        <line x1="50" y1="10" x2="50" y2="310"/><line x1="100" y1="10" x2="100" y2="310"/>
+        <line x1="150" y1="10" x2="150" y2="310"/><line x1="200" y1="10" x2="200" y2="310"/>
+        <line x1="250" y1="10" x2="250" y2="310"/><line x1="300" y1="10" x2="300" y2="310"/>
+        <line x1="350" y1="10" x2="350" y2="310"/><line x1="400" y1="10" x2="400" y2="310"/>
+        <line x1="450" y1="10" x2="450" y2="310"/>
+        <line x1="10" y1="50" x2="490" y2="50"/><line x1="10" y1="100" x2="490" y2="100"/>
+        <line x1="10" y1="150" x2="490" y2="150"/><line x1="10" y1="200" x2="490" y2="200"/>
+        <line x1="10" y1="250" x2="490" y2="250"/><line x1="10" y1="300" x2="490" y2="300"/>
+      </g>
+      <!-- Axes -->
+      <line x1="10" y1="260" x2="490" y2="260" stroke="#f7c948" stroke-width="1.5"/>
+      <line x1="50" y1="10" x2="50" y2="310" stroke="#4ecdc4" stroke-width="1.5"/>
+      <!-- Origin -->
+      <circle cx="50" cy="260" r="3" fill="white"/>
+      <text x="32" y="275" fill="#6b7aa1" font-size="8" font-family="JetBrains Mono">O(0,0)</text>
+      <!-- Right Triangle ADC -->
+      <!-- A(3,4) → x=50+150=200, y=260-200=60  -->
+      <!-- D(7,1) → x=50+350=400, y=260-50=210  -->
+      <!-- C(3,1) = F(x1,y2) → x=200, y=210      -->
+      <line x1="200" y1="60" x2="400" y2="210" stroke="#f7c948" stroke-width="3"/>  <!-- AD = hyp -->
+      <line x1="200" y1="60" x2="200" y2="210" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,3"/>  <!-- AC vertical -->
+      <line x1="200" y1="210" x2="400" y2="210" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,3"/>  <!-- CD horizontal -->
+      <!-- Right angle box -->
+      <rect x="200" y="195" width="15" height="15" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+      <!-- Points -->
+      <circle cx="200" cy="60" r="7" fill="#22c55e"/>
+      <text x="170" y="55" fill="#22c55e" font-size="12" font-family="JetBrains Mono" font-weight="700">A(3,4)</text>
+      <circle cx="400" cy="210" r="7" fill="#3b82f6"/>
+      <text x="406" y="208" fill="#3b82f6" font-size="12" font-family="JetBrains Mono" font-weight="700">D(7,1)</text>
+      <circle cx="200" cy="210" r="5" fill="#9ba8c9"/>
+      <text x="156" y="222" fill="#9ba8c9" font-size="10" font-family="JetBrains Mono">C(3,1)</text>
+      <!-- Labels on sides -->
+      <text x="140" y="140" fill="#ff6b6b" font-size="11" font-family="JetBrains Mono">AC = |4-1| = 3</text>
+      <text x="270" y="228" fill="#4ecdc4" font-size="11" font-family="JetBrains Mono">CD = |7-3| = 4</text>
+      <text x="280" y="110" fill="#f7c948" font-size="11" font-family="JetBrains Mono">AD = √(4²+3²)</text>
+      <text x="280" y="124" fill="#f7c948" font-size="11" font-family="JetBrains Mono">   = √(16+9)</text>
+      <text x="280" y="138" fill="#f7c948" font-size="11" font-family="JetBrains Mono">   = √25 = 5</text>
+      <!-- Axis numbers -->
+      <g fill="#4a5568" font-size="8" font-family="JetBrains Mono">
+        <text x="98" y="272">1</text><text x="148" y="272">2</text><text x="198" y="272">3</text>
+        <text x="248" y="272">4</text><text x="298" y="272">5</text><text x="348" y="272">6</text>
+        <text x="398" y="272">7</text>
+        <text x="32" y="213">1</text><text x="32" y="163">2</text><text x="32" y="113">3</text>
+        <text x="32" y="63">4</text>
+      </g>
+      <text x="250" y="310" fill="#4a5568" font-size="9" font-family="Nunito" text-anchor="middle">Distance Formula derivation — Baudhāyana-Pythagoras Theorem ka use</text>
+    </svg>
+    <div class="diagram-caption">Fig 1.7 — A(3,4) se D(7,1) tak distance nikalna — Right Triangle method</div>
+  </div>
+
+  <div class="example-box">
+    <h4>📐 NCERT Example — Triangle ADM ke sides nikalo</h4>
+    <p>Given: A(3,4), D(7,1), M(9,6)</p>
+    <p style="margin-top:10px;"><strong>AD nikalo:</strong></p>
+    <p>CD = x_D − x_A = 7 − 3 = 4 (horizontal shift)</p>
+    <p>AC = y_A − y_D = 4 − 1 = 3 (vertical shift)</p>
+    <p><strong>AD = √(4² + 3²) = √(16 + 9) = √25 = 5 units ✓</strong></p>
+    <p style="margin-top:10px;"><strong>DM nikalo:</strong></p>
+    <p>x-shift = 9 − 7 = 2 | y-shift = 6 − 1 = 5</p>
+    <p><strong>DM = √(2² + 5²) = √(4 + 25) = √29 units</strong></p>
+    <p style="margin-top:10px;"><strong>MA nikalo:</strong></p>
+    <p>x-shift = 3 − 9 = −6 (or |−6| = 6) | y-shift = 4 − 6 = −2 (or |−2| = 2)</p>
+    <p><strong>MA = √(6² + 2²) = √(36 + 4) = √40 = 2√10 units</strong></p>
+  </div>
+
+  <div class="example-box">
+    <h4>🌟 More Examples — Practice karo!</h4>
+    <p><strong>Ex 1: A(0,0) se B(3,4) tak:</strong><br>
+    d = √[(3−0)² + (4−0)²] = √[9+16] = √25 = <strong>5 units</strong></p>
+    <p style="margin-top:8px;"><strong>Ex 2: P(−3,−4) se Q(0,0) tak:</strong><br>
+    d = √[(0−(−3))² + (0−(−4))²] = √[3²+4²] = √[9+16] = √25 = <strong>5 units</strong></p>
+    <p style="margin-top:8px;"><strong>Ex 3: R(1,2) se S(4,6) tak:</strong><br>
+    d = √[(4−1)² + (6−2)²] = √[9+16] = √25 = <strong>5 units</strong></p>
+    <p style="margin-top:8px;">💡 Teen alag alag triangles — phir bhi distance 5! Ye Pythagorean triplet (3,4,5) ka kaal hai.</p>
+  </div>
+
+  <div class="remember-box">
+    <h4>⚠️ Common Mistakes — Exam mein Ghalti Mat Karna!</h4>
+    <ul class="bullet-list">
+      <li><strong>(x₂−x₁)²</strong> mein pehle subtract karo, phir square karo — ye hamesha positive aayega.</li>
+      <li>√ ke andar <strong>+</strong> hota hai, not minus: √[(x₂−x₁)² <span style="color:var(--accent);">+</span> (y₂−y₁)²]</li>
+      <li>Distance hamesha positive hoti hai — answer kabhi negative nahi aana chahiye.</li>
+      <li>Order matter nahi karta: d(A,B) = d(B,A) — formula dono taraf se same result deta hai.</li>
+    </ul>
+  </div>
+
+  <div class="formula-box">
+    <h4>Important Special Cases</h4>
+    <div class="formula-eq">Distance from Origin O(0,0) to P(x, y) = √(x² + y²)</div>
+    <div class="formula-eq">Distance between (x₁, 0) and (x₂, 0) on X-axis = |x₂ − x₁|</div>
+    <div class="formula-eq">Distance between (0, y₁) and (0, y₂) on Y-axis = |y₂ − y₁|</div>
+    <p class="formula-note">Origin se distance ka formula yaad karo — CBSE exam mein circles ke questions mein ye directly kaam aata hai!</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 7: REFLECTION ===== -->
+<section class="section" id="reflection">
+  <div class="section-header">
+    <div class="section-num">🔄</div>
+    <div class="section-title">Section 1.4 cont. — <span>Reflection (Pratibimb)</span><br><small style="font-size:0.6em;color:var(--text2);">Mirror Image in Axes — Ek Important Concept</small></div>
+  </div>
+
+  <p>Jab kisi point ya shape ko axis ke baare mein "reflect" karte hain, toh uska <strong>mirror image</strong> milta hai. Jaise bathroom mirror mein apna chehera dekhte ho — exact same shape, par left-right reverse.</p>
+
+  <div class="card-grid">
+    <div class="mini-card yellow">
+      <h4>🪞 Reflection in Y-axis</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Point P(x, y) ka Y-axis mein reflection:<br><strong style="color:var(--accent);">P'(−x, y)</strong><br>x-coordinate ka sign change hota hai, y same rehta hai.<br>Example: A(3,4) → A'(−3,4)</p>
+    </div>
+    <div class="mini-card cyan">
+      <h4>🪞 Reflection in X-axis</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Point P(x, y) ka X-axis mein reflection:<br><strong style="color:var(--accent3);">P'(x, −y)</strong><br>y-coordinate ka sign change hota hai, x same rehta hai.<br>Example: A(3,4) → A''(3,−4)</p>
+    </div>
+    <div class="mini-card purple">
+      <h4>🪞 Reflection in Origin</h4>
+      <p style="color:var(--text2);font-size:0.9rem;">Point P(x, y) ka origin mein reflection:<br><strong style="color:var(--accent4);">P'(−x, −y)</strong><br>Dono coordinates ka sign change.<br>Example: A(3,4) → A'''(−3,−4)</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <h4>📐 NCERT Example — Triangle ADM ka Y-axis mein Reflection</h4>
+    <p>Original points: A(3,4), D(7,1), M(9,6)</p>
+    <p>Y-axis mein reflect karne ke baad: A'(−3,4), D'(−7,1), M'(−9,6)</p>
+    <p style="margin-top:10px;"><strong>Distances check karo:</strong></p>
+    <p>A'D' = √[(−3−(−7))² + (4−1)²] = √[4²+3²] = √25 = 5 units</p>
+    <p>Pehle AD bhi 5 tha! ✓</p>
+    <p>D'M' = √[(−7−(−9))² + (1−6)²] = √[2²+5²] = √29 units (same as DM ✓)</p>
+    <p>M'A' = √[(−9−(−3))² + (6−4)²] = √[6²+2²] = √40 units (same as MA ✓)</p>
+    <p style="margin-top:10px;"><strong>Conclusion: Reflection distances preserve karti hai — Shape aur size same rehte hain, bas position change hoti hai!</strong></p>
+  </div>
+
+  <div class="remember-box">
+    <h4>🎯 Key Properties of Reflection — Yaad Rakhne Wali Baat</h4>
+    <ul class="bullet-list">
+      <li>Reflection ke baad distances <strong>preserved</strong> rehti hain (same lengths)</li>
+      <li>Shape aur size <strong>same</strong> rehte hain — congruent shapes bante hain</li>
+      <li>Orientation <strong>reverse</strong> ho jaata hai (left becomes right, etc.)</li>
+      <li>Area bhi same rehta hai</li>
+      <li>Axis of reflection ke baare mein har point ki distance <strong>equal</strong> rehti hai</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 8: MIDPOINT ===== -->
+<section class="section" id="midpoint">
+  <div class="section-header">
+    <div class="section-num">⚖️</div>
+    <div class="section-title">Midpoint Concept — <span>Beech ka Point Kaise Nikaalein?</span><br><small style="font-size:0.6em;color:var(--text2);">Section Formula ka Foundation (★ Starred Questions)</small></div>
+  </div>
+
+  <p>NCERT mein starred (*) questions hain jo midpoint ke baare mein hain. Ye Class 10 mein formal form mein aayega ("Section Formula"), par Class 9 mein concept samajhna hai.</p>
+
+  <div class="formula-box">
+    <h4>Midpoint Formula</h4>
+    <div class="formula-eq">M = ( (x₁+x₂)/2 , (y₁+y₂)/2 )</div>
+    <p class="formula-note">Agar M segment ST ka midpoint hai (S=(x₁,y₁) aur T=(x₂,y₂)), toh M ke coordinates hain dono x-coordinates ka average aur dono y-coordinates ka average.</p>
+  </div>
+
+  <div class="example-box">
+    <h4>📊 NCERT Exercise Table — Midpoint Check</h4>
+    <table class="styled-table">
+      <thead><tr><th>S</th><th>M</th><th>T</th><th>M midpoint hai?</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td>(−3,0)</td><td>(0,0)</td><td>(3,0)</td><td class="hl-green">✓ Yes</td><td>(−3+3)/2=0, (0+0)/2=0 → M=(0,0) ✓</td></tr>
+        <tr><td>(2,3)</td><td>(3,4)</td><td>(4,5)</td><td class="hl-green">✓ Yes</td><td>(2+4)/2=3, (3+5)/2=4 → M=(3,4) ✓</td></tr>
+        <tr><td>(0,0)</td><td>(0,5)</td><td>(0,−10)</td><td class="hl-red">✗ No</td><td>(0+0)/2=0, (0+(−10))/2=−5 → M should be (0,−5) not (0,5)</td></tr>
+        <tr><td>(−8,7)</td><td>(0,−2)</td><td>(6,−3)</td><td class="hl-red">✗ No</td><td>(−8+6)/2=−1, (7+(−3))/2=2 → M should be (−1,2) not (0,−2)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example-box">
+    <h4>⭐ Starred Example — Find B, given Midpoint M</h4>
+    <p><strong>Problem:</strong> M(−7, 1) is midpoint of A(3, −4) and B(x, y). Find B.</p>
+    <p style="margin-top:8px;"><strong>Solution:</strong></p>
+    <p>Midpoint formula se: (3+x)/2 = −7 → 3+x = −14 → <strong>x = −17</strong></p>
+    <p>(−4+y)/2 = 1 → −4+y = 2 → <strong>y = 6</strong></p>
+    <p><strong>Answer: B(−17, 6)</strong></p>
+  </div>
+
+  <div class="example-box">
+    <h4>⭐ Trisection Points — A(4,7) aur B(16,−2) ke trisection points nikalo</h4>
+    <p><strong>P aur Q trisection points hain, P A ke paas, Q B ke paas.</strong></p>
+    <p>Step 1: P midpoint hai AP aur PQ ka — lekin easier method: P beech mein hoga ⅓ distance par.</p>
+    <p>Shortcut: Pehle find karo M = midpoint of AB = ((4+16)/2, (7+(−2))/2) = (10, 2.5)</p>
+    <p>Phir: P = midpoint of AM = ((4+10)/2, (7+2.5)/2) = <strong>(7, 4.75)</strong></p>
+    <p>Q = midpoint of MB = ((10+16)/2, (2.5+(−2))/2) = <strong>(13, 0.25)</strong></p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 9: EXERCISES ===== -->
+<section class="section" id="exercises">
+  <div class="section-header">
+    <div class="section-num">📝</div>
+    <div class="section-title">Solved Exercises — <span>Important Questions with Solutions</span><br><small style="font-size:0.6em;color:var(--text2);">NCERT Exercise 1.1, 1.2 aur End-of-Chapter</small></div>
+  </div>
+
+  <!-- Exercise Set 1.1 -->
+  <div class="exercise-box">
+    <h4>Exercise Set 1.1 — Reiaan ke Kamre ke Questions</h4>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q(i):</strong> D₁R₁ kamre ka door represent karta hai. Door left wall (y-axis) se kitni door hai? X-axis se kitni door hai?</div>
+      <div class="exercise-a">Fig 1.3 se: D₁ x-axis par hai (y=0), aur approximately x=8 par hai.<br>
+      → Left wall (y-axis) se Door ki doori = D₁ ka x-coordinate = 8 ft<br>
+      → X-axis se doori = 0 (kyunki D₁ x-axis par hi hai)</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q(ii):</strong> D₁ ke coordinates kya hain?</div>
+      <div class="exercise-a">D₁ = (8, 0) — Fig 1.3 se x=8, y=0 (x-axis par hai)</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q(iii):</strong> R₁ = (11.5, 0) — door kitni wide hai? Wheelchair ke liye comfortable hai?</div>
+      <div class="exercise-a">Door width = D₁ se R₁ tak distance = |11.5 − 8| = 3.5 ft ≈ 42 inches<br>
+      Standard door width: ~3 ft (36 inches). Ye slightly wide hai.<br>
+      Wheelchair: Standard wheelchair ~26-30 inches wide — haan, 3.5 ft = 42 inches mein easily enter kar sakta hai! ✓</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q(iv):</strong> B₁(0,1.5) aur B₂(0,4) bathroom door ke ends hain. Bathroom door narrow hai ya wide?</div>
+      <div class="exercise-a">Bathroom door width = |4 − 1.5| = 2.5 ft = 30 inches<br>
+      Room door = 3.5 ft. <strong>Bathroom door narrow hai</strong> (2.5 ft < 3.5 ft).</div>
+    </div>
+  </div>
+
+  <!-- Exercise Set 1.2 -->
+  <div class="exercise-box">
+    <h4>Exercise Set 1.2 — Detailed Answers</h4>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q1(i):</strong> Study table ke 3 feet (8,9), (11,9), (11,7) par hain. Fourth foot kahan hoga?</div>
+      <div class="exercise-a">Rectangle ki property: opposite corners sum = same<br>
+      (8,9), (11,9), (11,7) — three corners given. Fourth = (8, 7)<br>
+      Verify: (8,9) → (11,9) → (11,7) → (8,7) → (8,9) — rectangle ✓</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q1(iii):</strong> Table ki width aur length kya hai?</div>
+      <div class="exercise-a">Width = |11 − 8| = 3 ft (x-direction)<br>
+      Length = |9 − 7| = 2 ft (y-direction)<br>
+      Height — floor map se nahi nikali ja sakti (3D information hai)</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q3(i):</strong> Bathroom ke corners O, F, R, P ke coordinates?</div>
+      <div class="exercise-a">Fig 1.5 se: O = (0,0), F = (0,10), R = (−6,10), P = (−6,0)<br>
+      [Bathroom y-axis ke left side mein hai — negative x coordinates]</div>
+    </div>
+  </div>
+
+  <!-- End of Chapter Important Questions -->
+  <div class="exercise-box">
+    <h4>End-of-Chapter Important Questions — Solved</h4>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q1:</strong> Do axes ke intersection point ke coordinates kya hain?</div>
+      <div class="exercise-a">Origin O = (0, 0) — x-coordinate = 0, y-coordinate = 0</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q3:</strong> R(3,0), A(0,−2), M(−5,−2), P(−5,2) — RAMP join karo. Perpendicular sides? Parallel to axis? Mirror images?</div>
+      <div class="exercise-a"><strong>(i) Perpendicular sides:</strong> MP aur MA — MP is vertical (same x=−5), MA connects different quadrants<br>
+      <strong>(ii) Parallel to axis:</strong> AM — y-coordinate same (y=−2) for both A(0,−2) and M(−5,−2) → parallel to x-axis<br>
+      <strong>(iii) Mirror images:</strong> M(−5,−2) aur P(−5,2) — x-coordinate same, y-coordinates opposite → mirror images in x-axis</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q12(i):</strong> A(1,−8), B(−4,7), C(−7,−4) — show karein ye circle K (center O) par hain, radius kya?</div>
+      <div class="exercise-a">OA = √(1²+(−8)²) = √(1+64) = √65<br>
+      OB = √((−4)²+7²) = √(16+49) = √65<br>
+      OC = √((−7)²+(−4)²) = √(49+16) = √65<br>
+      <strong>OA = OB = OC = √65 — teeno same distance par hain!</strong> → Radius = √65 units ✓</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q12(ii):</strong> D(−5,6) aur E(0,9) — circle ke andar, par, ya bahar?</div>
+      <div class="exercise-a">OD = √(25+36) = √61 &lt; √65 → D is <strong>INSIDE</strong> the circle<br>
+      OE = √(0+81) = √81 = 9 | √65 ≈ 8.06 < 9 → OE > radius → E is <strong>OUTSIDE</strong> the circle</div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q15:</strong> Screen 800×600 pixels. Circle A(100,150) radius 80, Circle B(250,230) radius 100. Circles screen ke bahar jaati hain? Intersect karti hain?</div>
+      <div class="exercise-a"><strong>Circle A screen mein?</strong><br>
+      Left: 100−80=20 > 0 ✓ | Right: 100+80=180 < 800 ✓ | Bottom: 150−80=70 > 0 ✓ | Top: 150+80=230 < 600 ✓ → <strong>Fully inside ✓</strong><br>
+      <strong>Circle B screen mein?</strong><br>
+      Left: 250−100=150>0 ✓ | Right: 250+100=350<800 ✓ | Bottom: 230−100=130>0 ✓ | Top: 230+100=330<600 ✓ → <strong>Fully inside ✓</strong><br>
+      <strong>Circles intersect?</strong><br>
+      d(A,B) = √[(250−100)²+(230−150)²] = √[150²+80²] = √[22500+6400] = √28900 = 170<br>
+      r₁+r₂ = 80+100 = 180 | |r₁−r₂| = 20<br>
+      20 < 170 < 180 → <strong>Circles intersect (overlap karte hain)! ✓</strong></div>
+    </div>
+
+    <div class="exercise-item">
+      <div class="exercise-q"><strong>Q16:</strong> A(2,1), B(−1,2), C(−2,−1), D(1,−2) — ABCD square hai? Area?</div>
+      <div class="exercise-a">AB = √[(−1−2)²+(2−1)²] = √[9+1] = √10<br>
+      BC = √[(−2−(−1))²+(−1−2)²] = √[1+9] = √10<br>
+      CD = √[(1−(−2))²+(−2−(−1))²] = √[9+1] = √10<br>
+      DA = √[(2−1)²+(1−(−2))²] = √[1+9] = √10<br>
+      <strong>Sab sides equal = √10!</strong><br>
+      Diagonal AC = √[(−2−2)²+(−1−1)²] = √[16+4] = √20 = 2√5<br>
+      Diagonal BD = √[(1−(−1))²+(−2−2)²] = √[4+16] = √20 = 2√5<br>
+      <strong>Diagonals bhi equal! ABCD is a Square ✓</strong><br>
+      Area = side² = (√10)² = <strong>10 square units</strong></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 10: ALL FORMULAS ===== -->
+<section class="section" id="formulas">
+  <div class="section-header">
+    <div class="section-num">∑</div>
+    <div class="section-title">All Formulas — <span>Complete Formula Sheet</span><br><small style="font-size:0.6em;color:var(--text2);">CBSE Exam ke liye sabse zaruri list</small></div>
+  </div>
+
+  <div class="formula-box" style="border-color:#f7c948;">
+    <h4>🏆 MASTER FORMULA SHEET — Chapter 1</h4>
+
+    <div style="margin-bottom:16px;">
+      <p style="color:#60a5fa;font-family:'Rajdhani',sans-serif;font-weight:700;margin-bottom:6px;">1. COORDINATES OF BASIC POINTS</p>
+      <div class="formula-eq">Origin: O = (0, 0)</div>
+      <div class="formula-eq">X-axis par: P = (x, 0) — y = 0 hamesha</div>
+      <div class="formula-eq">Y-axis par: P = (0, y) — x = 0 hamesha</div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <p style="color:#60a5fa;font-family:'Rajdhani',sans-serif;font-weight:700;margin-bottom:6px;">2. QUADRANT SIGN RULES</p>
+      <div class="formula-eq">Q-I: (+, +) | Q-II: (−, +) | Q-III: (−, −) | Q-IV: (+, −)</div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <p style="color:#60a5fa;font-family:'Rajdhani',sans-serif;font-weight:700;margin-bottom:6px;">3. DISTANCE FORMULA ⭐ (Sabse Important)</p>
+      <div class="formula-eq">d(P₁P₂) = √[ (x₂ − x₁)² + (y₂ − y₁)² ]</div>
+      <div class="formula-eq">d(O, P) = √(x² + y²) [Distance from Origin]</div>
+      <div class="formula-eq">d on x-axis: |x₂ − x₁|</div>
+      <div class="formula-eq">d on y-axis: |y₂ − y₁|</div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <p style="color:#60a5fa;font-family:'Rajdhani',sans-serif;font-weight:700;margin-bottom:6px;">4. REFLECTION FORMULAS</p>
+      <div class="formula-eq">Reflection in Y-axis: (x, y) → (−x, y)</div>
+      <div class="formula-eq">Reflection in X-axis: (x, y) → (x, −y)</div>
+      <div class="formula-eq">Reflection in Origin: (x, y) → (−x, −y)</div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <p style="color:#60a5fa;font-family:'Rajdhani',sans-serif;font-weight:700;margin-bottom:6px;">5. MIDPOINT FORMULA ⭐ (★ Starred)</p>
+      <div class="formula-eq">M = ( (x₁+x₂)/2 , (y₁+y₂)/2 )</div>
+    </div>
+
+    <div>
+      <p style="color:#60a5fa;font-family:'Rajdhani',sans-serif;font-weight:700;margin-bottom:6px;">6. COORDINATE PROPERTIES</p>
+      <div class="formula-eq">P(x,y) = P(y,x) only if x = y</div>
+      <div class="formula-eq">If x ≠ y, then P(x,y) ≠ P(y,x)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 11: CHAPTER SUMMARY ===== -->
+<section class="section" id="summary">
+  <div class="section-header">
+    <div class="section-num">📋</div>
+    <div class="section-title">Chapter Summary — <span>Poora Chapter Ek Nazar Mein</span><br><small style="font-size:0.6em;color:var(--text2);">Revision ke liye — Last minute bhi kaam aayega</small></div>
+  </div>
+
+  <div class="card">
+    <ul class="bullet-list">
+      <li>Kisi point ki plane mein position locate karne ke liye do perpendicular lines chahiye — ek horizontal (x-axis), ek vertical (y-axis).</li>
+      <li>Yeh plane <strong>Cartesian plane</strong>, coordinate plane, ya xy-plane kehlata hai.</li>
+      <li>Horizontal line = <strong class="hl-yellow">x-axis</strong> | Vertical line = <strong class="hl-cyan">y-axis</strong></li>
+      <li>Axes plane ko <strong>4 quadrants</strong> mein baantte hain — I, II, III, IV (anti-clockwise).</li>
+      <li>Axes ka intersection point = <strong class="hl-red">Origin O(0,0)</strong></li>
+      <li>Y-axis se point ki distance = <strong>x-coordinate</strong> | X-axis se point ki distance = <strong>y-coordinate</strong></li>
+      <li>Point ke coordinates = <strong>(x, y)</strong> — order important hai!</li>
+      <li>X-axis par point: <strong>(x, 0)</strong> | Y-axis par point: <strong>(0, y)</strong> | Origin: <strong>(0, 0)</strong></li>
+      <li>Quadrant signs: I=(+,+), II=(−,+), III=(−,−), IV=(+,−)</li>
+      <li><strong>(x,y) = (y,x) only if x = y</strong> | <strong>(x,y) ≠ (y,x) if x ≠ y</strong></li>
+      <li>Same x-coordinate wale points mein distance = <strong>|x₂ − x₁|</strong></li>
+      <li>Same y-coordinate wale points mein distance = <strong>|y₂ − y₁|</strong></li>
+      <li>General distance formula (Baudhāyana-Pythagoras): <strong>d = √[(x₂−x₁)² + (y₂−y₁)²]</strong></li>
+      <li>Reflection Y-axis mein: (x,y) → (−x,y) | X-axis mein: (x,y) → (x,−y)</li>
+      <li>Reflection distances preserve karta hai — congruent shapes bante hain</li>
+      <li>Midpoint of segment (x₁,y₁)-(x₂,y₂) = <strong>( (x₁+x₂)/2, (y₁+y₂)/2 )</strong></li>
+    </ul>
+  </div>
+
+  <div class="remember-box">
+    <h4>🏆 CBSE Exam Tips — Important Points</h4>
+    <ul class="bullet-list">
+      <li>Distance Formula clearly likhna — under root mein dono squares ka plus</li>
+      <li>Quadrant identify karna — sign check karo</li>
+      <li>Points on axes — on axis points kisi quadrant mein NAHI hote</li>
+      <li>Order of coordinates — x pehle, y baad mein ALWAYS</li>
+      <li>Midpoint formula — average of both coordinates</li>
+      <li>Graph drawing mein scale mention karna</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <h4>🚀 Aage Kya Aayega — What's Next?</h4>
+    <p>Chapter 1 sirf foundation hai. Aage in concepts ka use:</p>
+    <p><strong>Class 9:</strong> Linear equations graph par — straight line kaise banti hai coordinates se</p>
+    <p><strong>Class 10:</strong> Section Formula, Area Formula, Slope/Gradient</p>
+    <p><strong>Class 11-12:</strong> Conic sections, circles, parabola, ellipse — sab coordinates se!</p>
+    <p><strong>Real Life:</strong> GPS, Computer Graphics, Engineering Design, Architecture — sab jagah!</p>
+  </div>
+</section>
+
+</main>
+
+<!-- SIGNATURE -->
+<div style="max-width:960px;margin:0 auto;padding:0 24px 80px;">
+  <div class="signature">
+    <div class="sig-title">📝 Notes Created By</div>
+    <div class="sig-name">Devansh Dubey</div>
+    <div class="sig-school">🏫 Bhind, Madhya Pradesh | Class 9 | CBSE</div>
+    <div class="sig-badge">📐 Ganita Manjari · Chapter 1 · Coordinates</div>
+    <div style="margin-top:16px;color:var(--text2);font-size:0.9rem;">ये notes मेरे खुद के effort से बनाए गए हैं — पूरा Chapter 1 cover किया गया है।</div>
+    <div class="sig-copyright">© 2026 Devansh Dubey · Bhind, MP · All Rights Reserved · Personal Study Notes</div>
+  </div>
+</div>
+
+<script>
+// Loader logic
+const loaderTexts = [
+  "Initializing coordinate plane...",
+  "Setting up x-axis and y-axis...",
+  "Plotting quadrants...",
+  "Loading Baudhāyana's theorem...",
+  "Applying distance formula...",
+  "Mapping Bhopal coordinates...",
+  "Notes ready for Devansh! 🚀"
+];
+let textIdx = 0;
+const loaderTextEl = document.getElementById('loaderText');
+const textInterval = setInterval(()=>{
+  textIdx = (textIdx+1) % loaderTexts.length;
+  loaderTextEl.textContent = loaderTexts[textIdx];
+}, 400);
+
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    clearInterval(textInterval);
+    document.getElementById('loader').classList.add('hidden');
+  }, 3000);
+});
+
+// Staggered section animations
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.animationPlayState = 'running';
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+
+document.querySelectorAll('.section').forEach((s,i)=>{
+  s.style.animationDelay = `${i*0.05}s`;
+  s.style.animationPlayState = 'paused';
+  observer.observe(s);
+});
+</script>
+</body>
+</html>

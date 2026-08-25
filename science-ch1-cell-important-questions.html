@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 9 Biology: 40+ Super Important Questions & Solutions – The Fundamental Unit of Life (Cell)</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg: #071326;
+  --surface: #0e223f;
+  --surface-hover: #142f55;
+  --border: rgba(64, 112, 180, 0.3);
+  --gold: #f5b041;
+  --gold-bright: #ffd56b;
+  --gold-gradient: linear-gradient(135deg, #ffe082 0%, #f5b041 50%, #d48b14 100%);
+  --red: #e63946;
+  --red-bright: #ff4d5e;
+  --cyan: #38bdf8;
+  --green: #34d399;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.7;
+  font-size: 15px;
+  padding-bottom: 60px;
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, #050c18 0%, #0d213f 50%, #07142a 100%);
+  border-bottom: 2px solid var(--border);
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--cyan) 100%);
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 16px;
+  background: rgba(245, 176, 65, 0.15);
+  border: 1px solid var(--gold);
+  border-radius: 99px;
+  color: var(--gold-bright);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(24px, 4.5vw, 38px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.hero-title span {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  color: var(--text-muted);
+  font-size: 15px;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+
+.guaranteed-box {
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.15) 0%, rgba(14, 34, 63, 0.8) 100%);
+  border: 1.5px solid var(--red-bright);
+  border-radius: 14px;
+  padding: 20px 24px;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(230, 57, 70, 0.2);
+}
+
+.guaranteed-title {
+  color: var(--red-bright);
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.guaranteed-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.guaranteed-item {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-bright);
+  border-left: 3px solid var(--gold);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.q-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+.q-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.q-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.q-badge {
+  background: var(--gold-gradient);
+  color: #071326;
+  font-weight: 900;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.q-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.q-answer {
+  background: rgba(6, 16, 32, 0.6);
+  border-left: 3px solid var(--cyan);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.q-answer strong { color: var(--gold-bright); }
+.q-answer ul, .q-answer ol { padding-left: 20px; margin: 8px 0; }
+.q-answer li { margin-bottom: 4px; }
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 13.5px;
+}
+
+.compare-table th {
+  background: #153258;
+  color: var(--gold-bright);
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+.compare-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+}
+
+.print-btn {
+  background: var(--gold-gradient);
+  color: #071326;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="hero-banner">
+  <div class="badge">🔥 High-Yield Board Exam Material</div>
+  <h1 class="hero-title">40+ Master Questions & Solutions: <span>The Cell</span></h1>
+  <p class="hero-desc">Class 9 Science (Chapter 5 / Biology Chapter 1) curated by Devansh Dubey & Devansha Edu.</p>
+  <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save as PDF</button>
+</div>
+
+<div class="container">
+
+  <!-- GUARANTEED 5 QUESTIONS BLOCK -->
+  <div class="guaranteed-box">
+    <div class="guaranteed-title"><i class="fa-solid fa-fire"></i> LAST NIGHT BEFORE EXAM (SUPER GUARANTEED)</div>
+    <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">If only 5 questions can be asked from long answers, these are the strongest candidates:</p>
+    <div class="guaranteed-list">
+      <div class="guaranteed-item">1. Cell Theory + Scientists (Schleiden, Schwann, Virchow)</div>
+      <div class="guaranteed-item">2. Prokaryotic vs Eukaryotic Cell Comparison</div>
+      <div class="guaranteed-item">3. Plant Cell vs Animal Cell (Structure & Organelles)</div>
+      <div class="guaranteed-item">4. Nucleus + DNA + Gene + Chromosome Hierarchy</div>
+      <div class="guaranteed-item">5. Mitosis vs Meiosis (Equational vs Reductional)</div>
+    </div>
+  </div>
+
+  <!-- QUESTION LIST (1 to 40) -->
+
+  <!-- Q1 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 01</span><div class="q-title">What is a cell? Why is it called the basic structural and functional unit of life?</div></div>
+    <div class="q-answer">
+      A <strong>cell</strong> is the smallest, membrane-bound unit capable of carrying out all life processes independently.<br>
+      • <strong>Structural Unit:</strong> Every living organism is physically constructed of one or more cells (like bricks in a building).<br>
+      • <strong>Functional Unit:</strong> All vital metabolic functions (respiration, energy generation, protein synthesis, excretion) occur inside cells.
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 02</span><div class="q-title">Differentiate between unicellular and multicellular organisms with suitable examples.</div></div>
+    <div class="q-answer">
+      <table class="compare-table">
+        <tr><th>Feature</th><th>Unicellular Organisms</th><th>Multicellular Organisms</th></tr>
+        <tr><td>Number of Cells</td><td>Single cell constitutes the entire organism.</td><td>Composed of millions/trillions of specialized cells.</td></tr>
+        <tr><td>Division of Labour</td><td>Absent (all jobs done by 1 cell).</td><td>Present (specialized tissues and organ systems).</td></tr>
+        <tr><td>Lifespan</td><td>Usually short.</td><td>Comparatively long.</td></tr>
+        <tr><td>Examples</td><td><em>Amoeba, Paramecium, Bacteria, Yeast</em></td><td><em>Humans, Mango Tree, Insects, Fungi</em></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 03</span><div class="q-title">Explain Cell Theory. Mention the contributions of Matthias Schleiden, Theodor Schwann and Rudolf Virchow.</div></div>
+    <div class="q-answer">
+      <strong>Cell Theory</strong> is the foundational principle of cell biology:<br>
+      1. <strong>Matthias Schleiden (1838):</strong> Concluded that all plant tissues are composed of cells.<br>
+      2. <strong>Theodor Schwann (1839):</strong> Concluded that all animal tissues are made of cells and postulated that cells are the basic unit of life.<br>
+      3. <strong>Rudolf Virchow (1855):</strong> Added the third tenet — <em>"Omnis cellula e cellula"</em> (All living cells arise only from pre-existing cells through division).
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 04</span><div class="q-title">Differentiate between prokaryotic cells and eukaryotic cells.</div></div>
+    <div class="q-answer">
+      <table class="compare-table">
+        <tr><th>Feature</th><th>Prokaryotic Cell</th><th>Eukaryotic Cell</th></tr>
+        <tr><td>Nucleus</td><td>No nuclear membrane (called <strong>Nucleoid</strong>).</td><td>True nucleus enclosed by a double nuclear membrane.</td></tr>
+        <tr><td>Membrane Organelles</td><td>Absent (no mitochondria, ER, Golgi).</td><td>Present (Mitochondria, ER, Golgi, Plastids, etc.).</td></tr>
+        <tr><td>Ribosomes</td><td>70S type (50S + 30S).</td><td>80S type in cytoplasm (60S + 40S).</td></tr>
+        <tr><td>Size & DNA</td><td>Small (1–10 µm); single circular DNA.</td><td>Larger (10–100 µm); multiple linear chromosomes.</td></tr>
+        <tr><td>Examples</td><td>Bacteria, Blue-green algae (Cyanobacteria).</td><td>Plant cells, Animal cells, Fungi, Protists.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 05</span><div class="q-title">Differentiate between plant cells and animal cells.</div></div>
+    <div class="q-answer">
+      <table class="compare-table">
+        <tr><th>Feature</th><th>Plant Cell</th><th>Animal Cell</th></tr>
+        <tr><td>Cell Wall</td><td>Present (made of cellulose; provides rigid support).</td><td>Absent (only cell membrane present).</td></tr>
+        <tr><td>Plastids / Chloroplast</td><td>Present (chloroplasts for photosynthesis).</td><td>Absent.</td></tr>
+        <tr><td>Vacuole</td><td>Single, large permanent central vacuole (up to 90% volume).</td><td>Small, temporary, multiple vacuoles.</td></tr>
+        <tr><td>Centrosome / Centrioles</td><td>Absent (in higher plants).</td><td>Present (organizes spindle in cell division).</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q6 & Q7 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 06 & 07</span><div class="q-title">Explain the structure & functions of the cell membrane. Why is it called selectively permeable?</div></div>
+    <div class="q-answer">
+      • <strong>Structure:</strong> Described by Singer & Nicolson's <em>Fluid Mosaic Model</em> as a flexible phospholipid bilayer with embedded intrinsic and peripheral proteins.<br>
+      • <strong>Selectively Permeable:</strong> It regulates entry and exit by allowing only certain solvent and solute molecules (like O₂, CO₂, glucose, water) to pass through while restricting harmful or unwanted molecules.<br>
+      • <strong>Functions:</strong> Provides boundary protection, cellular recognition, signal transduction, and active/passive transport.
+    </div>
+  </div>
+
+  <!-- Q8 & Q9 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 08 & 09</span><div class="q-title">Differentiate between diffusion and osmosis. Explain isotonic, hypotonic and hypertonic solutions.</div></div>
+    <div class="q-answer">
+      • <strong>Diffusion:</strong> Spontaneous movement of any substance (gas/liquid/solute) from high concentration to low concentration without requiring a semi-permeable membrane.<br>
+      • <strong>Osmosis:</strong> Movement of <strong>water molecules</strong> from high water concentration (dilute) to low water concentration (concentrated) across a <strong>selectively permeable membrane</strong>.<br><br>
+      <strong>Solution Types & Cell Effects:</strong><br>
+      1. <strong>Hypotonic (Dilute outside):</strong> Water enters the cell (Endosmosis) → Animal cell swells and may burst (Lysis); Plant cell becomes firm & <strong>Turgid</strong>.<br>
+      2. <strong>Isotonic (Equal concentration):</strong> Net movement is zero → Cell remains normal/flaccid.<br>
+      3. <strong>Hypertonic (Concentrated outside):</strong> Water leaves the cell (Exosmosis) → Animal cell shrinks (Crenation); Plant cell cytoplasm pulls away from cell wall (<strong>Plasmolysis</strong>).
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 10</span><div class="q-title">Explain the structure and functions of the cell wall.</div></div>
+    <div class="q-answer">
+      • <strong>Structure:</strong> A rigid, non-living, permeable layer outside the plasma membrane composed primarily of <strong>cellulose, hemicellulose, and pectin</strong>.<br>
+      • <strong>Functions:</strong> (1) Gives definite shape and mechanical strength to plant cells. (2) Exerts inward turgor pressure preventing cells from bursting in hypotonic media. (3) Connects adjacent cells via cytoplasmic bridges called <strong>Plasmodesmata</strong>.
+    </div>
+  </div>
+
+  <!-- Q11 & Q12 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 11 & 12</span><div class="q-title">Explain the structure of the nucleus. Differentiate between DNA, gene, chromatin and chromosome.</div></div>
+    <div class="q-answer">
+      • <strong>Structure of Nucleus:</strong> Enclosed by a double-layered <strong>nuclear envelope</strong> with <strong>nuclear pores</strong>, containing a gel-like <strong>nucleoplasm</strong>, a dense <strong>nucleolus</strong> (rRNA & ribosome synthesis site), and genetic material.<br><br>
+      <strong>Genetic Hierarchy:</strong><br>
+      • <strong>DNA (Deoxyribonucleic Acid):</strong> The double-helix master chemical molecule carrying all hereditary instructions.<br>
+      • <strong>Gene:</strong> A functional segment/unit of DNA that codes for a specific protein or phenotypic trait.<br>
+      • <strong>Chromatin:</strong> The loose, uncoiled, thread-like complex of DNA and histone proteins visible during non-dividing (interphase) state.<br>
+      • <strong>Chromosome:</strong> The highly condensed, rod-like structures of chromatin formed during cell division (Humans have 46 chromosomes / 23 pairs).
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 13</span><div class="q-title">What are ribosomes? Why are they called the protein factories of the cell?</div></div>
+    <div class="q-answer">
+      <strong>Ribosomes</strong> are non-membrane-bound dense ribonucleoprotein particles made of rRNA and ribosomal proteins. They translate genetic code (mRNA) into polypeptide chains (proteins). Because all structural, enzymatic, and regulatory proteins are synthesized on them, they are nicknamed the <strong>"Protein Factories of the Cell"</strong>.
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 14</span><div class="q-title">Explain Endoplasmic Reticulum (ER). Differentiate between Rough ER (RER) and Smooth ER (SER).</div></div>
+    <div class="q-answer">
+      The <strong>ER</strong> is an extensive intracellular network of interconnected membranous tubules, sheets, and cisternae.<br>
+      • <strong>Rough ER (RER):</strong> Surface is studded with ribosomes; primary site of protein synthesis and transport.<br>
+      • <strong>Smooth ER (SER):</strong> Lacks ribosomes; synthesizes lipids, phospholipids, and steroid hormones; detoxifies drugs and poisons in liver cells.
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 15</span><div class="q-title">Explain Golgi Apparatus. Why is it called the packaging and shipping centre of the cell?</div></div>
+    <div class="q-answer">
+      Discovered by <strong>Camillo Golgi</strong>, it consists of stacks of membrane-bound, parallel flattened sacs called <strong>cisternae</strong>.<br>
+      It receives synthesized proteins and lipids from the ER at its <em>cis</em> face, chemically modifies them (glycosylation), packs them into secretory vesicles, and dispatches them to targets (plasma membrane, lysosomes, extracellular space). Hence, it is the cell's <strong>"Packaging & Dispatch Center"</strong>.
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 16</span><div class="q-title">What are lysosomes? Why are they called the clean-up system / suicidal bags of the cell?</div></div>
+    <div class="q-answer">
+      <strong>Lysosomes</strong> are single-membrane spherical vesicles containing powerful <strong>hydrolytic digestive enzymes</strong> (hydrolases) active in acidic pH.<br>
+      • <strong>Clean-up System:</strong> They engulf and digest foreign bacteria, cellular debris, and worn-out organelles (autophagy).<br>
+      • <strong>Suicide Bags:</strong> In damaged or dying cells, lysosomes can rupture and release their digestive enzymes, digesting their own parent cell completely (autolysis / apoptosis).
+    </div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 17</span><div class="q-title">Why are mitochondria called the powerhouse of the cell? Explain their structure.</div></div>
+    <div class="q-answer">
+      • <strong>Powerhouse:</strong> Mitochondria carry out cellular aerobic respiration, breaking down pyruvic acid to generate <strong>ATP (Adenosine Triphosphate)</strong> — the universal energy currency.<br>
+      • <strong>Structure:</strong> Double-membraned. Outer membrane is smooth; inner membrane is deeply folded into finger-like projections called <strong>cristae</strong> (providing large surface area for ATP-generating oxysomes / ATP synthase). Inside is the protein-rich <strong>matrix</strong> containing its own circular DNA and 70S ribosomes (semi-autonomous).
+    </div>
+  </div>
+
+  <!-- Q18 & Q19 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 18 & 19</span><div class="q-title">Explain Chloroplast & Plastids. Differentiate between Chloroplasts, Chromoplasts and Leucoplasts.</div></div>
+    <div class="q-answer">
+      <strong>Plastids</strong> are double-membrane organelles found exclusively in plant cells and algae:<br>
+      1. <strong>Chloroplasts:</strong> Contain green pigment <em>chlorophyll</em> and carotenoids; site of photosynthesis (kitchen of the cell). Structure contains thylakoid stacks (grana) and fluid stroma with own DNA/ribosomes.<br>
+      2. <strong>Chromoplasts:</strong> Contain colored pigments (carotenes, xanthophylls); give vibrant yellow, orange, and red colors to flowers and ripening fruits to attract pollinators.<br>
+      3. <strong>Leucoplasts:</strong> Colorless storage plastids — <em>Amyloplasts</em> (store starch/potatoes), <em>Elaioplasts</em> (store oils/lipids), <em>Aleuroplasts</em> (store proteins).
+    </div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 20</span><div class="q-title">What are vacuoles? Differentiate between plant vacuoles and animal vacuoles.</div></div>
+    <div class="q-answer">
+      <strong>Vacuoles</strong> are membrane-bound storage organelles enclosed by a single semi-permeable membrane called the <strong>tonoplast</strong>.<br>
+      • <strong>Plant Vacuoles:</strong> Immense central vacuole occupying 50–90% of cell volume, filled with <strong>cell sap</strong>; provides turgidity, rigidity, and stores metabolic wastes/pigments.<br>
+      • <strong>Animal Vacuoles:</strong> Small, transient, and multiple; involved in pinocytosis, phagocytosis (food vacuoles in Amoeba), or osmoregulation (contractile vacuoles).
+    </div>
+  </div>
+
+  <!-- Q21 to Q24 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 21–24</span><div class="q-title">Explain Cell Division: Mitosis vs Meiosis. Why is meiosis called reduction division?</div></div>
+    <div class="q-answer">
+      <table class="compare-table">
+        <tr><th>Feature</th><th>Mitosis (Equational)</th><th>Meiosis (Reductional)</th></tr>
+        <tr><td>Occurrence</td><td>Somatic (body) cells.</td><td>Germ/reproductive cells (gonads: testes/ovary).</td></tr>
+        <tr><td>Daughter Cells</td><td>2 identical diploid daughter cells (2n → 2n).</td><td>4 genetically diverse haploid daughter cells (2n → n).</td></tr>
+        <tr><td>Chromosome Count</td><td>Remains constant.</td><td>Reduced to half (hence "Reduction Division").</td></tr>
+        <tr><td>Crossing Over</td><td>Absent.</td><td>Present in Prophase I (generates genetic variation).</td></tr>
+        <tr><td>Biological Role</td><td>Growth, tissue repair, asexual reproduction.</td><td>Gamete formation (sperm/egg); restores 2n upon fertilization.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q25 & Q26 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 25 & 26</span><div class="q-title">What is contact inhibition? Differentiate between normal cells and cancer cells.</div></div>
+    <div class="q-answer">
+      • <strong>Contact Inhibition:</strong> A natural regulatory property of normal cells where contact with neighboring cells halts uncontrolled cell division.<br>
+      • <strong>Cancer Cells:</strong> Cancer cells lose contact inhibition, dividing uncontrollably to form masses called <strong>tumors</strong>.<br>
+      • <strong>Normal vs Cancer:</strong> Normal cells have a finite lifespan (Hayflick limit), regular shape, and regulated division. Cancer cells are immortal, have irregular nuclei, abnormal chromosome numbers, and can invade distant tissues (metastasis).
+    </div>
+  </div>
+
+  <!-- Q27 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 27</span><div class="q-title">What is totipotency? Mention the contribution of Gottlieb Haberlandt.</div></div>
+    <div class="q-answer">
+      <strong>Totipotency</strong> is the inherent biological capacity of a single plant cell to divide and regenerate into an entire whole functional organism. Austrian botanist <strong>Gottlieb Haberlandt (1902)</strong> first conceived the concept of plant tissue culture and is recognized as the <em>Father of Plant Tissue Culture</em>.
+    </div>
+  </div>
+
+  <!-- Q28 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 28</span><div class="q-title">What is Programmed Cell Death (PCD / Apoptosis)? Explain its importance with an example.</div></div>
+    <div class="q-answer">
+      <strong>Programmed Cell Death (Apoptosis)</strong> is a genetically controlled, orderly biochemical process of cellular self-destruction.<br>
+      • <strong>Importance & Example:</strong> During human embryonic development, fingers and toes are initially joined by webbed tissue; apoptosis eliminates the interdigital cells to separate individual fingers. In tadpole metamorphosis, the entire tail is resorbed via apoptosis to form an adult frog!
+    </div>
+  </div>
+
+  <!-- Q29 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 29</span><div class="q-title">Explain the onion root tip experiment used to study cell division.</div></div>
+    <div class="q-answer">
+      The <strong>apical meristem</strong> of onion root tips contains actively dividing cells. Roots are grown over water, excised, fixed in acetic alcohol, stained with acetocarmine, and squashed under a cover glass. Under a microscope, distinct mitotic stages (Prophase, Metaphase with equatorial plate alignment, Anaphase with chromatid separation, and Telophase with cell plate formation) are clearly observed.
+    </div>
+  </div>
+
+  <!-- Q30 to Q37 (Differences Compilation) -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 30–37</span><div class="q-title">Quick Difference Sheet: Important Differentiations for Exam</div></div>
+    <div class="q-answer">
+      • <strong>Cell Membrane vs Cell Wall:</strong> Cell membrane is living, thin, lipid-protein based, selectively permeable. Cell wall is dead, thick, cellulose based, freely permeable.<br>
+      • <strong>Chloroplast vs Mitochondria:</strong> Chloroplast carries out anabolic photosynthesis to store energy as glucose (plants only). Mitochondria carries out catabolic respiration to release energy as ATP (plants & animals).<br>
+      • <strong>Benign vs Malignant Tumor:</strong> Benign remains localized and harmless. Malignant grows rapidly, invades neighboring tissues, and spreads via blood/lymph (metastasis).<br>
+      • <strong>Virus vs Viroid vs Prion:</strong> Virus has nucleic acid (DNA/RNA) + protein coat. Viroid consists ONLY of infectious naked RNA (no protein). Prion consists ONLY of infectious misfolded protein (no nucleic acid).
+    </div>
+  </div>
+
+  <!-- Q38 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 38</span><div class="q-title">Explain the role of ATP in cells. Why is ATP called the energy currency of the cell?</div></div>
+    <div class="q-answer">
+      <strong>ATP (Adenosine Triphosphate)</strong> stores chemical energy in high-energy terminal phosphate bonds. Hydrolysis of ATP into ADP + Pi releases ~30.5 kJ/mol of usable energy that instantly drives cellular processes (muscle contraction, nerve impulse transmission, active transport, protein synthesis). Just as money is exchanged for goods and services in daily life, cells "spend" ATP whenever energy is needed!
+    </div>
+  </div>
+
+  <!-- Q39 & Q40 -->
+  <div class="q-card">
+    <div class="q-header"><span class="q-badge">Q 39 & 40</span><div class="q-title">Light Microscope Parts & Why onion peel cells are regular while cheek cells are irregular in shape?</div></div>
+    <div class="q-answer">
+      • <strong>Microscope Parts:</strong> Eyepiece/Ocular lens (magnifies image), Objective lenses (4x, 10x, 40x, 100x), Stage & Clips (holds slide), Condenser & Diaphragm (focuses light), Coarse & Fine Adjustment Knobs (sharp focusing).<br>
+      • <strong>Onion vs Cheek Cell Shape:</strong> Onion peel cells possess a rigid, structural <strong>cellulose cell wall</strong> that forces them into a fixed, brick-like rectangular shape. Human cheek (epithelial) cells lack a cell wall and have only a flexible plasma membrane, resulting in an irregular, rounded, pliable boundary.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

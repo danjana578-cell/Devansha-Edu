@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fundamental Unit of Life (Cell) – Complete Class 9 Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --bg: #071326;
+    --surface: #0e223f;
+    --surface2: #142f55;
+    --border: rgba(64, 112, 180, 0.3);
+    --gold: #f5b041;
+    --gold-bright: #ffd56b;
+    --gold-gradient: linear-gradient(135deg, #ffe082 0%, #f5b041 50%, #d48b14 100%);
+    --accent: #38bdf8;
+    --accent2: #34d399;
+    --accent3: #ff4d5e;
+    --accent4: #c084fc;
+    --accent5: #fb923c;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .hero {
+    background: linear-gradient(135deg, #050c18 0%, #0d213f 50%, #061122 100%);
+    border-bottom: 2px solid var(--border);
+    padding: 44px 20px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(245,176,65,0.12) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,176,65,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(24px, 4.5vw, 40px);
+    font-weight: 900;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .hero-sub {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; color: var(--gold-bright); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+  .layout {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 0;
+  }
+  .sidebar {
+    width: 270px;
+    min-width: 270px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px 0;
+  }
+  .sidebar-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    padding: 0 20px 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-left: 3px solid transparent;
+    text-decoration: none;
+  }
+  .nav-item:hover, .nav-item.active {
+    background: rgba(245,176,65,0.1);
+    color: var(--gold-bright);
+    border-left-color: var(--gold);
+  }
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+  .main { flex: 1; padding: 32px 36px; min-width: 0; }
+
+  .section {
+    margin-bottom: 56px;
+    scroll-margin-top: 20px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 36px; height: 36px;
+    background: var(--gold-gradient);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+    color: #071326;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--gold); }
+
+  .def-box {
+    background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(14,34,63,0.5));
+    border: 1px solid rgba(56,189,248,0.3);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+  .def-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .def-text { color: var(--text); font-size: 14.5px; }
+
+  .example-box {
+    background: linear-gradient(135deg, rgba(52,211,153,0.1), rgba(14,34,63,0.5));
+    border: 1px solid rgba(52,211,153,0.3);
+    border-left: 4px solid var(--accent2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .example-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .imp-box {
+    background: linear-gradient(135deg, rgba(255,77,94,0.1), rgba(14,34,63,0.5));
+    border: 1px solid rgba(255,77,94,0.3);
+    border-left: 4px solid var(--accent3);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .imp-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent3);
+    margin-bottom: 6px;
+  }
+
+  .note-box {
+    background: rgba(192,132,252,0.08);
+    border: 1px solid rgba(192,132,252,0.25);
+    border-left: 4px solid var(--accent4);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead { background: rgba(14, 48, 88, 0.8); }
+  th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--gold-bright);
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(64,112,180,0.2);
+    vertical-align: top;
+  }
+  tr:hover td { background: rgba(245,176,65,0.05); }
+
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .org-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    transition: all 0.25s;
+  }
+  .org-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245,176,65,0.15);
+  }
+  .org-icon { font-size: 24px; margin-bottom: 8px; }
+  .org-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin-bottom: 4px;
+  }
+  .org-nickname {
+    font-size: 11px;
+    background: rgba(245,176,65,0.15);
+    color: var(--gold-bright);
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .org-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .org-example { font-size: 12px; color: var(--accent2); margin-top: 8px; }
+
+  .q-section { margin-bottom: 32px; }
+  .q-type {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .q-type.mcq { background: rgba(56,189,248,0.15); color: var(--accent); }
+  .q-type.short { background: rgba(52,211,153,0.15); color: var(--accent2); }
+  .q-type.long { background: rgba(255,77,94,0.15); color: var(--accent3); }
+  .q-type.fill { background: rgba(192,132,252,0.15); color: var(--accent4); }
+  .q-type.tf { background: rgba(251,146,60,0.15); color: var(--accent5); }
+  
+  .q-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .q-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin-bottom: 4px;
+  }
+  .q-text { font-size: 14px; color: var(--text); margin-bottom: 8px; font-weight: 600; }
+  .q-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+  .q-opt {
+    font-size: 13px;
+    color: var(--text-muted);
+    background: var(--surface2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .ans-box {
+    background: rgba(52,211,153,0.1);
+    border: 1px solid rgba(52,211,153,0.3);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--accent2);
+  }
+  .ans-label { font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--accent2); margin-bottom: 3px; }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .compare-col {
+    background: var(--surface2);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid var(--border);
+  }
+  .compare-col h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-col.plant h4 { color: var(--accent2); }
+  .compare-col.animal h4 { color: var(--accent3); }
+  .compare-col ul { list-style: none; }
+  .compare-col li {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .compare-col li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--gold-bright);
+  }
+
+  p { margin-bottom: 12px; }
+  h3 { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--gold-bright); margin: 20px 0 10px; }
+  h4 { font-size: 14px; font-weight: 700; color: var(--text); margin: 14px 0 8px; }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; font-size: 14px; color: var(--text-muted); }
+  strong { color: var(--text); }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 20px 16px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .q-opts { grid-template-columns: 1fr; }
+    .org-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">Class 9 · Biology · NCERT Chapter 5</div>
+  <h1>The Fundamental Unit of Life: Cell</h1>
+  <p class="hero-sub">Complete Revision Notes · Organelle Breakdown · 60+ Practice Questions · Created by Devansh Dubey</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">Core Topics</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Organelles</div></div>
+    <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Practice Questions</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Exam Ready</div></div>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-title">Table of Contents</div>
+    <a class="nav-item" href="#s1"><span class="nav-dot"></span>1. Introduction to Cell</a>
+    <a class="nav-item" href="#s2"><span class="nav-dot"></span>2. Discovery & Cell Theory</a>
+    <a class="nav-item" href="#s3"><span class="nav-dot"></span>3. Types of Cells</a>
+    <a class="nav-item" href="#s4"><span class="nav-dot"></span>4. Cell Structure Overview</a>
+    <a class="nav-item" href="#s5"><span class="nav-dot"></span>5. Cell Membrane</a>
+    <a class="nav-item" href="#s6"><span class="nav-dot"></span>6. Cell Wall</a>
+    <a class="nav-item" href="#s7"><span class="nav-dot"></span>7. Nucleus</a>
+    <a class="nav-item" href="#s8"><span class="nav-dot"></span>8. Cytoplasm</a>
+    <a class="nav-item" href="#s9"><span class="nav-dot"></span>9. Cell Organelles</a>
+    <a class="nav-item" href="#s10"><span class="nav-dot"></span>10. Plant vs Animal Cell</a>
+    <a class="nav-item" href="#s11"><span class="nav-dot"></span>11. Cell Division</a>
+    <a class="nav-item" href="#s12"><span class="nav-dot"></span>12. Transport in Cells</a>
+    <a class="nav-item" href="#s13"><span class="nav-dot"></span>13. Key Definitions</a>
+    <a class="nav-item" href="#s14"><span class="nav-dot"></span>14. Practice Questions</a>
+  </nav>
+
+  <main class="main">
+
+    <!-- SECTION 1 -->
+    <div class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div>
+          <div class="section-title">Introduction to the Cell</div>
+          <div class="section-sub">What is a cell? Why is it called the building block?</div>
+        </div>
+      </div>
+
+      <p>Every single living thing on Earth — whether it is a tiny bacterium invisible to the naked eye, a tall mango tree, or a complex human being — is made up of <strong>cells</strong>. The cell is the most basic, fundamental unit of life. Just like a house is built from bricks, all living organisms are built from cells.</p>
+
+      <div class="def-box">
+        <div class="def-label">📖 Definition — Cell</div>
+        <div class="def-text">A <strong>cell</strong> is the smallest structural and functional unit of life that is capable of performing all the basic life processes independently, such as respiration, nutrition, excretion, and reproduction.</div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">🌍 Real-Life Example</div>
+        Think of a <strong>LEGO set</strong>. You can build a castle, a car, or a spaceship using the same basic LEGO bricks. Similarly, nature builds bacteria, plants, and humans using the same basic building block — the <strong>cell</strong>.
+      </div>
+
+      <p>The word <strong>"Cell"</strong> comes from the Latin word <em>"cellula"</em> meaning <strong>"small room"</strong>. This name was given by Robert Hooke in 1665 when he observed cork under a microscope and saw tiny room-like structures.</p>
+
+      <h3>Why is the Cell Called the Building Block of Life?</h3>
+      <ul>
+        <li><strong>Structural Unit:</strong> All living organisms are structurally made up of cells.</li>
+        <li><strong>Functional Unit:</strong> All life processes (digestion, respiration, etc.) happen at the cellular level.</li>
+        <li><strong>Hereditary Unit:</strong> Cells carry genetic information (DNA) that passes from one generation to the next.</li>
+        <li><strong>Reproductive Unit:</strong> New cells arise from pre-existing cells through cell division.</li>
+      </ul>
+
+      <div class="card">
+        <h4>🔢 Size of a Cell</h4>
+        <ul>
+          <li>Most cells are <strong>microscopic</strong> (average 1 to 100 µm).</li>
+          <li><strong>Smallest cell:</strong> Mycoplasma (PPLO) — about <strong>0.1 µm</strong>.</li>
+          <li><strong>Largest cell:</strong> Ostrich egg — visible to naked eye (~15 cm).</li>
+          <li><strong>Longest cell:</strong> Nerve cell (neuron) in humans — up to <strong>1 metre</strong> long.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div>
+          <div class="section-title">Discovery of Cell & Cell Theory</div>
+          <div class="section-sub">History, scientists, and the three principles</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Year</th><th>Scientist</th><th>Contribution</th></tr></thead>
+          <tbody>
+            <tr><td>1665</td><td><strong>Robert Hooke</strong></td><td>First to observe and name cells (in dead cork slice).</td></tr>
+            <tr><td>1674</td><td><strong>Anton van Leeuwenhoek</strong></td><td>First to observe free-living cells (bacteria, protozoa, RBCs).</td></tr>
+            <tr><td>1831</td><td><strong>Robert Brown</strong></td><td>Discovered and named the <strong>nucleus</strong> in plant cells.</td></tr>
+            <tr><td>1838</td><td><strong>Matthias Schleiden</strong></td><td>Proposed that all <strong>plants</strong> are composed of cells.</td></tr>
+            <tr><td>1839</td><td><strong>Theodor Schwann</strong></td><td>Proposed that all <strong>animals</strong> are composed of cells.</td></tr>
+            <tr><td>1855</td><td><strong>Rudolf Virchow</strong></td><td>Proposed <em>"Omnis cellula e cellula"</em> (All cells arise from pre-existing cells).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="imp-box">
+        <div class="imp-label">⚠️ Exception to Cell Theory</div>
+        <strong>Viruses</strong> do NOT follow cell theory because they are non-cellular (acellular) packets of nucleic acid in a protein coat and cannot reproduce without a host cell.
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div>
+          <div class="section-title">Types of Cells</div>
+          <div class="section-sub">Prokaryotic vs Eukaryotic & Unicellular vs Multicellular</div>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-col plant">
+          <h4>🦠 Prokaryotic Cell</h4>
+          <ul>
+            <li>No true membrane-bound nucleus (called <strong>nucleoid</strong>)</li>
+            <li>No membrane-bound organelles (no mitochondria, ER, Golgi)</li>
+            <li>Small size (1–10 µm)</li>
+            <li>70S Ribosomes</li>
+            <li>Single circular DNA</li>
+            <li>Examples: Bacteria, Blue-green algae</li>
+          </ul>
+        </div>
+        <div class="compare-col animal">
+          <h4>🌱 Eukaryotic Cell</h4>
+          <ul>
+            <li>True membrane-bound nucleus with nuclear envelope</li>
+            <li>Membrane-bound organelles present</li>
+            <li>Larger size (10–100 µm)</li>
+            <li>80S Ribosomes in cytoplasm</li>
+            <li>Linear DNA organized into chromosomes</li>
+            <li>Examples: Plant cells, Animal cells, Fungi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 to 8: Structures -->
+    <div class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div>
+          <div class="section-title">Cell Membrane, Cell Wall & Nucleus</div>
+          <div class="section-sub">Key cellular boundaries and control mechanisms</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="color:var(--accent)">1. Cell Membrane (Plasma Membrane)</h4>
+        <p>A living, flexible, selectively permeable phospholipid bilayer with embedded proteins (Fluid Mosaic Model by Singer & Nicolson, 1972). Controls entry and exit of substances via diffusion, osmosis, and active transport.</p>
+      </div>
+
+      <div class="card">
+        <h4 style="color:var(--accent2)">2. Cell Wall (Plants Only)</h4>
+        <p>A non-living, rigid, permeable outer layer made of <strong>cellulose</strong>. Provides structural strength, prevents bursting in hypotonic solutions (turgor pressure), and connects cells via <strong>plasmodesmata</strong>.</p>
+      </div>
+
+      <div class="card">
+        <h4 style="color:var(--gold-bright)">3. Nucleus (Brain of the Cell)</h4>
+        <p>Contains nuclear envelope with pores, nucleoplasm, <strong>nucleolus</strong> (rRNA synthesis site), and <strong>chromatin/chromosomes</strong> containing DNA and genes. Directs all metabolic activities and hereditary transmission.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 9: Organelles -->
+    <div class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div>
+          <div class="section-title">Cell Organelles in Detail</div>
+          <div class="section-sub">Specialized cellular organs</div>
+        </div>
+      </div>
+
+      <div class="org-grid">
+        <div class="org-card">
+          <div class="org-icon">⚡</div>
+          <div class="org-name">Mitochondria</div>
+          <div class="org-nickname">Powerhouse of the Cell</div>
+          <div class="org-desc">Double membrane; inner cristae folds; matrix with own circular DNA & 70S ribosomes (semi-autonomous); generates ATP via aerobic respiration.</div>
+        </div>
+        <div class="org-card">
+          <div class="org-icon">📦</div>
+          <div class="org-name">Endoplasmic Reticulum</div>
+          <div class="org-nickname">Internal Transport Highway</div>
+          <div class="org-desc">Rough ER (RER with ribosomes) synthesizes proteins. Smooth ER (SER without ribosomes) synthesizes lipids and detoxifies toxins/drugs.</div>
+        </div>
+        <div class="org-card">
+          <div class="org-icon">🚚</div>
+          <div class="org-name">Golgi Apparatus</div>
+          <div class="org-nickname">Packaging & Dispatch Center</div>
+          <div class="org-desc">Discovered by Camillo Golgi. Parallel cisternae sacs that modify, sort, package proteins/lipids in vesicles, and form lysosomes.</div>
+        </div>
+        <div class="org-card">
+          <div class="org-icon">♻️</div>
+          <div class="org-name">Lysosomes</div>
+          <div class="org-nickname">Suicide Bags / Cleaners</div>
+          <div class="org-desc">Single-membrane vesicles with hydrolytic digestive enzymes. Digest waste, bacteria, and burst during apoptosis (cell self-destruction).</div>
+        </div>
+        <div class="org-card">
+          <div class="org-icon">🌿</div>
+          <div class="org-name">Chloroplasts</div>
+          <div class="org-nickname">Kitchen of the Cell</div>
+          <div class="org-desc">Found in plants. Double membrane, thylakoid grana with chlorophyll, fluid stroma with own DNA. Site of photosynthesis (glucose production).</div>
+        </div>
+        <div class="org-card">
+          <div class="org-icon">💧</div>
+          <div class="org-name">Vacuoles</div>
+          <div class="org-nickname">Storage Tanks</div>
+          <div class="org-desc">Enclosed by tonoplast. Plants have 1 large central vacuole (50–90% volume) with cell sap (turgidity); animals have small temporary vacuoles.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 10: Differences & Division -->
+    <div class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div>
+          <div class="section-title">Cell Division: Mitosis vs Meiosis</div>
+          <div class="section-sub">Growth, repair, and gamete formation</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Feature</th><th>Mitosis (Equational)</th><th>Meiosis (Reductional)</th></tr></thead>
+          <tbody>
+            <tr><td>Daughter Cells</td><td>2 diploid (2n) identical cells</td><td>4 haploid (n) diverse cells</td></tr>
+            <tr><td>Chromosome Count</td><td>Remains same (46 → 46)</td><td>Halved (46 → 23 in humans)</td></tr>
+            <tr><td>Location</td><td>Somatic (body) cells</td><td>Reproductive cells (gonads)</td></tr>
+            <tr><td>Purpose</td><td>Growth, repair, healing</td><td>Gamete formation (sperm/egg)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 14: Questions -->
+    <div class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div>
+          <div class="section-title">Selected Exam Practice Questions</div>
+          <div class="section-sub">Rapid fire practice with instant answers</div>
+        </div>
+      </div>
+
+      <div class="q-section">
+        <div class="q-type mcq">Multiple Choice Questions</div>
+        <div class="q-item">
+          <div class="q-num">Q1.</div>
+          <div class="q-text">Which organelle is known as the "suicidal bag" of the cell?</div>
+          <div class="q-opts">
+            <div class="q-opt">A) Ribosome</div>
+            <div class="q-opt">B) Golgi body</div>
+            <div class="q-opt">C) Lysosome</div>
+            <div class="q-opt">D) Vacuole</div>
+          </div>
+          <div class="ans-box"><div class="ans-label">✅ Answer</div>C) Lysosome — contains hydrolytic enzymes that can destroy damaged cells.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-num">Q2.</div>
+          <div class="q-text">Which of the following organelles contains its own DNA and ribosomes?</div>
+          <div class="q-opts">
+            <div class="q-opt">A) Lysosome</div>
+            <div class="q-opt">B) Mitochondria</div>
+            <div class="q-opt">C) Endoplasmic Reticulum</div>
+            <div class="q-opt">D) Golgi apparatus</div>
+          </div>
+          <div class="ans-box"><div class="ans-label">✅ Answer</div>B) Mitochondria (and Chloroplasts) — semi-autonomous organelles.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
