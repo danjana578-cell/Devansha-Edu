@@ -1,0 +1,508 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>One Click Video Downloader</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 35px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: #f9fafb;
+      background:
+        radial-gradient(circle at top, #1e3a5f, transparent 55%),
+        #0b1120;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 480px;
+      padding: 28px;
+      background: rgba(31, 41, 55, 0.96);
+      border: 1px solid #374151;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .icon {
+      font-size: 46px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 16px 0 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      color: #f9fafb;
+      background: #111827;
+      border: 1px solid #4b5563;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+    }
+
+    input::placeholder {
+      color: #9ca3af;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .download-btn {
+      background: #16a34a;
+      color: white;
+    }
+
+    .open-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .secondary-btn {
+      background: #374151;
+      color: white;
+    }
+
+    .status {
+      display: none;
+      margin-top: 20px;
+      padding: 14px;
+      text-align: left;
+      border-radius: 10px;
+      background: #111827;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .status.show {
+      display: block;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      margin-top: 12px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #374151;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #22c55e;
+      transition: width 0.15s;
+    }
+
+    .small {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 400px) {
+      .box {
+        padding: 21px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="box">
+    <div class="icon">🎬</div>
+
+    <h1>Video Downloader</h1>
+
+    <p class="subtitle">
+      Download direct video files from sources you are
+      authorized to access.
+    </p>
+
+    <form id="downloadForm">
+      <label for="videoUrl">Video URL</label>
+
+      <input
+        type="url"
+        id="videoUrl"
+        placeholder="https://example.com/video.mp4"
+        autocomplete="url"
+        spellcheck="false"
+        required
+      >
+
+      <label for="fileName">Save as (optional)</label>
+
+      <input
+        type="text"
+        id="fileName"
+        placeholder="my-video.mp4"
+        maxlength="150"
+      >
+
+      <button class="download-btn" id="downloadBtn" type="submit">
+        ⬇ Download Video
+      </button>
+
+      <button class="open-btn" id="openBtn" type="button">
+        ↗ Open Video Link
+      </button>
+
+      <button class="secondary-btn" id="cancelBtn"
+        type="button" hidden>
+        Cancel Download
+      </button>
+    </form>
+
+    <section class="status" id="status" role="status"
+      aria-live="polite">
+      <div id="statusText">Ready.</div>
+
+      <div class="progress-track" id="progressTrack" hidden>
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </section>
+
+    <p class="small">
+      Works with direct video file URLs when the hosting server
+      permits access. Some websites require their own download
+      feature or an authorized server-side integration.
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById("downloadForm");
+    const urlInput = document.getElementById("videoUrl");
+    const nameInput = document.getElementById("fileName");
+
+    const downloadBtn = document.getElementById("downloadBtn");
+    const openBtn = document.getElementById("openBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    const statusBox = document.getElementById("status");
+    const statusText = document.getElementById("statusText");
+    const progressTrack = document.getElementById("progressTrack");
+    const progressBar = document.getElementById("progressBar");
+
+    let controller = null;
+
+    function showStatus(message) {
+      statusBox.classList.add("show");
+      statusText.textContent = message;
+    }
+
+    function setProgress(percent) {
+      progressBar.style.width = percent + "%";
+    }
+
+    function getVideoUrl() {
+      const value = urlInput.value.trim();
+
+      if (!value) {
+        throw new Error("Bhai, pehle video URL daalo!");
+      }
+
+      let url;
+
+      try {
+        url = new URL(value);
+      } catch {
+        throw new Error("Please enter a valid video URL.");
+      }
+
+      if (!["http:", "https:"].includes(url.protocol)) {
+        throw new Error("Only HTTP and HTTPS URLs are allowed.");
+      }
+
+      if (url.username || url.password) {
+        throw new Error("URLs containing embedded credentials are not allowed.");
+      }
+
+      return url;
+    }
+
+    function getFileName(url) {
+      let name = nameInput.value.trim();
+
+      if (!name) {
+        const lastPart = url.pathname.split("/").pop();
+
+        try {
+          name = decodeURIComponent(lastPart || "");
+        } catch {
+          name = lastPart || "";
+        }
+      }
+
+      if (!name || name === "." || name === "..") {
+        name = "my-video.mp4";
+      }
+
+      // Prevent path characters and control characters in filenames.
+      name = name.replace(/[<>:"/\\|?*\x00-\x1F]/g, "_").trim();
+
+      if (!name) {
+        name = "my-video.mp4";
+      }
+
+      if (!/\.[a-z0-9]{1,10}$/i.test(name)) {
+        name += ".mp4";
+      }
+
+      return name.slice(0, 150);
+    }
+
+    function saveBlob(blob, fileName) {
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = objectUrl;
+      link.download = fileName;
+      link.style.display = "none";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Keep the URL alive long enough for the browser to start saving.
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
+    }
+
+    function formatBytes(bytes) {
+      if (!Number.isFinite(bytes) || bytes < 0) {
+        return "Unknown size";
+      }
+
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1024 ** 2) {
+        return (bytes / 1024).toFixed(1) + " KB";
+      }
+
+      if (bytes < 1024 ** 3) {
+        return (bytes / 1024 ** 2).toFixed(1) + " MB";
+      }
+
+      return (bytes / 1024 ** 3).toFixed(2) + " GB";
+    }
+
+    function setBusy(busy) {
+      downloadBtn.disabled = busy;
+      openBtn.disabled = busy;
+      cancelBtn.hidden = !busy;
+      downloadBtn.textContent = busy
+        ? "Downloading..."
+        : "⬇ Download Video";
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      let url;
+
+      try {
+        url = getVideoUrl();
+      } catch (error) {
+        showStatus(error.message);
+        return;
+      }
+
+      const fileName = getFileName(url);
+
+      controller = new AbortController();
+      setBusy(true);
+      progressTrack.hidden = false;
+      setProgress(0);
+      showStatus("Connecting to the video server...");
+
+      try {
+        const response = await fetch(url.href, {
+          method: "GET",
+          mode: "cors",
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            "Server returned HTTP " + response.status +
+            ". Check the URL or access permissions."
+          );
+        }
+
+        const contentType = (
+          response.headers.get("content-type") || ""
+        ).toLowerCase();
+
+        if (
+          contentType.includes("text/html") ||
+          contentType.includes("application/json")
+        ) {
+          throw new Error(
+            "This URL returned a webpage or JSON, not a direct video file."
+          );
+        }
+
+        const totalHeader = response.headers.get("content-length");
+        const total = totalHeader ? Number(totalHeader) : 0;
+
+        if (!response.body) {
+          throw new Error(
+            "This browser cannot read the download stream. Try Open Video Link."
+          );
+        }
+
+        const reader = response.body.getReader();
+        const chunks = [];
+        let received = 0;
+
+        while (true) {
+          const result = await reader.read();
+
+          if (result.done) break;
+
+          chunks.push(result.value);
+          received += result.value.byteLength;
+
+          if (total > 0) {
+            setProgress(Math.min(100, received / total * 100));
+
+            showStatus(
+              "Downloading: " +
+              Math.round(received / total * 100) + "% · " +
+              formatBytes(received) + " of " + formatBytes(total)
+            );
+          } else {
+            showStatus(
+              "Downloading: " + formatBytes(received) +
+              " received. Total size unavailable."
+            );
+          }
+        }
+
+        if (received === 0) {
+          throw new Error("The server returned an empty file.");
+        }
+
+        const blob = new Blob(chunks, {
+          type: contentType || "application/octet-stream"
+        });
+
+        saveBlob(blob, fileName);
+        setProgress(100);
+
+        showStatus(
+          "Download prepared! File size: " +
+          formatBytes(blob.size) +
+          ". Check your browser's downloads."
+        );
+
+      } catch (error) {
+        if (error.name === "AbortError") {
+          showStatus("Download cancelled.");
+        } else {
+          console.error("Download error:", error);
+
+          const isNetworkError = error instanceof TypeError;
+
+          showStatus(
+            (isNetworkError
+              ? "The browser could not access this file. The server may block " +
+                "cross-origin requests (CORS), or the link may be invalid. "
+              : error.message + " ") +
+            "Try Open Video Link, or use an authorized server-side downloader."
+          );
+        }
+      } finally {
+        controller = null;
+        setBusy(false);
+      }
+    });
+
+    openBtn.addEventListener("click", () => {
+      try {
+        const url = getVideoUrl();
+
+        // Open only after a user action and after URL validation.
+        const tab = window.open("about:blank", "_blank");
+
+        if (tab) {
+          tab.opener = null;
+          tab.location.href = url.href;
+        } else {
+          showStatus(
+            "The browser blocked the new tab. Allow pop-ups or open this URL manually."
+          );
+        }
+      } catch (error) {
+        showStatus(error.message);
+      }
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      if (controller) {
+        controller.abort();
+      }
+    });
+  </script>
+</body>
+</html>
+```
